@@ -16,6 +16,8 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,6 +30,13 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
+        jlSunsetTitle = new javax.swing.JLabel();
+        jbNewTenant = new javax.swing.JButton();
+        jbSearchTenant = new javax.swing.JButton();
+        jbExit = new javax.swing.JButton();
+        jlNewTenant = new javax.swing.JLabel();
+        jlSearch = new javax.swing.JLabel();
+        jlExit = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -41,20 +50,100 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sunset");
+
+        jlSunsetTitle.setFont(new java.awt.Font("ITF Devanagari Marathi", 3, 36)); // NOI18N
+        jlSunsetTitle.setText("Sunset Summit ");
+
+        jbNewTenant.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sunset/presentation/images/userIcon.png"))); // NOI18N
+        jbNewTenant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNewTenantActionPerformed(evt);
+            }
+        });
+
+        jbSearchTenant.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sunset/presentation/images/Search.png"))); // NOI18N
+        jbSearchTenant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSearchTenantActionPerformed(evt);
+            }
+        });
+
+        jbExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sunset/presentation/images/Exit.png"))); // NOI18N
+        jbExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExitActionPerformed(evt);
+            }
+        });
+
+        jlNewTenant.setText("Create New Tenant");
+
+        jlSearch.setText("Search For Tenant");
+
+        jlExit.setText("Exit Program");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jlNewTenant))
+                    .addComponent(jbNewTenant, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbSearchTenant, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbExit, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 8, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jlSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlExit)
+                        .addGap(52, 52, 52))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlSunsetTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlSunsetTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbNewTenant, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jbSearchTenant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbExit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlNewTenant)
+                        .addComponent(jlSearch))
+                    .addComponent(jlExit))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jbExitActionPerformed
+
+    private void jbNewTenantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNewTenantActionPerformed
+       new NewTenant();
+    }//GEN-LAST:event_jbNewTenantActionPerformed
+
+    private void jbSearchTenantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchTenantActionPerformed
+        new Search();
+    }//GEN-LAST:event_jbSearchTenantActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,5 +182,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JButton jbExit;
+    private javax.swing.JButton jbNewTenant;
+    private javax.swing.JButton jbSearchTenant;
+    private javax.swing.JLabel jlExit;
+    private javax.swing.JLabel jlNewTenant;
+    private javax.swing.JLabel jlSearch;
+    private javax.swing.JLabel jlSunsetTitle;
     // End of variables declaration//GEN-END:variables
 }
