@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cs493.domain;
+package sunset.domain;
 
 /**
  *
  * @author Jose
  */
-public class tenant extends Person {
+public class Tenant extends Person {
  
     private int tenantID;
 
-    public tenant(String name, String lastName, int year, int day, int month, int tenantID) {
+    public Tenant(String name, String lastName, int year, int day, int month, int tenantID) {
         super(name, lastName, year, day, month);
         super.setLastName(lastName);
         this.setTenantID(tenantID);
