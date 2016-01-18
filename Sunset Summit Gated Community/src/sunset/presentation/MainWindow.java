@@ -50,7 +50,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sunset");
+        setTitle("Sunset Summit Gated Community");
 
         jlSunsetTitle.setFont(new java.awt.Font("ITF Devanagari Marathi", 3, 36)); // NOI18N
         jlSunsetTitle.setText("Sunset Summit ");
@@ -138,11 +138,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jbExitActionPerformed
 
     private void jbNewTenantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNewTenantActionPerformed
-       new NewTenant();
+       new NewTenant().setVisible(true);
+       dispose();
     }//GEN-LAST:event_jbNewTenantActionPerformed
 
     private void jbSearchTenantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchTenantActionPerformed
-        new Search();
+        new Search().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jbSearchTenantActionPerformed
 
     /**

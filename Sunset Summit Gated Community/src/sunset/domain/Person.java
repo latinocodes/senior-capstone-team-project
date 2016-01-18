@@ -12,16 +12,13 @@ package sunset.domain;
 public class Person {
     private String name;
     private String lastName;
-    private int year;
-    private int date;
-    private int month;
     
     /**
      *
      * @param name
      * @param lastName
      */
-    public Person(String name, String lastName, int year, int date, int month){
+    public Person(String name, String lastName){
         
         this.setName(name);
         this.setLastName(lastName);
@@ -53,53 +50,7 @@ public class Person {
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
+    }  
 
-    /**
-     * @return the year
-     */
-    public int getYear() {
-        return year;
-    }
-
-    /**
-     * @param year the year to set
-     */
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    /**
-     * @return the date
-     */
-    public int getDate() {
-        return date;
-    }
-
-    /**
-     * @param date the date to set
-     */
-    public void setDate(int date) {
-        this.date = date;
-    }
-
-    /**
-     * @return the month
-     */
-    public int getMonth() {
-        return month;
-    }
-
-    /**
-     * @param month the month to set
-     */
-    public void setMonth(int month) {
-        this.month = month;
-    }
-    
-    
-    
-    
-    
-    
 }
+    
