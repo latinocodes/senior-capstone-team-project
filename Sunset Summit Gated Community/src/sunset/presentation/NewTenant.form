@@ -28,12 +28,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="btHome" min="-2" pref="87" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btClear" min="-2" pref="93" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btAccept" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="btAccept" min="-2" pref="93" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jlpLeaseInfo" min="-2" max="-2" attributes="0"/>
@@ -51,13 +51,11 @@
               <Component id="jlpLeaseInfo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jlpTenantInfo" min="-2" pref="200" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btAccept" pref="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btHome" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="btClear" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btHome" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="btClear" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="btAccept" alignment="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -91,6 +89,9 @@
           <Dimension value="[87, 65]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btClearActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JLayeredPane" name="jlpTenantInfo">
       <Properties>
@@ -145,9 +146,9 @@
                                   <Group type="102" attributes="0">
                                       <Component id="tfStreetAddress" min="-2" pref="287" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbAptNum" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField1" max="32767" attributes="0"/>
+                                      <Component id="tfAptNum" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="tfEmail" min="-2" pref="287" max="-2" attributes="0"/>
@@ -171,8 +172,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbStreetAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tfStreetAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfAptNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbAptNum" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -255,12 +256,12 @@
             <Property name="text" type="java.lang.String" value="First: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lbAptNum">
           <Properties>
             <Property name="text" type="java.lang.String" value="Apt #:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="tfAptNum">
         </Component>
       </SubComponents>
     </Container>

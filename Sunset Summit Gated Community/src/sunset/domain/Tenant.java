@@ -4,136 +4,127 @@
  * and open the template in the editor.
  */
 package sunset.domain;
-
+import java.util.*;
 /**
  *
  * @author Jose
  */
-public class Tenant extends Person {
+public class Tenant extends Contact{
  
-    private int tenantID;
-    private String address;
-    private String city;
-    private String state;
-    private String zipCode;
-    private String phone;
-    private String email;
+    private String tenantID;
+    private String SpecialNeeds;
+   
 
-    public Tenant(String name, String lastName, int tenantID, String address, String city,
-                    String state, String zipCode, String phone, String email) {
-        super(name, lastName);
-        this.setTenantID(tenantID);
-        this.setAddress(address);
-        this.setCity(city);
-        this.setState(state);
-        this.setZipCode(zipCode);
-        this.setPhone(phone);
-        this.setEmail(email);
+    public Tenant(){
     }
+    
+    public Tenant(String tenantID, String contactID, String lastName, String firstName, 
+            String phoneNum, String email, String street, String city,
+            String zipCode, String dateOfBirth){
+        
+        super(contactID, lastName, firstName, phoneNum, email, street, city, zipCode, dateOfBirth);
+        
+        this.setTenantID(tenantID);
+        this.setSpecialNeeds(SpecialNeeds);
+        
+    }
+    
+    @Override
+    public String getContactID(){
+        return super.getContactID();
+    }
+    
+    @Override
+    public String getLastName(){
+        return super.getLastName();
+    }
+    
+    @Override
+    public String getFirstName(){
+        return super.getFirstName();
+    }
+    
+    @Override
+    public String getPhoneNum(){
+        return super.getPhoneNum();
+    }
+    
+    @Override
+    public String getEmail(){
+        return super.getEmail();
+    }
+    
+    @Override
+    public String getStreet(){
+        return super.getStreet();
+    }
+    
+    @Override
+    public String getCity(){
+        return super.getCity();
+    }
+    
+    @Override
+    public String getZip(){
+        return super.getZip();
+    }
+    
 
     /**
      * @return the tenantID
      */
-    public int getTenantID() {
+    public String getTenantID() {
         return tenantID;
     }
 
     /**
      * @param tenantID the tenantID to set
      */
-    public void setTenantID(int tenantID) {
+    public void setTenantID(String tenantID) {
         this.tenantID = tenantID;
     }
+ 
+    @Override
+    public boolean equals(Object obj){
+        if(obj == null){
+            return false;
+        }
+        if(getClass() != obj.getClass()){
+            return false;
+        }
+        final Tenant other = (Tenant) obj;
+        if(!Objects.equals((this.tenantID), other.tenantID)){
+            return false;
+        }
+        
+        
+        return true;
+    }
+    
 
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return super.getName();
+    /* Overriding validate */
+    public boolean validate(){
+        if(tenantID == null){
+            return false;
+        }
+        if(tenantID.equals("")){
+            return false;
+        }
+        return true;
     }
 
     /**
-     * @return the address
+     * @return the SpecialNeeds
      */
-    public String getAddress() {
-        return address;
+    public String getSpecialNeeds() {
+        return SpecialNeeds;
     }
 
     /**
-     * @param address the address to set
+     * @param SpecialNeeds the SpecialNeeds to set
      */
-    public void setAddress(String address) {
-        this.address = address;
+    public void setSpecialNeeds(String SpecialNeeds) {
+        this.SpecialNeeds = SpecialNeeds;
     }
-
-    /**
-     * @return the city
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * @param city the city to set
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    /**
-     * @return the state
-     */
-    public String getState() {
-        return state;
-    }
-
-    /**
-     * @param state the state to set
-     */
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    /**
-     * @return the zipCode
-     */
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    /**
-     * @param zipCode the zipCode to set
-     */
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    /**
-     * @return the phone
-     */
-    public String getPhone() {
-        return phone;
-    }
-
-    /**
-     * @param phone the phone to set
-     */
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-   
+    
 }

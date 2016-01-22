@@ -49,8 +49,8 @@ public class NewTenant extends javax.swing.JFrame {
         tfEmail = new javax.swing.JTextField();
         tfLastName = new javax.swing.JTextField();
         lbFirstName = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lbAptNum = new javax.swing.JLabel();
+        tfAptNum = new javax.swing.JTextField();
         jlpLeaseInfo = new javax.swing.JLayeredPane();
         lbLeaseID = new javax.swing.JLabel();
         tfLeaseID = new javax.swing.JTextField();
@@ -77,6 +77,11 @@ public class NewTenant extends javax.swing.JFrame {
 
         btClear.setText("Clear");
         btClear.setPreferredSize(new java.awt.Dimension(87, 65));
+        btClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearActionPerformed(evt);
+            }
+        });
 
         jlpTenantInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tenant Info", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
 
@@ -96,7 +101,7 @@ public class NewTenant extends javax.swing.JFrame {
 
         lbFirstName.setText("First: ");
 
-        jLabel1.setText("Apt #:");
+        lbAptNum.setText("Apt #:");
 
         javax.swing.GroupLayout jlpTenantInfoLayout = new javax.swing.GroupLayout(jlpTenantInfo);
         jlpTenantInfo.setLayout(jlpTenantInfoLayout);
@@ -137,9 +142,9 @@ public class NewTenant extends javax.swing.JFrame {
                                 .addGroup(jlpTenantInfoLayout.createSequentialGroup()
                                     .addComponent(tfStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel1)
+                                    .addComponent(lbAptNum)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1)))
+                                    .addComponent(tfAptNum)))
                             .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
@@ -155,8 +160,8 @@ public class NewTenant extends javax.swing.JFrame {
                 .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbStreetAddress)
                     .addComponent(tfStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(tfAptNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAptNum))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCity)
@@ -191,8 +196,8 @@ public class NewTenant extends javax.swing.JFrame {
         jlpTenantInfo.setLayer(tfEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jlpTenantInfo.setLayer(tfLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jlpTenantInfo.setLayer(lbFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbAptNum, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfAptNum, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jlpLeaseInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lease Info", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
 
@@ -262,12 +267,12 @@ public class NewTenant extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlpLeaseInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -282,10 +287,9 @@ public class NewTenant extends javax.swing.JFrame {
                 .addComponent(jlpTenantInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -297,6 +301,22 @@ public class NewTenant extends javax.swing.JFrame {
         dispose();
         
     }//GEN-LAST:event_btHomeActionPerformed
+
+    private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
+        this.tfAptNum.setText("");
+        this.tfCity.setText("");
+        this.tfDuration.setText("");
+        this.tfEmail.setText("");
+        this.tfEndDate.setText("");
+        this.tfFirstName.setText("");
+        this.tfLastName.setText("");
+        this.tfLeaseID.setText("");
+        this.tfStartDate.setText("");
+        this.tfState.setText("");
+        this.tfStreetAddress.setText("");
+        this.tfTelephone.setText("");
+        this.tfZipCode.setText("");
+    }//GEN-LAST:event_btClearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,10 +357,9 @@ public class NewTenant extends javax.swing.JFrame {
     private javax.swing.JButton btAccept;
     private javax.swing.JButton btClear;
     private javax.swing.JButton btHome;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLayeredPane jlpLeaseInfo;
     private javax.swing.JLayeredPane jlpTenantInfo;
+    private javax.swing.JLabel lbAptNum;
     private javax.swing.JLabel lbCity;
     private javax.swing.JLabel lbDuration;
     private javax.swing.JLabel lbEmail;
@@ -353,6 +372,7 @@ public class NewTenant extends javax.swing.JFrame {
     private javax.swing.JLabel lbStreetAddress;
     private javax.swing.JLabel lbTelephone;
     private javax.swing.JLabel lbZipCode;
+    private javax.swing.JTextField tfAptNum;
     private javax.swing.JTextField tfCity;
     private javax.swing.JTextField tfDuration;
     private javax.swing.JTextField tfEmail;

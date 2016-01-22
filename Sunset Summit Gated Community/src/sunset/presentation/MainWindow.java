@@ -143,7 +143,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jbNewTenantActionPerformed
 
     private void jbSearchTenantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchTenantActionPerformed
-        new Search().setVisible(true);
+        new Find().setVisible(true);
         dispose();
     }//GEN-LAST:event_jbSearchTenantActionPerformed
 
