@@ -12,20 +12,19 @@ import java.util.*;
 public class Tenant extends Contact{
  
     private String tenantID;
-    private String SpecialNeeds;
+    private String specialNeeds;
    
 
     public Tenant(){
     }
-    
-    public Tenant(String tenantID, String contactID, String lastName, String firstName, 
-            String phoneNum, String email, String street, String city,
-            String zipCode, String dateOfBirth){
         
-        super(contactID, lastName, firstName, phoneNum, email, street, city, zipCode, dateOfBirth);
+    public Tenant(String tenantID, String birthDay, String contactID, String specialNeeds, String comments,
+                String lastName, String firstName, String phoneNum, String email, String street, String city, String zipCode){
+        
+        super(contactID, lastName, firstName, phoneNum, email, street, city, zipCode, birthDay);
         
         this.setTenantID(tenantID);
-        this.setSpecialNeeds(SpecialNeeds);
+        this.setSpecialNeeds(specialNeeds);
         
     }
     
@@ -117,14 +116,14 @@ public class Tenant extends Contact{
      * @return the SpecialNeeds
      */
     public String getSpecialNeeds() {
-        return SpecialNeeds;
+        return specialNeeds;
     }
 
     /**
      * @param SpecialNeeds the SpecialNeeds to set
      */
-    public void setSpecialNeeds(String SpecialNeeds) {
-        this.SpecialNeeds = SpecialNeeds;
+    public void setSpecialNeeds(String specialNeeds) {
+        this.specialNeeds = specialNeeds;
     }
     
 }
