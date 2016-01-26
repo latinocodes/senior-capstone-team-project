@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/presentation/NewTenant.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Tenant.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/presentation/Find.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/presentation/MainWindow.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Invoice.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Login.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/presentation/Edit.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Employee.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Lease.java</file>
+            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/FrontEnd/EditTenant.java</file>
+            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/FrontEnd/FindTenant.java</file>
+            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/FrontEnd/MainWindow.java</file>
+            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/FrontEnd/CreateTenant.java</file>
         </group>
     </open-files>
 </project-private>
