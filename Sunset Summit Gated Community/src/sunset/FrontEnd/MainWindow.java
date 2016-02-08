@@ -5,8 +5,10 @@
  */
 package sunset.FrontEnd;
 
-/**
- *
+/* FILENAME: MainWindow
+ * DESCRIPTION: This is the starting file for the software application.  All
+ *              functions that want to be performed will ultimately be called 
+ *              indirectly from this file.  This file includes the main method
  * @author Jose
  */
 public class MainWindow extends javax.swing.JFrame {
@@ -114,11 +116,17 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /* this method will be called to create a new tennant by calling 
+       the CreateTenant class
+    */
     private void btCreateTenantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateTenantActionPerformed
        new CreateTenant().setVisible(true);
        dispose();
     }//GEN-LAST:event_btCreateTenantActionPerformed
 
+    /* This method will be called in order to find a new tenant by calling
+       the FindTenant class
+    */
     private void btFindTenantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFindTenantActionPerformed
         new FindTenant().setVisible(true);
         dispose();
@@ -134,20 +142,17 @@ public class MainWindow extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info :
+                    javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException |
+                IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainWindow.class.getName()).
+                    log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

@@ -86,7 +86,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="tfApt" min="-2" pref="125" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="rbAllTenantSearch" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rbAllTenant" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
@@ -106,7 +106,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="tfTenantID" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbTenantID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rbAllTenantSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbAllTenant" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbApt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tfApt" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -133,6 +133,12 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="tfTenantID">
+          <Properties>
+            <Property name="columns" type="int" value="10"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfTenantIDKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbTenantID">
           <Properties>
@@ -160,25 +166,31 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="jtTenant">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="11" rowCount="4">
-                    <Column editable="true" title="TenantID" type="java.lang.Object"/>
-                    <Column editable="true" title="First" type="java.lang.Object"/>
-                    <Column editable="true" title="Last" type="java.lang.Object"/>
-                    <Column editable="true" title="Address" type="java.lang.Object"/>
-                    <Column editable="true" title="Apt #" type="java.lang.Object"/>
-                    <Column editable="true" title="City" type="java.lang.Object"/>
-                    <Column editable="true" title="State" type="java.lang.Object"/>
-                    <Column editable="true" title="Zip" type="java.lang.Integer"/>
-                    <Column editable="true" title="Phone" type="java.lang.Integer"/>
-                    <Column editable="true" title="Email" type="java.lang.Object"/>
-                    <Column editable="true" title="Comments" type="java.lang.Object"/>
+                  <Table columnCount="12" rowCount="0">
+                    <Column editable="false" title="TenantID" type="java.lang.Object"/>
+                    <Column editable="false" title="First" type="java.lang.Object"/>
+                    <Column editable="false" title="Last" type="java.lang.Object"/>
+                    <Column editable="false" title="Dob" type="java.lang.Object"/>
+                    <Column editable="false" title="Address" type="java.lang.Object"/>
+                    <Column editable="false" title="Apt #" type="java.lang.Object"/>
+                    <Column editable="false" title="City" type="java.lang.Object"/>
+                    <Column editable="false" title="State" type="java.lang.Object"/>
+                    <Column editable="false" title="Zip" type="java.lang.Object"/>
+                    <Column editable="false" title="Phone" type="java.lang.Object"/>
+                    <Column editable="false" title="Email" type="java.lang.Object"/>
+                    <Column editable="false" title="Special Needs" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -243,7 +255,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JRadioButton" name="rbAllTenantSearch">
+        <Component class="javax.swing.JRadioButton" name="rbAllTenant">
           <Properties>
             <Property name="text" type="java.lang.String" value="All Tenants"/>
           </Properties>
@@ -252,6 +264,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Find Tenant"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFindActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btHome">
           <Properties>

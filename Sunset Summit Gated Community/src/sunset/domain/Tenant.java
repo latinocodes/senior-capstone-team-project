@@ -5,84 +5,61 @@
  */
 package sunset.domain;
 import java.util.*;
-/**
- *
- * @author Jose
+/*
+ * FILENAME:    Tenant
+ * DESCRIPTION: This file will initiate the object, Tenant.  Attributes will be
+ *              initialized and setters/getters will be implemented.  Override
+ *              methods will also be utilized.
+ * @author      Chip
+ * VERSION:     CapstoneProjV1
  */
 public class Tenant extends Contact{
  
-    private String tenantID;
-    private String specialNeeds;
+    /* Declaration of variable */
+    private int tenantID;
    
-
+    /* Default Constructor */
     public Tenant(){
     }
+    
+    /* Constructor */
+    public Tenant(int tenantID, String contactID, 
+            String lastName, String firstName, String phoneNum, String email, 
+            String street, String apt, String city, String state, String zipCode,
+            String dateOfBirth, String specNeeds){
         
-    public Tenant(String tenantID, String birthDay, String contactID, String specialNeeds, String comments,
-                String lastName, String firstName, String phoneNum, String email, String street, String city, String zipCode){
+        super(contactID, lastName, firstName, dateOfBirth, phoneNum, email, street, apt,
+                city, state, zipCode, specNeeds);
         
-        super(contactID, lastName, firstName, phoneNum, email, street, city, zipCode, birthDay);
-        
-        this.setTenantID(tenantID);
-        this.setSpecialNeeds(specialNeeds);
-        
+        this.tenantID = tenantID;        
     }
     
+    /* Override method to get contactID */
     @Override
     public String getContactID(){
         return super.getContactID();
-    }
-    
-    @Override
-    public String getLastName(){
-        return super.getLastName();
-    }
-    
-    @Override
-    public String getFirstName(){
-        return super.getFirstName();
-    }
-    
-    @Override
-    public String getPhoneNum(){
-        return super.getPhoneNum();
-    }
-    
-    @Override
-    public String getEmail(){
-        return super.getEmail();
-    }
-    
-    @Override
-    public String getStreet(){
-        return super.getStreet();
-    }
-    
-    @Override
-    public String getCity(){
-        return super.getCity();
-    }
-    
-    @Override
-    public String getZip(){
-        return super.getZip();
     }
     
 
     /**
      * @return the tenantID
      */
-    public String getTenantID() {
+    public int getTenantID() {
         return tenantID;
     }
 
     /**
      * @param tenantID the tenantID to set
      */
-    public void setTenantID(String tenantID) {
+    public void setTenantID(int tenantID) {
         this.tenantID = tenantID;
     }
- 
+
+     /**
+      * 
+      * @param obj
+      * @return 
+      */
     @Override
     public boolean equals(Object obj){
         if(obj == null){
@@ -98,32 +75,6 @@ public class Tenant extends Contact{
         
         
         return true;
-    }
-    
-
-    /* Overriding validate */
-    public boolean validate(){
-        if(tenantID == null){
-            return false;
-        }
-        if(tenantID.equals("")){
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * @return the SpecialNeeds
-     */
-    public String getSpecialNeeds() {
-        return specialNeeds;
-    }
-
-    /**
-     * @param SpecialNeeds the SpecialNeeds to set
-     */
-    public void setSpecialNeeds(String specialNeeds) {
-        this.specialNeeds = specialNeeds;
     }
     
 }
