@@ -9,7 +9,7 @@ package sunset.FrontEnd;
  * DESCRIPTION: This is the starting file for the software application.  All
  *              functions that want to be performed will ultimately be called 
  *              indirectly from this file.  This file includes the main method
- * @author Jose
+ * @author Jose Lara
  */
 public class MainWindow extends javax.swing.JFrame {
 

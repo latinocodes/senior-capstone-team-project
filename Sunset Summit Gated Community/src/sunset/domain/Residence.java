@@ -17,46 +17,34 @@ import java.util.*;
 public class Residence extends Lease{
     
     /* Variable declarations */
-    private String residenceID,
-            aptNum,
-            rentCost;
+    private int residenceID;
+    private String  aptNum,
+                    rentCost;
     
     /* Default contsructor */
     public Residence(){
     }
     
     /* Constructor */
-    public Residence(String residenceID, String aptNum, String rentCost,
-            String leaseID,  String duration, String startDate, String endDate, 
-            int tenantID, String contactID, String lastName, String firstName,
-            String phoneNum, String email, String street, String apt, String city, 
-            String state, String zipCode, String dateOfBirth, String specNeeds){
+    public Residence(int residenceID, String aptNum, String rentCost,
+            int leaseID,  String duration, String startDate, String endDate){
         
-        super(leaseID, duration, startDate, endDate, tenantID, contactID, 
-                lastName, firstName, phoneNum, email,street,apt, city, state,
-                zipCode, dateOfBirth, specNeeds);
+        super(leaseID, duration, startDate, endDate);
+        
         this.residenceID = residenceID;
         this.aptNum = aptNum;
         this.rentCost = rentCost;
     }
     
     
-    
-   /**
-    * Call to get the ContractID from Lease
-    * @return 
-    */
-    public String getContractID(){
-        return super.getContactID();
-    }
      
     /* Getter for residenceID */
-    public String getResID(){
+    public int getResID(){
         return residenceID;
     }
     
     /* Setter for residenceID */
-    public void setResID(String residenceID){
+    public void setResID(int residenceID){
         this.residenceID = residenceID;
     }
     
@@ -105,16 +93,10 @@ public class Residence extends Lease{
     
     /* Override validate */
     public boolean validate(){
-        if(residenceID == null){
-            return false;
-        }
         if(aptNum == null){
             return false;
         }
         if(rentCost == null){
-            return false;
-        }
-        if(residenceID.equals("")){
             return false;
         }
         return true;

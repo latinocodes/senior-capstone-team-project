@@ -16,11 +16,11 @@ import java.util.*;
 public class Invoice extends Lease{
     
     /* Variables */
-    private String invoiceID,
-            billDue,
-            billPaid,
-            firstNotice,
-            lastNotice;
+    private String  invoiceID,
+                    billDue,
+                    billPaid,
+                    firstNotice,
+                    lastNotice;
     
     /* Default Constructor */
     public Invoice(){
@@ -28,15 +28,10 @@ public class Invoice extends Lease{
     
     /* Constructor */
     public Invoice(String invoiceID, String billDue, String billPaid, 
-            String firstNotice, String lastNotice, String leaseID, String residenceID, String duration,
-            String startDate, String endDate, int tenantID, String birthDay, String gender,
-            String contactID,  String specialNeeds, String comments, 
-            String lastName, String firstName, String phoneNum, String email, 
-            String street, String apt, String city, String state, String zipCode){
+            String firstNotice, String lastNotice, int leaseID, int residenceID, String duration,
+            String startDate, String endDate){
         
-        super(leaseID, duration, startDate, endDate, tenantID, contactID, 
-                lastName, firstName, phoneNum, email,street,apt, city, state,
-                zipCode, birthDay, specialNeeds);
+        super(leaseID, duration, startDate, endDate);
         
         this.invoiceID = invoiceID;
         this.billDue = billDue;
@@ -45,21 +40,6 @@ public class Invoice extends Lease{
         this.lastNotice = lastNotice;
     }
     
-    /*
-    * override to get leaseID
-    */
-    @Override
-    public String getLeaseID(){
-        return super.getLeaseID();
-    }
-    
-    /*
-     * override to get tenantID
-    */
-    @Override
-    public int getTenantID(){
-        return super.getTenantID();
-    }
         
     /* Getter for invoiceID */
     public String getInvoiceID(){

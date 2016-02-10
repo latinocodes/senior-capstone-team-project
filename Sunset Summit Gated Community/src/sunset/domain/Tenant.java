@@ -10,33 +10,46 @@ import java.util.*;
  * DESCRIPTION: This file will initiate the object, Tenant.  Attributes will be
  *              initialized and setters/getters will be implemented.  Override
  *              methods will also be utilized.
- * @author      Chip
+ * @author      Jose Lara
  * VERSION:     CapstoneProjV1
  */
 public class Tenant extends Contact{
  
     /* Declaration of variable */
     private int tenantID;
+    private Residence lease;
    
     /* Default Constructor */
     public Tenant(){
     }
     
     /* Constructor */
-    public Tenant(int tenantID, String contactID, 
+    public Tenant(int tenantID, int contactID, 
             String lastName, String firstName, String phoneNum, String email, 
             String street, String apt, String city, String state, String zipCode,
-            String dateOfBirth, String specNeeds){
+            String dateOfBirth, String specNeeds, Residence newLease){
+             
+        super(contactID, lastName, firstName, phoneNum, email, street, apt, city,
+                 state, zipCode, dateOfBirth, specNeeds);
         
-        super(contactID, lastName, firstName, dateOfBirth, phoneNum, email, street, apt,
-                city, state, zipCode, specNeeds);
+        // Creating lease for tenant
+        this.lease = newLease;
         
         this.tenantID = tenantID;        
     }
     
+    public Residence getLease(){
+        return this.lease;
+    }
+    
+    
+    public void setLease(Residence Lease){
+        this.lease = Lease;
+    }
+    
     /* Override method to get contactID */
     @Override
-    public String getContactID(){
+    public int getContactID(){
         return super.getContactID();
     }
     

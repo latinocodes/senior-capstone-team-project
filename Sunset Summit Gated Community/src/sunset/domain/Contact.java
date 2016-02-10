@@ -19,7 +19,7 @@ import java.util.*;
 public class Contact implements Serializable{
    
     /* Declaring the variables */
-    private String contactID,
+    private String 
                    lastName,
                    firstName,
                    dateOfBirth,
@@ -32,13 +32,15 @@ public class Contact implements Serializable{
                    zipCode,
                    specialNeeds;
     
+    int contactID;
+    
     
     /* default constructor */
     public Contact(){
     }
     
     /* Constructor */
-    public Contact(String contactID, String lastName, String firstName, 
+    public Contact(int contactID, String lastName, String firstName, 
             String phoneNum, String email, String street, String apt, String city,
             String state, String zipCode, String dateOfBirth, String specialNeeds){
       
@@ -56,13 +58,22 @@ public class Contact implements Serializable{
         this.specialNeeds = specialNeeds;
     }
     
+    public void setApt(String apt){
+        this.apt=apt;
+    }
+    
+    public String getApt(){
+        return apt;
+    }
+    
+    
     /* getter for contactID */
-    public String getContactID(){
+    public int getContactID(){
         return contactID;
     }
     
     /* setter for contactID */
-    public void setContactID(String contactID){
+    public void setContactID(int contactID){
         this.contactID = contactID;
     }
     
@@ -166,13 +177,6 @@ public class Contact implements Serializable{
     public void setSpecNeeds(String specialNeeds){
         this.specialNeeds = specialNeeds;
     }
-    public String getApt(){
-        return this.apt;
-    }
-    
-    public void setApt(String apt){
-        this.apt = apt;
-    }
 
     /**
      * 
@@ -228,9 +232,6 @@ public class Contact implements Serializable{
       
     /* Overriding Validate */
     public boolean validate(){
-        if(contactID == null){
-            return false;
-        }
         if(lastName == null){
             return false;
         }
@@ -250,9 +251,6 @@ public class Contact implements Serializable{
             return false;
         }
         if(phoneNum == null){
-            return false;
-        }
-        if(contactID.equals("")){
             return false;
         }
         

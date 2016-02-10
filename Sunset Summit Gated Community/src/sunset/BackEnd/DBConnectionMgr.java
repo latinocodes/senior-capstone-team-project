@@ -1,18 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ *  FILENAME: DBConnectionMgr.java
+ *  DESCRIPTION: This class is just a layer for the ConnectionDAO so that objects for database are created from here
+ *  instead of creating objects directly from ConnectionDAO
+ * 
+ *  Date: Feb 7, 2016 
+ *  
+ *  CS434 - Object Oriented Programming Using Java
+ *  @author Jose Lara
+ *  @version 1
  */
 package sunset.BackEnd;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import sunset.domain.*;
 
 /* FILENAME: DBConnectionMgr
  * @author Jose
  */
-public class DBConnectionMgr extends ConnectionDB{
+public class DBConnectionMgr extends ConnectionDAO{
     
     public DBConnectionMgr(){
         

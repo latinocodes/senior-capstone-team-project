@@ -1,5 +1,5 @@
 /*  
- *  FILENAME: ConnectionDB.java
+ *  FILENAME: ConnectionDAO.java
  *  DESCRIPTION: This class creates implements the code for connection to the database and execute SQL statements
  * 
  *  Date: Jan 27, 2016 - 
@@ -11,18 +11,18 @@
 package sunset.BackEnd;
 
 import java.sql.*;
-import java.util.List.*;
 import java.util.*;
-import javax.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sunset.domain.*;
 
 
-public class ConnectionDB {
+public class ConnectionDAO {
 
   private final String usr = "root";
   private final String password = "Lara0216";
-  private final String url = "jdbc:mysql://localhost:3306/Tenant";
+  private final String url = "jdbc:mysql://localhost:3306/SunsetSummit";
 
     /*Defines the Class.forName and connection address as well as makes
     * the connection */
@@ -41,24 +41,27 @@ public class ConnectionDB {
     public boolean addTenant(Tenant tenant) throws Exception {
         
         boolean flag = false;
+        Residence lease = tenant.getLease();
        
-        String query = "insert into Tenant (TenantID, FName, LName, Street, apt, City, State, Zip, Phone, Email, SpecialNeeds, DateOfBirth) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql1 = "INSERT INTO Contact (ContactID, FName, LName, Street, AptNum, City, State, Zip, Phone, Email, SpecialNeeds, DateOfBirth) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql2 = "INSERT INTO Tenant(TenantID, ContactID)VALUES(?,?)";
+        String sql3 = "INSERT INTO Lease(LeaseID, ResidenceID, TenantID, Duration, StartDate, EndDate) VALUES(?,?,?,?,?,?)";
+        String sql4 = "INSERT INTO Residence(ResidenceID, LeaseID, TenantID, MMRentCost) VALUES(?,?,?,?) ";
         
         Connection connection = null;
 	Statement stmt = null;
 		
         try{
-            System.out.println("Connecting to the MySQL database...");
             connection = getConnection();
             System.out.println("MySQL Database Connected!");
                         
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql1);
                         
             preparedStatement.setInt(1, tenant.getTenantID());
             preparedStatement.setString(2, tenant.getFirstName());
             preparedStatement.setString(3, tenant.getLastName());
             preparedStatement.setString(4, tenant.getStreet());
-            preparedStatement.setInt(5, Integer.parseInt(tenant.getApt()));
+            preparedStatement.setString(5, tenant.getApt());
             preparedStatement.setString(6, tenant.getCity());
             preparedStatement.setString(7, tenant.getState());
             preparedStatement.setInt(8, Integer.parseInt(tenant.getZip()));
@@ -68,11 +71,46 @@ public class ConnectionDB {
             preparedStatement.setString(12, tenant.getBirthDate());
                        
             preparedStatement.executeUpdate();
-	
             preparedStatement.close();
+            
+            
+            //adding data to Tenant table
+            preparedStatement = connection.prepareStatement(sql2);
+                        
+            preparedStatement.setInt(1, tenant.getTenantID());
+            preparedStatement.setInt(2, tenant.getTenantID());
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            
+            // adding data to lease Table
+            preparedStatement = connection.prepareStatement(sql3);
+                        
+            preparedStatement.setInt(1, tenant.getTenantID());
+            preparedStatement.setInt(2, tenant.getTenantID());
+            preparedStatement.setInt(3, tenant.getTenantID());
+            preparedStatement.setString(4, lease.getDuration());
+            preparedStatement.setString(5, lease.getStart());
+            preparedStatement.setString(6, lease.getEnd());
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            
+            // adding data to Residence Table
+            preparedStatement = connection.prepareStatement(sql4);
+                        
+            preparedStatement.setInt(1, tenant.getTenantID());
+            preparedStatement.setInt(2, tenant.getTenantID());
+            preparedStatement.setInt(3, tenant.getTenantID());
+            preparedStatement.setString(4, lease.getRentCost());
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+	
             
         }catch(SQLException e){
             System.out.println(e.toString());
+            JOptionPane.showMessageDialog(null, "Something when wrong try adding Tenant Again!");
 		
         }finally{
             System.out.println("Closing the connection");
@@ -105,11 +143,18 @@ public class ConnectionDB {
         Connection conn = getConnection();
 	
         Statement stmt = conn.createStatement();
-        
-        
-        String sql = "DELETE FROM Tenant WHERE TenantID='"+tenant.getTenantID()+"'"; 
+        String sql =  "DELETE FROM Invoice WHERE TenantID='"+tenant.getTenantID()+"'"; 
+        String sql1 = "DELETE FROM Residence WHERE TenantID='"+tenant.getTenantID()+"'"; 
+        String sql2 = "DELETE FROM Lease WHERE TenantID='"+tenant.getTenantID()+"'"; 
+        String sql3 = "DELETE FROM Tenant WHERE ContactID='"+tenant.getTenantID()+"'"; 
+        String sql4 = "DELETE FROM Contact WHERE ContactID='"+tenant.getTenantID()+"'"; 
         
         stmt.executeUpdate(sql);
+        stmt.executeUpdate(sql1);
+        stmt.executeUpdate(sql2);
+        stmt.executeUpdate(sql3);
+        stmt.executeUpdate(sql4);
+
         
         stmt.close();
         conn.close();
@@ -119,6 +164,7 @@ public class ConnectionDB {
      }catch(SQLException e){
         //return flag;
          JOptionPane.showMessageDialog(null, "Tenant was not deleted!");
+         System.out.println(e);
     }
      
      return flag;   
@@ -133,22 +179,11 @@ public class ConnectionDB {
     public Boolean updateTenant(Tenant tenant) throws Exception {
         
         boolean flag = false;
-        
-       // PreparedStatement stmt = null;
+       
         Connection conn = null;
-
-       /* String sql = "UPDATE Tenant "
-            + "WHERE TenantID="+"'"+ tenant.getTenantID()+ "'"
-            + "SET LName =" + "'" + tenant.getLastName() + "',"
-            + "FName=" + "'"+ tenant.getFirstName()+"',"
-            + "DateOfBirth='" + tenant.getBirthDate() + "'," 
-            + "Street='" + tenant.getStreet() + "'," + "City='" 
-            +tenant.getCity() + "'," + "Zip='" +tenant.getZip()+ "'," 
-            + "Phone='" + tenant.getPhoneNum() +"'," + "Email='" 
-            + tenant.getEmail()
-            + "'," + "SpecialNeeds='" + tenant.getSpecNeeds();*/
+        Residence rs = tenant.getLease();
         
-      String query = "update Tenant where TenantID='"+tenant.getTenantID()+"' SET (TenantID, FName, LName, Street, apt, City, State, Zip, Phone, Email, SpecialNeeds, DateOfBirth) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+      String query = "update Tenant where TenantID='"+tenant.getTenantID()+"'SET (TenantID, FName, LName, Street, City, State, Zip, Phone, Email, SpecialNeeds, DateOfBirth) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         
       Connection connection = null;
       PreparedStatement stmt = null;
@@ -164,14 +199,14 @@ public class ConnectionDB {
             preparedStatement.setString(2, tenant.getFirstName());
             preparedStatement.setString(3, tenant.getLastName());
             preparedStatement.setString(4, tenant.getStreet());
-            preparedStatement.setInt(5, Integer.parseInt(tenant.getApt()));
-            preparedStatement.setString(6, tenant.getCity());
-            preparedStatement.setString(7, tenant.getState());
-            preparedStatement.setInt(8, Integer.parseInt(tenant.getZip()));
-            preparedStatement.setString(9, tenant.getPhoneNum());
-            preparedStatement.setString(10, tenant.getEmail());
-            preparedStatement.setString(11, tenant.getSpecNeeds());
-            preparedStatement.setString(12, tenant.getBirthDate());
+            preparedStatement.setInt(5, Integer.parseInt(rs.getAptNum()));
+            preparedStatement.setString(5, tenant.getCity());
+            preparedStatement.setString(6, tenant.getState());
+            preparedStatement.setInt(7, Integer.parseInt(tenant.getZip()));
+            preparedStatement.setString(8, tenant.getPhoneNum());
+            preparedStatement.setString(9, tenant.getEmail());
+            preparedStatement.setString(10, tenant.getSpecNeeds());
+            preparedStatement.setString(11, tenant.getBirthDate());
                        
             preparedStatement.executeUpdate();
 	
@@ -212,11 +247,11 @@ public class ConnectionDB {
           Statement stmt;
           ResultSet resultSet;
           
-          String sql =  "select * from Tenant where FName='"+tenant.getFirstName()+"'AND LName='"+tenant.getLastName()+"'";
-          String sql1 = "select * from Tenant where LName='" +tenant.getLastName()+"'";
-          String sql2 = "select * from Tenant where FName='"+tenant.getFirstName()+"'";
-          String sql3 = "select * from Tenant where apt='"+tenant.getApt()+"'";
-          String sql4 = "select * from Tenant where TenantID='"+tenant.getTenantID()+"'";
+          String sql =  "select * from Contact where FName='"+tenant.getFirstName()+"'AND LName='"+tenant.getLastName()+"'";
+          String sql1 = "select * from Contact where LName='" +tenant.getLastName()+"'";
+          String sql2 = "select * from Contact where FName='"+tenant.getFirstName()+"'";
+          String sql3 = "select * from Contact where AptNum='"+tenant.getApt()+"'";
+          String sql4 = "select * from Contact where ContactID='"+tenant.getTenantID()+"'";
           
           stmt = conn.createStatement();
           // search for first
@@ -237,7 +272,7 @@ public class ConnectionDB {
               resultSet = stmt.executeQuery(sql2);
           
           }
-          else if(!(tenant.getApt().equals(null) || tenant.getApt().equals(""))){
+         else if(!(tenant.getApt().equals(null) || tenant.getApt().equals(""))){
               stmt = conn.createStatement();
               resultSet = stmt.executeQuery(sql3);
           
@@ -282,7 +317,7 @@ public class ConnectionDB {
 	Statement myStmt = null;
 	ResultSet resultSet = null;
         Connection conn = getConnection();
-        String sql = "select * from Tenant";
+        String sql = "select * from Contact";
         
 		
 	try {
@@ -299,6 +334,7 @@ public class ConnectionDB {
             }
         
 	} catch(SQLException e){
+            System.out.println(e);
             JOptionPane.showMessageDialog(null, "Problem getting data from database. Call administrator!");
         }
         
@@ -318,21 +354,22 @@ public class ConnectionDB {
     //*****************************************************
     private Tenant convertToTenant(ResultSet resultSet) throws SQLException {
 		
-        int id = resultSet.getInt("TenantID");
+        int id = resultSet.getInt("ContactID");
 	String name = resultSet.getString("FName"); String lastName = resultSet.getString("LName");
         String dateOfBirth = resultSet.getString("DateOfBirth"); String street = resultSet.getString("Street");
-        String apt = resultSet.getString("apt"); String city = resultSet.getString("City");
+        String city = resultSet.getString("City");
         String state = resultSet.getString("State"); String zip = resultSet.getString("Zip");
-        String phone = resultSet.getString("Phone");String email = resultSet.getString("email");
-        String specialNeeds = resultSet.getString("SpecialNeeds"); String contactID = null;
-		
-	Tenant tempTenant = new Tenant(id, contactID, lastName, name, phone, email, street, apt, city, state,
-                                        zip, dateOfBirth, specialNeeds);
+        String phone = resultSet.getString("Phone");String email = resultSet.getString("Email");
+        String specialNeeds = resultSet.getString("SpecialNeeds"); String apt =resultSet.getString("AptNum");
+	
+        
+	Tenant tempTenant = new Tenant(id, id, lastName, name, phone, email, street,apt, city, state,
+                                        zip, dateOfBirth, specialNeeds, null);
           
 	return tempTenant;
         
 	} // end of convertToTenant
     
 
-} // end of ConnectionDB class
+} // end of ConnectionDAO class
 

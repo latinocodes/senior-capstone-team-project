@@ -2,15 +2,18 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ *  Author: Jose Lara
  */
 package sunset.FrontEnd;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import sunset.BackEnd.ConnectionDB;
-import sunset.domain.Tenant;
+import sunset.BackEnd.ConnectionDAO;
+import sunset.BackEnd.DBConnectionMgr;
+import sunset.domain.*;
 
 /* FILENAME: FindTenant
  * DESCRIPTION: FindTenant will parse through the database looking for the 
@@ -114,6 +117,11 @@ public class FindTenant extends javax.swing.JFrame {
         });
 
         btRemove.setText("Remove Tenant");
+        btRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoveActionPerformed(evt);
+            }
+        });
 
         lbApt.setText("Apt #:");
 
@@ -125,48 +133,47 @@ public class FindTenant extends javax.swing.JFrame {
                 .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(lbFindTitleLayout.createSequentialGroup()
                         .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btRemove)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btFind, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(lbFindTitleLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbTenantID)
+                            .addComponent(lbFirstName))
+                        .addGap(14, 14, 14)
+                        .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfFirstName)
+                            .addComponent(tfTenantID, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbApt))
+                        .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(lbFindTitleLayout.createSequentialGroup()
-                                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbTenantID)
-                                    .addComponent(lbFirstName))
-                                .addGap(14, 14, 14)
-                                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfTenantID, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                                    .addComponent(tfFirstName))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbApt))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfLastName)
-                                    .addGroup(lbFindTitleLayout.createSequentialGroup()
-                                        .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(rbAllTenant)))
-                                .addGap(44, 44, 44))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE))))
+                                .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rbAllTenant))
+                            .addComponent(tfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(307, 307, 307)))
                 .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         lbFindTitleLayout.setVerticalGroup(
             lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lbFindTitleLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfTenantID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbTenantID)
-                    .addComponent(rbAllTenant)
-                    .addComponent(lbApt)
-                    .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfTenantID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbTenantID))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbApt)
+                        .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rbAllTenant)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbFirstName)
@@ -174,14 +181,13 @@ public class FindTenant extends javax.swing.JFrame {
                     .addComponent(lbLastName)
                     .addComponent(tfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btHome)
                     .addComponent(btEdit)
                     .addComponent(btRemove)
-                    .addComponent(btFind))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btFind)))
         );
         lbFindTitle.setLayer(tfTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbFindTitle.setLayer(lbTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -203,12 +209,15 @@ public class FindTenant extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbFindTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(lbFindTitle)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbFindTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lbFindTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -247,16 +256,17 @@ public class FindTenant extends javax.swing.JFrame {
         
         
         Tenant tenant = new Tenant();
-        ConnectionDB dao = new ConnectionDB();
+        ConnectionDAO dao = new ConnectionDAO();
         List<Tenant> tenantList = new ArrayList<>();
-        DefaultTableModel model=(DefaultTableModel)jtTenant.getModel();
-        model.setRowCount(0);
+        Residence lease = new Residence();
+
         
         
         
         tenant.setFirstName(tfFirstName.getText());
         tenant.setLastName(tfLastName.getText());
-        tenant.setApt(tfApt.getText());
+        lease.setAptNum(tfApt.getText());
+        tenant.setLease(lease);
             
         if(!tfTenantID.getText().equals("") )
             tenant.setTenantID(Integer.parseInt(tfTenantID.getText()));
@@ -280,15 +290,8 @@ public class FindTenant extends javax.swing.JFrame {
                     tenantList = dao.findTenant(tenant);
                 }
                     
-                
-                for(int i = 0; i< tenantList.size(); i++){
-                    
-                    Tenant temp = tenantList.get(i);
-                    model.addRow(new Object[]{temp.getTenantID(), temp.getFirstName(), temp.getLastName(), 
-                           temp.getBirthDate(), temp.getStreet(), temp.getApt(), temp.getCity(), temp.getState(), 
-                            temp.getZip(), temp.getPhoneNum(), temp.getEmail(), temp.getSpecNeeds()});
-                    
-            }
+                DisplayTable(tenantList);
+          
                 
         } catch (Exception e) {
             
@@ -299,6 +302,41 @@ public class FindTenant extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_btFindActionPerformed
+
+    private void btRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoveActionPerformed
+       try{
+           
+            boolean flag;
+           
+            Tenant tenant = new Tenant();
+            List<Tenant> tenantList = new ArrayList<>();
+        
+            jtTenant.getSelectedRow();
+            int row = jtTenant.getSelectedRow();
+    
+            tenant.setTenantID(Integer.parseInt(jtTenant.getValueAt(row, 0).toString()));
+            tenant.setFirstName(jtTenant.getValueAt(row, 1).toString());
+            tenant.setLastName(jtTenant.getValueAt(row, 1).toString());
+            
+            DBConnectionMgr dao = new DBConnectionMgr();
+            
+            flag = dao.deleteTenant(tenant);
+            
+            if(flag){
+                JOptionPane.showMessageDialog(null, "Tenant Deleted!");
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Unable to delete tenant, check with administrator!");
+            
+            tenantList = dao.getAllTenant();
+            DisplayTable(tenantList);
+                 
+
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Something when wrong, Item not deleted!");
+       }
+ 
+    }//GEN-LAST:event_btRemoveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,6 +372,24 @@ public class FindTenant extends javax.swing.JFrame {
                 new FindTenant().setVisible(true);
             }
         });
+    }
+    /*
+    
+    
+    
+    */
+    private void DisplayTable(List<Tenant> tenantList){
+        
+        DefaultTableModel model=(DefaultTableModel)jtTenant.getModel();
+        model.setRowCount(0);
+        
+        
+        for (Tenant temp : tenantList) {
+            model.addRow(new Object[]{temp.getTenantID(), temp.getFirstName(), temp.getLastName(), temp.getBirthDate(), temp.getStreet(), temp.getApt(), temp.getCity(), temp.getState(),
+                temp.getZip(), temp.getPhoneNum(),temp.getEmail(), temp.getSpecNeeds()});
+            
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

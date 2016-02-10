@@ -12,54 +12,29 @@ import java.util.*;
  *              Overriding methodes will be utilized as well
  * @author Chip
  */
-public class Lease extends Tenant{
+public class Lease {
     
     /* Declaration of variables */
-    private String leaseID,
-            duration,
-            startDate,
-            endDate;
+    private int leaseID;
+    
+    private String duration,
+                   startDate,
+                   endDate;
     
     /* Default constructor */
     public Lease(){
     }
     
     /* Construtor */
-    public Lease(String leaseID, String duration, String startDate, 
-            String endDate, int tenantID, String contactID,  String lastName,
-            String firstName, String phoneNum, String email, String street, String apt,
-            String city, String state, String zipCode, String dateOfBirth,
-            String specNeeds){
-        
-        super(tenantID, contactID, lastName, firstName, phoneNum, email, street, apt,
-                city, state, zipCode, dateOfBirth, specNeeds);
-        
-        
+    public Lease(int leaseID, String duration, String startDate, 
+            String endDate){
+
         this.leaseID = leaseID;
         this.duration = duration;
         this.startDate = startDate;
         this.endDate = endDate;
     }
     
-    /**
-     * Call to getTenantID in the Tenant Class
-     * @return 
-     */
-    @Override
-    public int getTenantID(){
-        return super.getTenantID();
-    }
-    
-    /* Getter for leaseID */
-    public String getLeaseID(){
-        return leaseID;
-    }
-    
-    /* setter for leaseID */
-    public void setLeaseID(String leaseID){
-        this.leaseID = leaseID;
-    }
-        
     /* Getter for duration */
     public String getDuration(){
         return duration;
@@ -110,16 +85,5 @@ public class Lease extends Tenant{
         return true;
     }
     
-    /* Overriding Validate */
-    public boolean validate(){
-        if(leaseID == null){
-            return false;
-        }
-        if(leaseID.equals("")){
-            return false;
-        }
-       
-        return true;
-    }
     
 }
