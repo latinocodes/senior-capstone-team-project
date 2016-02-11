@@ -14,6 +14,7 @@ import java.util.*;
  *              methods will be utilized along with overriding methods
  * @author Chip
  */
+
 public class Residence extends Lease{
     
     /* Variable declarations */

@@ -37,7 +37,6 @@ public class CreateTenant extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPasswordField1 = new javax.swing.JPasswordField();
         btHome = new javax.swing.JButton();
         btSave = new javax.swing.JButton();
         btClear = new javax.swing.JButton();
@@ -66,6 +65,7 @@ public class CreateTenant extends javax.swing.JFrame {
         tfState = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         tfTenantID = new javax.swing.JTextField();
+        jrbDefaultAddress = new javax.swing.JRadioButton();
         jlpLeaseInfo = new javax.swing.JLayeredPane();
         lbDuration = new javax.swing.JLabel();
         tfDuration = new javax.swing.JTextField();
@@ -79,8 +79,6 @@ public class CreateTenant extends javax.swing.JFrame {
         lbDueDate = new javax.swing.JLabel();
         tfDueDate = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
-
-        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Create Tenant");
@@ -147,9 +145,10 @@ public class CreateTenant extends javax.swing.JFrame {
 
         jLabel1.setText("Tenant ID");
 
-        tfTenantID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTenantIDActionPerformed(evt);
+        jrbDefaultAddress.setText("Use Complex Address");
+        jrbDefaultAddress.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jrbDefaultAddressMouseClicked(evt);
             }
         });
 
@@ -160,10 +159,6 @@ public class CreateTenant extends javax.swing.JFrame {
             .addGroup(jlpTenantInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jlpTenantInfoLayout.createSequentialGroup()
-                        .addComponent(lbSpecialNeeds)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfSpecialNeeds))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jlpTenantInfoLayout.createSequentialGroup()
                         .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbStreetAddress)
@@ -212,8 +207,16 @@ public class CreateTenant extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbEmail)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jlpTenantInfoLayout.createSequentialGroup()
+                        .addComponent(lbSpecialNeeds)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfSpecialNeeds)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jlpTenantInfoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jrbDefaultAddress)
+                .addContainerGap())
         );
         jlpTenantInfoLayout.setVerticalGroup(
             jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,6 +258,8 @@ public class CreateTenant extends javax.swing.JFrame {
                 .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbSpecialNeeds)
                     .addComponent(tfSpecialNeeds, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbDefaultAddress)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jlpTenantInfo.setLayer(tfFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -281,6 +286,7 @@ public class CreateTenant extends javax.swing.JFrame {
         jlpTenantInfo.setLayer(tfState, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jlpTenantInfo.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jlpTenantInfo.setLayer(tfTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(jrbDefaultAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jlpLeaseInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lease Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
 
@@ -446,6 +452,7 @@ public class CreateTenant extends javax.swing.JFrame {
      * @param evt 
      */
     private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
+        
         this.tfApt.setText("");
         this.tfCity.setText("");
         this.tfDuration.setText("");
@@ -462,6 +469,7 @@ public class CreateTenant extends javax.swing.JFrame {
         this.tfTenantID.setText("");
         this.tfDueDate.setText("");
         this.tfRentCost.setText("");
+        this.jrbDefaultAddress.setSelected(false);
         
     }//GEN-LAST:event_btClearActionPerformed
 
@@ -472,60 +480,88 @@ public class CreateTenant extends javax.swing.JFrame {
      */
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
       
-        Tenant currentTenant = new Tenant();
-        Residence lease = new Residence();
-        
-        currentTenant.setBirthDate(tfDOB.getText());
-        currentTenant.setFirstName(tfFirstName.getText());
-        currentTenant.setLastName(tfLastName.getText());
-        currentTenant.setStreet(tfStreetAddress.getText());
-        currentTenant.setCity(tfCity.getText());
-        currentTenant.setState(tfState.getSelectedItem().toString());
-        currentTenant.setPhoneNum(tfPhone.getText());
-        currentTenant.setZip(tfZipCode.getText());
-        currentTenant.setEmail(tfEmail.getText());
-        currentTenant.setSpecNeeds(tfSpecialNeeds.getText());
-        currentTenant.setTenantID(Integer.parseInt(tfTenantID.getText()));
-        currentTenant.setApt(tfApt.getText());
-        lease.setResID(Integer.parseInt(tfTenantID.getText()));
-        lease.setEnd(tfEndDate.getText());
-        lease.setStart(tfStartDate.getText());
-        lease.setDuration(tfDuration.getText());
-        lease.setRentCost(tfRentCost.getText());
-        lease.setAptNum(tfApt.getText());
-        
-        currentTenant.setLease(lease);
-        
-        DBConnectionMgr connect = new DBConnectionMgr();
-        boolean flag = false;
-        try {
-            flag = connect.addTenant(currentTenant);
+        if(tfTenantID.getText().equals("") && tfApt.getText().equals("") && tfFirstName.getText().equals("")
+                    && tfLastName.getText().equals("") && tfTenantID.getText().equals("") && tfDuration.getText().equals("")
+                    && tfStartDate.getText().equals("") && tfEndDate.getText().equals("") && tfRentCost.getText().equals("")
+                    && tfDueDate.getText().equals("")){
             
-        } catch (Exception ex) {
-            Logger.getLogger(CreateTenant.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Please enter All data for new Tenant!");
+
         }
+        else if(tfApt.getText().equals("") || tfApt.getText().equals(null)){
+             JOptionPane.showMessageDialog(null, "Apartment number must be enter");
+        }
+        else{
+                 
+            Tenant currentTenant = new Tenant();
+            Residence lease = new Residence();
         
-        try {
-          if(flag){
-              JOptionPane.showMessageDialog(null, "Tenant Added");
-          }
-          else
-              JOptionPane.showMessageDialog(null, "Unable to add Tenant!");
+            currentTenant.setBirthDate(tfDOB.getText());
+            currentTenant.setFirstName(tfFirstName.getText());
+            currentTenant.setLastName(tfLastName.getText());
+            currentTenant.setStreet(tfStreetAddress.getText());
+            currentTenant.setCity(tfCity.getText());
+            currentTenant.setState(tfState.getSelectedItem().toString());
+            currentTenant.setPhoneNum(tfPhone.getText());
+            currentTenant.setZip(tfZipCode.getText());
+            currentTenant.setEmail(tfEmail.getText());
+            currentTenant.setSpecNeeds(tfSpecialNeeds.getText());
+            currentTenant.setTenantID(Integer.parseInt(tfTenantID.getText()));
+            currentTenant.setApt(tfApt.getText());
+            lease.setResID(Integer.parseInt(tfTenantID.getText()));
+            lease.setEnd(tfEndDate.getText());
+            lease.setStart(tfStartDate.getText());
+            lease.setDuration(tfDuration.getText());
+            lease.setRentCost(tfRentCost.getText());
+            lease.setAptNum(tfApt.getText());
+        
+            currentTenant.setLease(lease);
+        
+            DBConnectionMgr connect = new DBConnectionMgr();
+            boolean flag = false;
+            try {
+                flag = connect.addTenant(currentTenant);
+            
+            } catch (Exception ex) {
+                Logger.getLogger(CreateTenant.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+            try {
+                if(flag){
+                    JOptionPane.showMessageDialog(null, "Tenant Added");
+            }
+            else
+                 JOptionPane.showMessageDialog(null, "Unable to add Tenant!");
                     
-        } catch (Exception ex) {
-            Logger.getLogger(CreateTenant.class.getName()).log(Level.SEVERE,
-                    null, ex);
-        }
+            } catch (Exception ex) {
+                Logger.getLogger(CreateTenant.class.getName()).log(Level.SEVERE,
+                       null, ex);
+            }
         
-        new MainWindow().setVisible(true);
-        dispose();
+            new MainWindow().setVisible(true);
+            dispose();
+                 
+             }
+        
         
         
     }//GEN-LAST:event_btSaveActionPerformed
 
-    private void tfTenantIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTenantIDActionPerformed
-
-    }//GEN-LAST:event_tfTenantIDActionPerformed
+    private void jrbDefaultAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbDefaultAddressMouseClicked
+        String defaultAddress = "1234 Main STREET";
+        String defaultCity = "Santa Monica";
+        String defaultState = "CA";
+        String defaultZip = "90403";
+        
+        tfStreetAddress.setText(defaultAddress);
+        tfStreetAddress.setEditable(false);
+        tfCity.setText(defaultCity);
+        tfCity.setEditable(false);
+        tfState.setSelectedItem(defaultState);
+        tfState.setEditable(false);
+        tfZipCode.setText(defaultZip);
+        tfZipCode.setEditable(false);
+    }//GEN-LAST:event_jrbDefaultAddressMouseClicked
 
     /**
      * @param args the command line arguments
@@ -567,9 +603,9 @@ public class CreateTenant extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLayeredPane jlpLeaseInfo;
     private javax.swing.JLayeredPane jlpTenantInfo;
+    private javax.swing.JRadioButton jrbDefaultAddress;
     private javax.swing.JLabel lbAptNum;
     private javax.swing.JLabel lbCity;
     private javax.swing.JLabel lbDOB;

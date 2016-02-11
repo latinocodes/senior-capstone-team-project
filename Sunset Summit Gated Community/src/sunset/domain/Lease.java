@@ -6,6 +6,7 @@
 
 package sunset.domain;
 import java.util.*;
+
 /* FILENAME: Lease
  * DESCRIPTION: This file will extend from Tenant.  The attributes for this
  *              class will be designated along with Oject-Oriented format. 

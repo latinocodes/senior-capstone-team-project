@@ -91,6 +91,11 @@ public class FindTenant extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jtTenant.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtTenantMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtTenant);
 
         rbAllTenant.setText("All Tenants");
@@ -233,8 +238,15 @@ public class FindTenant extends javax.swing.JFrame {
      * @param evt 
      */
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        new EditTenant().setVisible(true);
-        dispose();
+
+        if(jtTenant.getSelectionModel().isSelectionEmpty()){
+            JOptionPane.showMessageDialog(null, "Must select a Tenant from list!");
+        }
+        else{
+            
+            new EditTenant().setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_btEditActionPerformed
 
     /**
@@ -243,7 +255,7 @@ public class FindTenant extends javax.swing.JFrame {
      * @param evt 
      */
     private void tfTenantIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTenantIDKeyTyped
-            char tempChar = evt.getKeyChar();
+        char tempChar = evt.getKeyChar();
         
         if(!(Character.isDigit(tempChar) || tempChar == KeyEvent.VK_BACK_SPACE)
                 || tempChar == KeyEvent.VK_DELETE){
@@ -252,27 +264,38 @@ public class FindTenant extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfTenantIDKeyTyped
 
+    /*
+     *  Action handler for the Find buttom
+     *  It will call either search for searchAllTenant() or findTenant()
+     *  to search for all of tenant or one particular tenant
+     */
     private void btFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFindActionPerformed
         
-        
-        Tenant tenant = new Tenant();
-        ConnectionDAO dao = new ConnectionDAO();
-        List<Tenant> tenantList = new ArrayList<>();
-        Residence lease = new Residence();
+        if(tfTenantID.getText().equals("") && tfApt.getText().equals("") && tfFirstName.getText().equals("")
+                    && tfLastName.getText().equals("") && !rbAllTenant.isSelected()){
+            
+            JOptionPane.showMessageDialog(null, "Please enter data to search!");
 
-        
-        
-        
-        tenant.setFirstName(tfFirstName.getText());
-        tenant.setLastName(tfLastName.getText());
-        lease.setAptNum(tfApt.getText());
-        tenant.setLease(lease);
+        }
+        else{
             
-        if(!tfTenantID.getText().equals("") )
-            tenant.setTenantID(Integer.parseInt(tfTenantID.getText()));
+            // create tenant obj, database connection object 
+            // and a list to store tenants retrieved from database
+            Tenant tenant = new Tenant();
+            ConnectionDAO dao = new ConnectionDAO();
+            List<Tenant> tenantList = new ArrayList<>();
+            
+            boolean flag;
+
+            tenant.setFirstName(tfFirstName.getText());
+            tenant.setLastName(tfLastName.getText());
+            tenant.setApt(tfApt.getText());
+            
+            if(!tfTenantID.getText().equals("") )
+                tenant.setTenantID(Integer.parseInt(tfTenantID.getText()));
             
         
-        try {
+            try {
                 // search for all tenant 
                 if(rbAllTenant.isSelected()){
                     
@@ -288,18 +311,15 @@ public class FindTenant extends javax.swing.JFrame {
                     
                     //search for specific tenant
                     tenantList = dao.findTenant(tenant);
+                    
                 }
                     
                 DisplayTable(tenantList);
-          
-                
-        } catch (Exception e) {
+               
+            } catch (Exception e) {
             
+            }
         }
-        
-        
-        
-
         
     }//GEN-LAST:event_btFindActionPerformed
 
@@ -338,6 +358,12 @@ public class FindTenant extends javax.swing.JFrame {
  
     }//GEN-LAST:event_btRemoveActionPerformed
 
+    private void jtTenantMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTenantMouseClicked
+       Tenant tempTenant = new Tenant();
+       
+       // Code to find more details about the Tenant will go here.
+    }//GEN-LAST:event_jtTenantMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -374,16 +400,13 @@ public class FindTenant extends javax.swing.JFrame {
         });
     }
     /*
-    
-    
-    
+     * Method is use to layout the data from database into the GUI table
     */
     private void DisplayTable(List<Tenant> tenantList){
         
         DefaultTableModel model=(DefaultTableModel)jtTenant.getModel();
         model.setRowCount(0);
-        
-        
+         
         for (Tenant temp : tenantList) {
             model.addRow(new Object[]{temp.getTenantID(), temp.getFirstName(), temp.getLastName(), temp.getBirthDate(), temp.getStreet(), temp.getApt(), temp.getCity(), temp.getState(),
                 temp.getZip(), temp.getPhoneNum(),temp.getEmail(), temp.getSpecNeeds()});

@@ -128,6 +128,16 @@ public class ConnectionDAO {
         
     } // end of addTenant
     
+        private boolean checkForTenant(Tenant tenant){
+        boolean flag =true;
+        
+        
+        
+        
+        
+        return flag;
+    }
+    
     /**
      * Calls getConnection to open the connection to the database in order to
      * delete a tenant profile
@@ -170,12 +180,10 @@ public class ConnectionDAO {
      return flag;   
 }
 
-    /**
-     * calls getConnection to access the database for altering a profile
-     * @param tenant
-     * @return
-     * @throws Exception 
-     */
+    //*******************************************************
+    //  Method to update Tenant data to databse 
+    //  returns a boolean Object to perfome
+    //*******************************************************
     public Boolean updateTenant(Tenant tenant) throws Exception {
         
         boolean flag = false;
@@ -267,7 +275,7 @@ public class ConnectionDAO {
               stmt = conn.createStatement();
               resultSet = stmt.executeQuery(sql1);
           }
-           else if(!((tenant.getFirstName().equals(null)) || tenant.getFirstName().equals(""))){
+          else if(!((tenant.getFirstName().equals(null)) || tenant.getFirstName().equals(""))){
               stmt = conn.createStatement();
               resultSet = stmt.executeQuery(sql2);
           
@@ -277,8 +285,6 @@ public class ConnectionDAO {
               resultSet = stmt.executeQuery(sql3);
           
           }
-        
-          //search for first name and last name
           else{
               
               stmt = conn.createStatement();

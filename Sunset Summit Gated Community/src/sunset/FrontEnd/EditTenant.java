@@ -34,31 +34,32 @@ public class EditTenant extends javax.swing.JFrame {
     private void initComponents() {
 
         lbUpdateTenantTitle = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
+        lbFirstName = new javax.swing.JLabel();
+        lbLastName = new javax.swing.JLabel();
+        tfFirstName = new javax.swing.JTextField();
+        lbStreetAddress = new javax.swing.JLabel();
+        tfStreetAddress = new javax.swing.JTextField();
+        lbApt = new javax.swing.JLabel();
+        tfApt = new javax.swing.JTextField();
+        lbCity = new javax.swing.JLabel();
+        tfCity = new javax.swing.JTextField();
+        lbState = new javax.swing.JLabel();
+        lbZip = new javax.swing.JLabel();
+        tfZipCode = new javax.swing.JTextField();
+        lbTel = new javax.swing.JLabel();
+        lbEmail = new javax.swing.JLabel();
+        tfEmail = new javax.swing.JTextField();
+        tfLastName = new javax.swing.JTextField();
+        lbDateOfBirth = new javax.swing.JLabel();
         tfPhone = new javax.swing.JFormattedTextField();
         tfState = new javax.swing.JComboBox();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        tfDateOfBirth = new javax.swing.JFormattedTextField();
+        rbDefaultAddress = new javax.swing.JRadioButton();
         btHome = new javax.swing.JButton();
         lbLeaseInfoTitle = new javax.swing.JLayeredPane();
         lbLeaseID = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        lbDuration = new javax.swing.JLabel();
+        tfDuration = new javax.swing.JTextField();
         lbStartDate = new javax.swing.JLabel();
         tfStartDate = new javax.swing.JTextField();
         lbEndDate = new javax.swing.JLabel();
@@ -66,15 +67,13 @@ public class EditTenant extends javax.swing.JFrame {
         tfLeaseID = new javax.swing.JLabel();
         btSave = new javax.swing.JButton();
         btCancel = new javax.swing.JButton();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLayeredPane2 = new javax.swing.JLayeredPane();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        lbRentInfoTitle = new javax.swing.JLayeredPane();
+        lbRentCost = new javax.swing.JLabel();
+        tfRentCost = new javax.swing.JTextField();
+        lbDueDate = new javax.swing.JLabel();
+        tfDueDate = new javax.swing.JTextField();
+        lbOtherInfoTitle = new javax.swing.JLayeredPane();
+        rbLastNotice = new javax.swing.JRadioButton();
         rdLateNotice = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,43 +81,25 @@ public class EditTenant extends javax.swing.JFrame {
 
         lbUpdateTenantTitle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Update Tenant", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
 
-        jLabel1.setText("First:");
+        lbFirstName.setText("First:");
 
-        jLabel2.setText("Last:");
+        lbLastName.setText("Last:");
 
-        jLabel3.setText("Street");
+        lbStreetAddress.setText("Street");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
+        lbApt.setText("APT #:");
 
-        jLabel4.setText("APT #:");
+        lbCity.setText("City:");
 
-        jLabel5.setText("City:");
+        lbState.setText("State:");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
+        lbZip.setText("Zip Code:");
 
-        jLabel6.setText("State:");
+        lbTel.setText("Tel:");
 
-        jLabel7.setText("Zip Code:");
+        lbEmail.setText("Email:");
 
-        jLabel8.setText("Tel:");
-
-        jLabel9.setText("Email:");
-
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-
-        jLabel14.setText("DOB");
+        lbDateOfBirth.setText("DOB");
 
         tfPhone.setColumns(10);
         try {
@@ -128,14 +109,16 @@ public class EditTenant extends javax.swing.JFrame {
         }
 
         tfState.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY" }));
-        tfState.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfStateActionPerformed(evt);
+
+        tfDateOfBirth.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("YYYY-MM-DD"))));
+        tfDateOfBirth.setText("YYYY-MM-DD");
+
+        rbDefaultAddress.setText("Use Complex Address");
+        rbDefaultAddress.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbDefaultAddressMouseClicked(evt);
             }
         });
-
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("YYYY-MM-DD"))));
-        jFormattedTextField2.setText("YYYY-MM-DD");
 
         javax.swing.GroupLayout lbUpdateTenantTitleLayout = new javax.swing.GroupLayout(lbUpdateTenantTitle);
         lbUpdateTenantTitle.setLayout(lbUpdateTenantTitleLayout);
@@ -146,51 +129,54 @@ public class EditTenant extends javax.swing.JFrame {
                 .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(lbUpdateTenantTitleLayout.createSequentialGroup()
                         .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel5))
+                            .addComponent(lbTel)
+                            .addComponent(lbCity))
                         .addGap(27, 27, 27)
                         .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(lbUpdateTenantTitleLayout.createSequentialGroup()
                                 .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbUpdateTenantTitleLayout.createSequentialGroup()
                                         .addGap(306, 306, 306)
-                                        .addComponent(jLabel4)
+                                        .addComponent(lbApt)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfCity, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
+                                .addComponent(lbState)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)
+                                .addComponent(lbZip)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tfZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(lbUpdateTenantTitleLayout.createSequentialGroup()
                                 .addComponent(tfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
+                                .addComponent(lbEmail)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField9))))
+                                .addComponent(tfEmail))))
                     .addGroup(lbUpdateTenantTitleLayout.createSequentialGroup()
                         .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(lbUpdateTenantTitleLayout.createSequentialGroup()
-                                    .addComponent(jLabel1)
+                                    .addComponent(lbFirstName)
                                     .addGap(4, 4, 4))
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jLabel14))
+                                .addComponent(lbStreetAddress, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lbDateOfBirth))
                         .addGap(20, 20, 20)
-                        .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(lbUpdateTenantTitleLayout.createSequentialGroup()
                                 .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
+                                .addComponent(lbLastName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(lbUpdateTenantTitleLayout.createSequentialGroup()
+                                .addComponent(tfDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rbDefaultAddress)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -199,57 +185,60 @@ public class EditTenant extends javax.swing.JFrame {
             .addGroup(lbUpdateTenantTitleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbFirstName)
+                    .addComponent(tfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbLastName)
+                    .addComponent(tfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbDefaultAddress)
+                    .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbDateOfBirth)
+                        .addComponent(tfDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbStreetAddress)
+                    .addComponent(tfStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbApt)
+                    .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel7)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbState)
+                        .addComponent(lbZip)
+                        .addComponent(tfZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(tfState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5))
+                    .addComponent(lbCity))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lbUpdateTenantTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(lbTel)
                     .addComponent(tfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(lbEmail)
+                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
-        lbUpdateTenantTitle.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jTextField5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jTextField7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jTextField9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(tfFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbStreetAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(tfStreetAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbApt, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(tfApt, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbCity, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(tfCity, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbState, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbZip, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(tfZipCode, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbTel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(tfEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(tfLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(lbDateOfBirth, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbUpdateTenantTitle.setLayer(tfPhone, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbUpdateTenantTitle.setLayer(tfState, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbUpdateTenantTitle.setLayer(jFormattedTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(tfDateOfBirth, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbUpdateTenantTitle.setLayer(rbDefaultAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btHome.setText("Home");
         btHome.addActionListener(new java.awt.event.ActionListener() {
@@ -262,7 +251,7 @@ public class EditTenant extends javax.swing.JFrame {
 
         lbLeaseID.setText("Lease ID:");
 
-        jLabel11.setText("Duration:");
+        lbDuration.setText("Duration:");
 
         lbStartDate.setText("Start Date:");
 
@@ -276,45 +265,51 @@ public class EditTenant extends javax.swing.JFrame {
             lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lbLeaseInfoTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11)
-                    .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbLeaseID)
-                        .addComponent(lbStartDate)
-                        .addComponent(lbEndDate)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(tfStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                        .addComponent(tfEndDate))
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfLeaseID))
+                    .addGroup(lbLeaseInfoTitleLayout.createSequentialGroup()
+                        .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbStartDate)
+                            .addComponent(lbEndDate))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                            .addComponent(tfEndDate)))
+                    .addGroup(lbLeaseInfoTitleLayout.createSequentialGroup()
+                        .addComponent(lbLeaseID)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfLeaseID)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbLeaseInfoTitleLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbDuration)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         lbLeaseInfoTitleLayout.setVerticalGroup(
             lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lbLeaseInfoTitleLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbLeaseID)
                     .addComponent(tfLeaseID, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbStartDate)
                     .addComponent(tfStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbEndDate)
                     .addComponent(tfEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
                 .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tfDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbDuration))
+                .addGap(29, 29, 29))
         );
         lbLeaseInfoTitle.setLayer(lbLeaseID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbLeaseInfoTitle.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbLeaseInfoTitle.setLayer(jTextField11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbLeaseInfoTitle.setLayer(lbDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbLeaseInfoTitle.setLayer(tfDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbLeaseInfoTitle.setLayer(lbStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbLeaseInfoTitle.setLayer(tfStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbLeaseInfoTitle.setLayer(lbEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -330,83 +325,73 @@ public class EditTenant extends javax.swing.JFrame {
             }
         });
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rent Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
+        lbRentInfoTitle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rent Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
 
-        jLabel10.setText("Rent Cost:");
+        lbRentCost.setText("Rent Cost:");
 
-        jLabel12.setText("Due Date:");
+        lbDueDate.setText("Due Date:");
 
-        jLabel13.setText("Apartment #:");
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel13))
+        javax.swing.GroupLayout lbRentInfoTitleLayout = new javax.swing.GroupLayout(lbRentInfoTitle);
+        lbRentInfoTitle.setLayout(lbRentInfoTitleLayout);
+        lbRentInfoTitleLayout.setHorizontalGroup(
+            lbRentInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lbRentInfoTitleLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(lbRentInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbRentCost)
+                    .addComponent(lbDueDate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField8)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                .addGroup(lbRentInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfRentCost, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                    .addComponent(tfDueDate))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        lbRentInfoTitleLayout.setVerticalGroup(
+            lbRentInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lbRentInfoTitleLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(lbRentInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbRentCost)
+                    .addComponent(tfRentCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(lbRentInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbDueDate)
+                    .addComponent(tfDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
-        jLayeredPane1.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jTextField6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jTextField8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jTextField10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbRentInfoTitle.setLayer(lbRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbRentInfoTitle.setLayer(tfRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbRentInfoTitle.setLayer(lbDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbRentInfoTitle.setLayer(tfDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLayeredPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Other Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
+        lbOtherInfoTitle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Other Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
 
-        jRadioButton2.setText("Send Last Notice");
+        rbLastNotice.setText("Send Last Notice");
 
         rdLateNotice.setText("Send Late Notice");
 
-        javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
-        jLayeredPane2.setLayout(jLayeredPane2Layout);
-        jLayeredPane2Layout.setHorizontalGroup(
-            jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane2Layout.createSequentialGroup()
+        javax.swing.GroupLayout lbOtherInfoTitleLayout = new javax.swing.GroupLayout(lbOtherInfoTitle);
+        lbOtherInfoTitle.setLayout(lbOtherInfoTitleLayout);
+        lbOtherInfoTitleLayout.setHorizontalGroup(
+            lbOtherInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lbOtherInfoTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2)
+                .addGroup(lbOtherInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbLastNotice)
                     .addComponent(rdLateNotice))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jLayeredPane2Layout.setVerticalGroup(
-            jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane2Layout.createSequentialGroup()
+        lbOtherInfoTitleLayout.setVerticalGroup(
+            lbOtherInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lbOtherInfoTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton2)
+                .addComponent(rbLastNotice)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rdLateNotice)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jLayeredPane2.setLayer(jRadioButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(rdLateNotice, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbOtherInfoTitle.setLayer(rbLastNotice, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbOtherInfoTitle.setLayer(rdLateNotice, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -425,10 +410,10 @@ public class EditTenant extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbUpdateTenantTitle)
-                            .addComponent(jLayeredPane2))
+                            .addComponent(lbOtherInfoTitle))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbRentInfoTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbLeaseInfoTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
@@ -441,8 +426,8 @@ public class EditTenant extends javax.swing.JFrame {
                     .addComponent(lbLeaseInfoTitle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLayeredPane1)
-                    .addComponent(jLayeredPane2))
+                    .addComponent(lbRentInfoTitle)
+                    .addComponent(lbOtherInfoTitle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btHome)
@@ -454,18 +439,6 @@ public class EditTenant extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
     private void btHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHomeActionPerformed
         new MainWindow().setVisible(true);
         dispose();
@@ -476,9 +449,21 @@ public class EditTenant extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btCancelActionPerformed
 
-    private void tfStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfStateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfStateActionPerformed
+    private void rbDefaultAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbDefaultAddressMouseClicked
+        String defaultAddress = "1234 Main STREET";
+        String defaultCity = "Santa Monica";
+        String defaultState = "CA";
+        String defaultZip = "90403";
+        
+        tfStreetAddress.setText(defaultAddress);
+        tfStreetAddress.setEditable(false);
+        tfCity.setText(defaultCity);
+        tfCity.setEditable(false);
+        tfState.setSelectedItem(defaultState);
+        tfState.setEditable(false);
+        tfZipCode.setText(defaultZip);
+        tfZipCode.setEditable(false);
+    }//GEN-LAST:event_rbDefaultAddressMouseClicked
 
     /**
      * @param args the command line arguments
@@ -520,45 +505,44 @@ public class EditTenant extends javax.swing.JFrame {
     private javax.swing.JButton btCancel;
     private javax.swing.JButton btHome;
     private javax.swing.JButton btSave;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JLayeredPane jLayeredPane2;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lbApt;
+    private javax.swing.JLabel lbCity;
+    private javax.swing.JLabel lbDateOfBirth;
+    private javax.swing.JLabel lbDueDate;
+    private javax.swing.JLabel lbDuration;
+    private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbEndDate;
+    private javax.swing.JLabel lbFirstName;
+    private javax.swing.JLabel lbLastName;
     private javax.swing.JLabel lbLeaseID;
     private javax.swing.JLayeredPane lbLeaseInfoTitle;
+    private javax.swing.JLayeredPane lbOtherInfoTitle;
+    private javax.swing.JLabel lbRentCost;
+    private javax.swing.JLayeredPane lbRentInfoTitle;
     private javax.swing.JLabel lbStartDate;
+    private javax.swing.JLabel lbState;
+    private javax.swing.JLabel lbStreetAddress;
+    private javax.swing.JLabel lbTel;
     private javax.swing.JLayeredPane lbUpdateTenantTitle;
+    private javax.swing.JLabel lbZip;
+    private javax.swing.JRadioButton rbDefaultAddress;
+    private javax.swing.JRadioButton rbLastNotice;
     private javax.swing.JRadioButton rdLateNotice;
+    private javax.swing.JTextField tfApt;
+    private javax.swing.JTextField tfCity;
+    private javax.swing.JFormattedTextField tfDateOfBirth;
+    private javax.swing.JTextField tfDueDate;
+    private javax.swing.JTextField tfDuration;
+    private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfEndDate;
+    private javax.swing.JTextField tfFirstName;
+    private javax.swing.JTextField tfLastName;
     private javax.swing.JLabel tfLeaseID;
     private javax.swing.JFormattedTextField tfPhone;
+    private javax.swing.JTextField tfRentCost;
     private javax.swing.JTextField tfStartDate;
     private javax.swing.JComboBox tfState;
+    private javax.swing.JTextField tfStreetAddress;
+    private javax.swing.JTextField tfZipCode;
     // End of variables declaration//GEN-END:variables
 }

@@ -31,23 +31,11 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
         jlSunsetTitle = new javax.swing.JLabel();
         btCreateTenant = new javax.swing.JButton();
         btFindTenant = new javax.swing.JButton();
         lbCreateTenant = new javax.swing.JLabel();
         lbFindTenant = new javax.swing.JLabel();
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sunset Summit Gated Community");
@@ -167,7 +155,6 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCreateTenant;
     private javax.swing.JButton btFindTenant;
-    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jlSunsetTitle;
     private javax.swing.JLabel lbCreateTenant;
     private javax.swing.JLabel lbFindTenant;

@@ -58,10 +58,12 @@ public class Contact implements Serializable{
         this.specialNeeds = specialNeeds;
     }
     
+    // set apartment
     public void setApt(String apt){
         this.apt=apt;
     }
     
+    // get apartment 
     public String getApt(){
         return apt;
     }
