@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import sunset.BackEnd.ConnectionDAO;
 import sunset.BackEnd.DBConnectionMgr;
 import sunset.domain.*;
@@ -243,8 +244,31 @@ public class FindTenant extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Must select a Tenant from list!");
         }
         else{
+            int index = jtTenant.getSelectedRow();
+            String id, name, last, address, apt, birthday, city, state, zip, phone, email, specialNeeds;
             
-            new EditTenant().setVisible(true);
+            TableModel model = jtTenant.getModel();
+            id = model.getValueAt(index, 0).toString();
+            name = model.getValueAt(index, 1).toString();
+            last = model.getValueAt(index, 2).toString();
+            birthday = model.getValueAt(index, 3).toString();
+            address = model.getValueAt(index, 4).toString();
+            apt = model.getValueAt(index, 5).toString();
+            city = model.getValueAt(index, 6).toString();
+            state = model.getValueAt(index, 7).toString();
+            zip = model.getValueAt(index, 8).toString();
+            phone = model.getValueAt(index, 9).toString();
+            email = model.getValueAt(index, 10).toString();
+            specialNeeds = model.getValueAt(index, 11).toString();
+            
+            
+            Tenant tenant = new Tenant(Integer.parseInt(id),Integer.parseInt(id), last, name, phone, email, address, apt, city,
+                                        state, zip, birthday, specialNeeds);
+            
+            
+            EditTenant editTenant =  new EditTenant(tenant);
+            
+            editTenant.setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btEditActionPerformed

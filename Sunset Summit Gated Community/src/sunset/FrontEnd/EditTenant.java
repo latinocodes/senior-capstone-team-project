@@ -7,6 +7,8 @@
 package sunset.FrontEnd;
 
 import java.awt.event.KeyEvent;
+import sunset.BackEnd.DBConnectionMgr;
+import sunset.domain.*;
 
 /* FILENAME: EditTenant
  * DECRIPTION: EditTenant will allow for the editing of previously saved
@@ -22,6 +24,39 @@ public class EditTenant extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+    }
+    
+    public EditTenant(Tenant tenant) {
+         
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+        DBConnectionMgr conn = new DBConnectionMgr();
+        Tenant temp = conn.getAllDataForTenant(tenant);
+        Residence lease = temp.getLease();
+        Invoice invoice = lease.getInvoice();
+        
+        tfFirstName.setText(temp.getFirstName());
+        tfLastName.setText(temp.getLastName());
+        tfDateOfBirth.setText(temp.getBirthDate());
+        tfStreetAddress.setText(temp.getStreet());
+        tfApt.setText(temp.getApt());
+        tfCity.setText(temp.getCity());
+        tfZipCode.setText(temp.getZip());
+        tfState.setSelectedItem(temp.getState());
+        tfPhone.setText(temp.getPhoneNum());
+        tfEmail.setText(temp.getEmail());
+        tfLeaseID.setText(Integer.toString(lease.getResID()));
+        tfStartDate.setText(lease.getStart());
+        tfEndDate.setText(lease.getEnd());
+        tfDuration.setText(lease.getDuration());
+        tfRentCost.setText(lease.getRentCost());
+        tfDueDate.setText(invoice.getBillDue());
+        
+        
+       
+      
     }
 
     /**
@@ -73,8 +108,10 @@ public class EditTenant extends javax.swing.JFrame {
         lbDueDate = new javax.swing.JLabel();
         tfDueDate = new javax.swing.JTextField();
         lbOtherInfoTitle = new javax.swing.JLayeredPane();
-        rbLastNotice = new javax.swing.JRadioButton();
-        rdLateNotice = new javax.swing.JRadioButton();
+        rbFirstNotice = new javax.swing.JRadioButton();
+        rdLastNotice = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Update Tenant");
@@ -357,7 +394,7 @@ public class EditTenant extends javax.swing.JFrame {
                 .addGroup(lbRentInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbDueDate)
                     .addComponent(tfDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         lbRentInfoTitle.setLayer(lbRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbRentInfoTitle.setLayer(tfRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -366,9 +403,13 @@ public class EditTenant extends javax.swing.JFrame {
 
         lbOtherInfoTitle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Other Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
 
-        rbLastNotice.setText("Send Last Notice");
+        rbFirstNotice.setText("Send First Notice");
 
-        rdLateNotice.setText("Send Late Notice");
+        rdLastNotice.setText("Send Last Notice");
+
+        jRadioButton1.setText("Rent Paid (Today's day will be selected)");
+
+        jButton1.setText("Submit");
 
         javax.swing.GroupLayout lbOtherInfoTitleLayout = new javax.swing.GroupLayout(lbOtherInfoTitle);
         lbOtherInfoTitle.setLayout(lbOtherInfoTitleLayout);
@@ -377,21 +418,31 @@ public class EditTenant extends javax.swing.JFrame {
             .addGroup(lbOtherInfoTitleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(lbOtherInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbLastNotice)
-                    .addComponent(rdLateNotice))
+                    .addComponent(rbFirstNotice)
+                    .addGroup(lbOtherInfoTitleLayout.createSequentialGroup()
+                        .addComponent(rdLastNotice)
+                        .addGap(198, 198, 198)
+                        .addComponent(jButton1))
+                    .addComponent(jRadioButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         lbOtherInfoTitleLayout.setVerticalGroup(
             lbOtherInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lbOtherInfoTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rbLastNotice)
+                .addComponent(rbFirstNotice)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rdLateNotice)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(lbOtherInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdLastNotice)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton1)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
-        lbOtherInfoTitle.setLayer(rbLastNotice, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        lbOtherInfoTitle.setLayer(rdLateNotice, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbOtherInfoTitle.setLayer(rbFirstNotice, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbOtherInfoTitle.setLayer(rdLastNotice, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbOtherInfoTitle.setLayer(jRadioButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbOtherInfoTitle.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -505,6 +556,8 @@ public class EditTenant extends javax.swing.JFrame {
     private javax.swing.JButton btCancel;
     private javax.swing.JButton btHome;
     private javax.swing.JButton btSave;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JLabel lbApt;
     private javax.swing.JLabel lbCity;
     private javax.swing.JLabel lbDateOfBirth;
@@ -526,8 +579,8 @@ public class EditTenant extends javax.swing.JFrame {
     private javax.swing.JLayeredPane lbUpdateTenantTitle;
     private javax.swing.JLabel lbZip;
     private javax.swing.JRadioButton rbDefaultAddress;
-    private javax.swing.JRadioButton rbLastNotice;
-    private javax.swing.JRadioButton rdLateNotice;
+    private javax.swing.JRadioButton rbFirstNotice;
+    private javax.swing.JRadioButton rdLastNotice;
     private javax.swing.JTextField tfApt;
     private javax.swing.JTextField tfCity;
     private javax.swing.JFormattedTextField tfDateOfBirth;

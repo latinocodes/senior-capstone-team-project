@@ -11,7 +11,9 @@ import java.util.*;
  *              initialized and setters/getters will be implemented.  Override
  *              methods will also be utilized.
  * @author      Jose Lara
- * VERSION:     CapstoneProjV1
+ * Created:     Jan 25, 2016
+ * Updated:     Feb 11, 2016
+ * VERSION:     CapstoneProjV2
  */
 public class Tenant extends Contact{
  
@@ -27,15 +29,29 @@ public class Tenant extends Contact{
     public Tenant(int tenantID, int contactID, 
             String lastName, String firstName, String phoneNum, String email, 
             String street, String apt, String city, String state, String zipCode,
-            String dateOfBirth, String specNeeds, Residence newLease){
+            String dateOfBirth, String specNeeds){
              
         super(contactID, lastName, firstName, phoneNum, email, street, apt, city,
                  state, zipCode, dateOfBirth, specNeeds);
         
-        // Creating lease for tenant
-        this.lease = newLease;
         
         this.tenantID = tenantID;        
+    }
+    
+    /* Constructor with Residence object*/
+    public Tenant(int tenantID, int contactID, 
+            String lastName, String firstName, String phoneNum, String email, 
+            String street, String apt, String city, String state, String zipCode,
+            String dateOfBirth, String specNeeds, Residence lease){
+ 
+       super(contactID, lastName, firstName, phoneNum, email, street, apt, city,
+                 state, zipCode, dateOfBirth, specNeeds);
+       
+       // Creating lease for tenant
+        this.lease = lease;
+        
+        this.tenantID = tenantID;
+        
     }
     
     public Residence getLease(){

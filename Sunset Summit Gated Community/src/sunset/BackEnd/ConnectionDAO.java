@@ -28,7 +28,7 @@ public class ConnectionDAO {
     * the connection */
     private Connection getConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
-	return DriverManager.getConnection(url,usr, password);
+	return DriverManager.getConnection(url, usr, password);
     }
 
     /**
@@ -42,11 +42,13 @@ public class ConnectionDAO {
         
         boolean flag = false;
         Residence lease = tenant.getLease();
+        Invoice invoice = lease.getInvoice();
        
         String sql1 = "INSERT INTO Contact (ContactID, FName, LName, Street, AptNum, City, State, Zip, Phone, Email, SpecialNeeds, DateOfBirth) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
         String sql2 = "INSERT INTO Tenant(TenantID, ContactID)VALUES(?,?)";
         String sql3 = "INSERT INTO Lease(LeaseID, ResidenceID, TenantID, Duration, StartDate, EndDate) VALUES(?,?,?,?,?,?)";
         String sql4 = "INSERT INTO Residence(ResidenceID, LeaseID, TenantID, MMRentCost) VALUES(?,?,?,?) ";
+        String sql5 = "INSERT INTO Invoice(InvoiceID, LeaseID, TenantID, ResidenceID, BillDueDate) VALUES(?,?,?,?,?) ";
         
         Connection connection = null;
 	Statement stmt = null;
@@ -106,6 +108,19 @@ public class ConnectionDAO {
 
             preparedStatement.executeUpdate();
             preparedStatement.close();
+            
+            // adding data to Residence Table
+            preparedStatement = connection.prepareStatement(sql5);
+                        
+            preparedStatement.setInt(1, tenant.getTenantID());
+            preparedStatement.setInt(2, tenant.getTenantID());
+            preparedStatement.setInt(3, tenant.getTenantID());
+            preparedStatement.setInt(4, tenant.getTenantID());
+            preparedStatement.setString(5, invoice.getBillDue());
+            
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
 	
             
         }catch(SQLException e){
@@ -127,16 +142,6 @@ public class ConnectionDAO {
         return flag;
         
     } // end of addTenant
-    
-        private boolean checkForTenant(Tenant tenant){
-        boolean flag =true;
-        
-        
-        
-        
-        
-        return flag;
-    }
     
     /**
      * Calls getConnection to open the connection to the database in order to
@@ -179,6 +184,122 @@ public class ConnectionDAO {
      
      return flag;   
 }
+    
+    public boolean sendInvoice(Residence residenceInvoice){
+        
+        boolean flag = false;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        String sql = "";
+
+        try{
+            conn = getConnection();
+            stmt = conn.prepareStatement(sql);
+            
+            
+        }catch(Exception e){
+            
+        }
+
+        return flag;
+        
+    } // end of sendInvoice
+    
+    //*******************************************************
+    //  Method to get getAllDataForTenant from the databse 
+    //  everything like invoices, 
+    //  returns a boolean Object to perfome
+    //*******************************************************
+    
+    public Tenant getAllDataForTenant(Tenant tenant){
+        
+        Residence tempResidence = new Residence();
+        Lease tempLease = new Lease();
+        Tenant tempTenant = new Tenant();
+        Invoice tempInvoice = new Invoice();
+
+        Connection conn = null;
+        Statement stmt=null;
+        ResultSet resultSet= null;
+        
+        String sql =  "SELECT * FROM Contact WHERE ContactID='"+tenant.getTenantID()+"'";
+        String sql1 = "SELECT * FROM lease WHERE TenantID ='"+tenant.getTenantID()+"'";
+        String sql2 = "SELECT * FROM Invoice WHERE TenantID ='"+tenant.getTenantID()+"'";
+        String sql3 = "SELECT * FROM Residence WHERE TenantID='"+tenant.getTenantID()+"'";
+        
+        try{
+            // GET DATA from Contact
+            conn = getConnection();
+            stmt = conn.createStatement();
+
+            resultSet = stmt.executeQuery(sql);
+            
+            while(resultSet.next()){
+              tempTenant = convertToTenant(resultSet);
+            }
+            
+            stmt.close();
+            
+        }catch(Exception e){
+        }
+        
+        try{
+            // GET DATA from lease table
+            conn = getConnection();
+            stmt = conn.createStatement();
+
+            resultSet = stmt.executeQuery(sql1);
+            
+            while(resultSet.next()){
+              tempLease = convertToLease(resultSet);
+            }
+            
+            stmt.close();
+            
+        }catch(Exception e){
+        }
+        
+        try{
+            // GET DATA from invoice table
+            conn = getConnection();
+            stmt = conn.createStatement();
+
+            resultSet = stmt.executeQuery(sql2);
+            
+            while(resultSet.next()){
+              tempInvoice = convertToInvoice(resultSet);
+            }
+            
+            stmt.close();
+            
+        }catch(Exception e){
+        }
+        try{
+            // GET DATA from Residence table
+            conn = getConnection();
+            stmt = conn.createStatement();
+
+            resultSet = stmt.executeQuery(sql3);
+            
+            while(resultSet.next()){
+              tempResidence = convertToResidence(resultSet);
+            }
+            
+            stmt.close();
+            
+        }catch(Exception e){
+        }
+        
+        tempResidence.setDuration(tempLease.getDuration());
+        tempResidence.setStart(tempLease.getStart());
+        tempResidence.setEnd(tempLease.getEnd());
+        tempResidence.setInvoice(tempInvoice);
+        tempTenant.setLease(tempResidence);
+        
+        
+        return tempTenant;
+        
+    } // end of getAllDataForTenant
 
     //*******************************************************
     //  Method to update Tenant data to databse 
@@ -207,7 +328,7 @@ public class ConnectionDAO {
             preparedStatement.setString(2, tenant.getFirstName());
             preparedStatement.setString(3, tenant.getLastName());
             preparedStatement.setString(4, tenant.getStreet());
-            preparedStatement.setInt(5, Integer.parseInt(rs.getAptNum()));
+            preparedStatement.setInt(5, Integer.parseInt(tenant.getApt()));
             preparedStatement.setString(5, tenant.getCity());
             preparedStatement.setString(6, tenant.getState());
             preparedStatement.setInt(7, Integer.parseInt(tenant.getZip()));
@@ -261,7 +382,7 @@ public class ConnectionDAO {
           String sql3 = "select * from Contact where AptNum='"+tenant.getApt()+"'";
           String sql4 = "select * from Contact where ContactID='"+tenant.getTenantID()+"'";
           
-          stmt = conn.createStatement();
+          
           // search for first
           if(!(tenant.getFirstName().equals(null) || tenant.getFirstName().equals("")) && !(tenant.getLastName().equals("") || tenant.getLastName().equals(null))){
               
@@ -354,6 +475,58 @@ public class ConnectionDAO {
         
     } // end of getAllTenant Method
     
+    
+    //*****************************************************
+    //  Method to covert the data from databse to Invoice object
+    //  returns a Invoice Object
+    //*****************************************************
+    
+    private Invoice convertToInvoice(ResultSet resultSet) throws SQLException{
+        int invoiceID = resultSet.getInt("InvoiceID");
+        String billDueDate = resultSet.getString("BillDueDate");
+        String billPaidDate = resultSet.getString("BillPaidDate");
+        String firstNtc = resultSet.getString("firstNtc");
+        String lastNtc = resultSet.getString("lastNtc");
+        
+        Invoice temp = new Invoice(invoiceID, billDueDate, billPaidDate, firstNtc, lastNtc);
+       
+        return temp;
+        
+    } // end of convertToInvoice
+    
+    //*****************************************************
+    //  Method to covert the data from databse to Residence object
+    //  returns a Residence Object
+    //*****************************************************
+    private Residence convertToResidence(ResultSet resultSet) throws SQLException{
+        
+        int residenceID = resultSet.getInt("ResidenceId");
+        String MMRentCost = resultSet.getString("MMRentCost");
+        
+        
+        Residence temp = new Residence(residenceID, MMRentCost);
+        
+        
+        return temp;
+    } // end of  convertToResidence
+    
+    //*****************************************************
+    //  Method to covert the data from databse to Lease object
+    //  returns a Lease Object
+    //*****************************************************
+    private Lease convertToLease(ResultSet resultSet) throws SQLException{
+        
+        int leaseID = resultSet.getInt("LeaseId");
+        int Duration = resultSet.getInt("Duration");
+        String startDate = resultSet.getString("StartDate");
+        String endDate = resultSet.getString("endDate");
+        
+        Lease temp = new Lease(leaseID, Integer.toString(Duration), startDate, endDate);
+        
+        return temp;
+    } // end of convertToLease
+    
+    
     //*****************************************************
     //  Method to covert the data from databse to Tenant object
     //  returns a Tenant Object
@@ -370,7 +543,7 @@ public class ConnectionDAO {
 	
         
 	Tenant tempTenant = new Tenant(id, id, lastName, name, phone, email, street,apt, city, state,
-                                        zip, dateOfBirth, specialNeeds, null);
+                                        zip, dateOfBirth, specialNeeds);
           
 	return tempTenant;
         

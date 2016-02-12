@@ -18,25 +18,49 @@ import java.util.*;
 public class Residence extends Lease{
     
     /* Variable declarations */
-    private int residenceID;
-    private String  aptNum,
-                    rentCost;
+    private int     residenceID;
+    private String  rentCost;
+    
+    private Invoice invoice;
     
     /* Default contsructor */
     public Residence(){
     }
     
+    public Residence(int residenceID, String MMRentCost){
+        
+        this.setRentCost(MMRentCost);
+        this.setResID(residenceID);
+    }
+    
     /* Constructor */
-    public Residence(int residenceID, String aptNum, String rentCost,
+    public Residence(int residenceID, String rentCost,
             int leaseID,  String duration, String startDate, String endDate){
         
         super(leaseID, duration, startDate, endDate);
         
         this.residenceID = residenceID;
-        this.aptNum = aptNum;
         this.rentCost = rentCost;
     }
     
+      /* Constructor */
+    public Residence(int residenceID, String aptNum, String rentCost,
+            int leaseID,  String duration, String startDate, String endDate, Invoice newInvoice){
+        
+        super(leaseID, duration, startDate, endDate);
+        
+        this.residenceID = residenceID;
+        this.rentCost = rentCost;
+        this.invoice = newInvoice;
+    }
+    
+    public Invoice getInvoice(){
+        return this.invoice;
+    }
+    
+    public void setInvoice(Invoice invoice){
+        this.invoice = invoice;
+    }
     
      
     /* Getter for residenceID */
@@ -47,16 +71,6 @@ public class Residence extends Lease{
     /* Setter for residenceID */
     public void setResID(int residenceID){
         this.residenceID = residenceID;
-    }
-    
-    /* Getter for apartment number */
-    public String getAptNum(){
-        return aptNum;
-    }
-    
-     /* Setter for apartment number */
-    public void setAptNum(String aptNum){
-        this.aptNum = aptNum;
     }
     
     /* Getter for rent cost */
@@ -83,9 +97,6 @@ public class Residence extends Lease{
             return false;
         }
         final Residence other = (Residence) obj;
-        if(!Objects.equals(this.aptNum, other.aptNum)){
-            return false;
-        }
         if(!Objects.equals(this.residenceID, other.residenceID)){
             return false;
         }
@@ -94,9 +105,6 @@ public class Residence extends Lease{
     
     /* Override validate */
     public boolean validate(){
-        if(aptNum == null){
-            return false;
-        }
         if(rentCost == null){
             return false;
         }

@@ -495,6 +495,7 @@ public class CreateTenant extends javax.swing.JFrame {
                  
             Tenant currentTenant = new Tenant();
             Residence lease = new Residence();
+            Invoice invoice = new Invoice();
         
             currentTenant.setBirthDate(tfDOB.getText());
             currentTenant.setFirstName(tfFirstName.getText());
@@ -508,12 +509,14 @@ public class CreateTenant extends javax.swing.JFrame {
             currentTenant.setSpecNeeds(tfSpecialNeeds.getText());
             currentTenant.setTenantID(Integer.parseInt(tfTenantID.getText()));
             currentTenant.setApt(tfApt.getText());
+            invoice.setBillDue(tfDueDate.getText());
+            lease.setInvoice(invoice);
             lease.setResID(Integer.parseInt(tfTenantID.getText()));
             lease.setEnd(tfEndDate.getText());
             lease.setStart(tfStartDate.getText());
             lease.setDuration(tfDuration.getText());
             lease.setRentCost(tfRentCost.getText());
-            lease.setAptNum(tfApt.getText());
+            
         
             currentTenant.setLease(lease);
         

@@ -16,18 +16,28 @@ import java.util.*;
 public class Invoice extends Lease{
     
     /* Variables */
-    private String  invoiceID,
-                    billDue,
+    private String  billDue,
                     billPaid,
                     firstNotice,
                     lastNotice;
+    
+    private int invoiceID;
     
     /* Default Constructor */
     public Invoice(){
     }
     
+    public Invoice(int invoiceID, String billDue, String billPaid, String firstNotice, String lastNotice){
+        this.setInvoiceID(invoiceID);
+        this.setBillDue(billDue);
+        this.setBillPaid(billPaid);
+        this.setFirstNot(firstNotice);
+        this.setLastNot(lastNotice);
+        
+    }
+    
     /* Constructor */
-    public Invoice(String invoiceID, String billDue, String billPaid, 
+    public Invoice(int invoiceID, String billDue, String billPaid, 
             String firstNotice, String lastNotice, int leaseID, int residenceID, String duration,
             String startDate, String endDate){
         
@@ -42,12 +52,12 @@ public class Invoice extends Lease{
     
         
     /* Getter for invoiceID */
-    public String getInvoiceID(){
+    public int getInvoiceID(){
         return invoiceID;
     }
     
     /* setter for invoiceID */
-    public void setInvoiceID(String invoiceID){
+    public void setInvoiceID(int invoiceID){
         this.invoiceID = invoiceID;
     }
     
@@ -111,12 +121,6 @@ public class Invoice extends Lease{
         return true;
     }
     
-    /* Override validate */
-    public boolean validate(){
-        if(invoiceID == null){
-            return false;
-        }
-        return true;
-    }
+
     
 }

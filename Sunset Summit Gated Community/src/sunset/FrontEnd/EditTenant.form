@@ -531,7 +531,7 @@
                       <Component id="lbDueDate" min="-2" max="-2" attributes="0"/>
                       <Component id="tfDueDate" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -570,8 +570,13 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="rbLastNotice" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="rdLateNotice" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbFirstNotice" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="rdLastNotice" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jRadioButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -581,23 +586,38 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="rbLastNotice" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbFirstNotice" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="rdLastNotice" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="rdLateNotice" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="rbLastNotice">
+        <Component class="javax.swing.JRadioButton" name="rbFirstNotice">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Send First Notice"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rdLastNotice">
           <Properties>
             <Property name="text" type="java.lang.String" value="Send Last Notice"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rdLateNotice">
+        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Send Late Notice"/>
+            <Property name="text" type="java.lang.String" value="Rent Paid (Today&apos;s day will be selected)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Submit"/>
           </Properties>
         </Component>
       </SubComponents>
