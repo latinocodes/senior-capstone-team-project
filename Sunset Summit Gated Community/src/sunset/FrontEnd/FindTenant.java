@@ -57,6 +57,7 @@ public class FindTenant extends javax.swing.JFrame {
         btRemove = new javax.swing.JButton();
         lbApt = new javax.swing.JLabel();
         tfApt = new javax.swing.JTextField();
+        tbGetMoreInfo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Find Tenant");
@@ -107,6 +108,11 @@ public class FindTenant extends javax.swing.JFrame {
                 btFindActionPerformed(evt);
             }
         });
+        btFind.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btFindKeyPressed(evt);
+            }
+        });
 
         btHome.setText("Home");
         btHome.addActionListener(new java.awt.event.ActionListener() {
@@ -131,14 +137,23 @@ public class FindTenant extends javax.swing.JFrame {
 
         lbApt.setText("Apt #:");
 
+        tbGetMoreInfo.setText("Get More Information");
+        tbGetMoreInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbGetMoreInfoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout lbFindTitleLayout = new javax.swing.GroupLayout(lbFindTitle);
         lbFindTitle.setLayout(lbFindTitleLayout);
         lbFindTitleLayout.setHorizontalGroup(
             lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lbFindTitleLayout.createSequentialGroup()
-                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(lbFindTitleLayout.createSequentialGroup()
                         .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tbGetMoreInfo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -193,7 +208,8 @@ public class FindTenant extends javax.swing.JFrame {
                     .addComponent(btHome)
                     .addComponent(btEdit)
                     .addComponent(btRemove)
-                    .addComponent(btFind)))
+                    .addComponent(btFind)
+                    .addComponent(tbGetMoreInfo)))
         );
         lbFindTitle.setLayer(tfTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbFindTitle.setLayer(lbTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -209,6 +225,7 @@ public class FindTenant extends javax.swing.JFrame {
         lbFindTitle.setLayer(btRemove, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbFindTitle.setLayer(lbApt, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbFindTitle.setLayer(tfApt, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbFindTitle.setLayer(tbGetMoreInfo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -309,7 +326,6 @@ public class FindTenant extends javax.swing.JFrame {
             ConnectionDAO dao = new ConnectionDAO();
             List<Tenant> tenantList = new ArrayList<>();
             
-            boolean flag;
 
             tenant.setFirstName(tfFirstName.getText());
             tenant.setLastName(tfLastName.getText());
@@ -347,6 +363,11 @@ public class FindTenant extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btFindActionPerformed
 
+     /*
+     *  Action handler for the Remove buttom
+     *  It will call either search for getSelectedRow(), deleteTenant(), getAllTenant(), and Create DBConnectionMgr
+     *  to search for all of tenant and deletes the tenant from database list is refreshed
+     */
     private void btRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoveActionPerformed
        try{
            
@@ -387,6 +408,45 @@ public class FindTenant extends javax.swing.JFrame {
        
        // Code to find more details about the Tenant will go here.
     }//GEN-LAST:event_jtTenantMouseClicked
+
+    private void btFindKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btFindKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btFindKeyPressed
+
+    private void tbGetMoreInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbGetMoreInfoActionPerformed
+        
+        if(jtTenant.getSelectionModel().isSelectionEmpty()){
+            JOptionPane.showMessageDialog(null, "Must select a Tenant from list!");
+        }
+        else{
+            int index = jtTenant.getSelectedRow();
+            String id, name, last, address, apt, birthday, city, state, zip, phone, email, specialNeeds;
+            
+            TableModel model = jtTenant.getModel();
+            id = model.getValueAt(index, 0).toString();
+            name = model.getValueAt(index, 1).toString();
+            last = model.getValueAt(index, 2).toString();
+            birthday = model.getValueAt(index, 3).toString();
+            address = model.getValueAt(index, 4).toString();
+            apt = model.getValueAt(index, 5).toString();
+            city = model.getValueAt(index, 6).toString();
+            state = model.getValueAt(index, 7).toString();
+            zip = model.getValueAt(index, 8).toString();
+            phone = model.getValueAt(index, 9).toString();
+            email = model.getValueAt(index, 10).toString();
+            specialNeeds = model.getValueAt(index, 11).toString();
+            
+            
+            Tenant tenant = new Tenant(Integer.parseInt(id),Integer.parseInt(id), last, name, phone, email, address, apt, city,
+                                        state, zip, birthday, specialNeeds);
+            
+            
+            AdditionalData addInfo =  new AdditionalData(tenant);
+            
+            addInfo.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_tbGetMoreInfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,6 +512,7 @@ public class FindTenant extends javax.swing.JFrame {
     private javax.swing.JLabel lbLastName;
     private javax.swing.JLabel lbTenantID;
     private javax.swing.JRadioButton rbAllTenant;
+    private javax.swing.JButton tbGetMoreInfo;
     private javax.swing.JTextField tfApt;
     private javax.swing.JTextField tfFirstName;
     private javax.swing.JTextField tfLastName;

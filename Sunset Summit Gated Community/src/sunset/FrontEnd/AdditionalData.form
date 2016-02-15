@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Additional Information"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jLayeredPane1" alignment="1" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jLayeredPane1" alignment="1" min="-2" max="-2" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Additional Information">
+              <Font PropertyName="font" name="Lucida Grande" size="13" style="3"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lbStartDate" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbDuration" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbResidenceID" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbBillDuDate" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbFirstNtc" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="tfFirstNtc" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tfBillDueDate" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="tfDuration" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="tfStartDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfResidenceID" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="31" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lbLastPaid" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbLeaseID" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="tfLeaseID" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfLastPaid" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbEndDate" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbRent" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="tfEndDate" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfRent" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lbLastNtc" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="tfLastNtc" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
+                          <Component id="btClose" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbDuration" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfDuration" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbRent" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfRent" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbEndDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfEndDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbResidenceID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfResidenceID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbLeaseID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfLeaseID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbBillDuDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfBillDueDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbLastPaid" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfLastPaid" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbFirstNtc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfFirstNtc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbLastNtc" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfLastNtc" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                  <Component id="btClose" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lbDuration">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lease Duration:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfDuration">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="data"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbStartDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lease Start Date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfStartDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Not Available!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbEndDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lease End Date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfEndDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Not Available!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbRent">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Monthly Rent:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfRent">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Not Available!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbResidenceID">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Residence ID:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfResidenceID">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Not Available!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbBillDuDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Bill Due Date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfBillDueDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Not Available!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbLeaseID">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lease ID:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfLeaseID">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Not Available!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbLastPaid">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Last Paid Date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfLastPaid">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Not Available!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbFirstNtc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="First Notice Sent On:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfFirstNtc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Not Available!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbLastNtc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Last Notice Sent On:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tfLastNtc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Not Available!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btClose">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Close"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCloseActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Year(s)."/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

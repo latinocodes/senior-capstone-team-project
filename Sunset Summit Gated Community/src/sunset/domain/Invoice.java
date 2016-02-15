@@ -83,7 +83,7 @@ public class Invoice extends Lease{
     
     /* getter for firstNotice */
     public String getFirstNot(){
-        return firstNotice;
+        return this.firstNotice;
     }
     
     /* setter for firstNotice */
@@ -93,7 +93,7 @@ public class Invoice extends Lease{
     
     /* getter for lastNotice */
     public String getLastNot(){
-        return lastNotice;
+        return this.lastNotice;
     }
     
     /* setter for lastNotice */

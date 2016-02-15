@@ -5,11 +5,9 @@
         <group>
             <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/FrontEnd/EditTenant.java</file>
             <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/FrontEnd/FindTenant.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Residence.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Tenant.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Invoice.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Contact.java</file>
-            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/domain/Lease.java</file>
+            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/BackEnd/ConnectionDAO.java</file>
+            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/BackEnd/DBConnectionMgr.java</file>
+            <file>file:/Users/Jose/Desktop/CS493/senior-capstone-team-project/Sunset%20Summit%20Gated%20Community/src/sunset/FrontEnd/AdditionalData.java</file>
         </group>
     </open-files>
 </project-private>

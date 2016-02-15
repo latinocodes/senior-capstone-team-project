@@ -1,6 +1,6 @@
 /*  
  *  FILENAME: ConnectionDAO.java
- *  DESCRIPTION: This class creates implements the code for connection to the database and execute SQL statements
+ *  DESCRIPTION: This class creates implements the code for conn to the database and execute SQL statements
  * 
  *  Date: Jan 27, 2016 - 
  *  Updated on Feb 6, 2016
@@ -11,11 +11,15 @@
 package sunset.BackEnd;
 
 import java.sql.*;
-import java.util.*;
+import java.text.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sunset.domain.*;
+
 
 
 public class ConnectionDAO {
@@ -24,16 +28,17 @@ public class ConnectionDAO {
   private final String password = "Lara0216";
   private final String url = "jdbc:mysql://localhost:3306/SunsetSummit";
 
-    /*Defines the Class.forName and connection address as well as makes
-    * the connection */
+
+    /*Defines the Class.forName and conn address as well as makes
+    * the conn */
     private Connection getConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
 	return DriverManager.getConnection(url, usr, password);
     }
 
     /**
-     * calls for the opening of the connection and pulls the data from the 
-    *  domain layer while utilizing SQL commands for storing in the database
+     * calls for the opening of the conn and pulls the data from the 
+  domain layer while utilizing SQL commands for storing in the database
      * @param tenant
      * @return
      * @throws Exception 
@@ -144,8 +149,8 @@ public class ConnectionDAO {
     } // end of addTenant
     
     /**
-     * Calls getConnection to open the connection to the database in order to
-     * delete a tenant profile
+     * Calls getConnection to open the conn to the database in order to
+ delete a tenant profile
      * @param tenant
      * @return
      * @throws Exception 
@@ -219,8 +224,8 @@ public class ConnectionDAO {
         Invoice tempInvoice = new Invoice();
 
         Connection conn = null;
-        Statement stmt=null;
-        ResultSet resultSet= null;
+        Statement stmt = null;
+        ResultSet resultSet = null;
         
         String sql =  "SELECT * FROM Contact WHERE ContactID='"+tenant.getTenantID()+"'";
         String sql1 = "SELECT * FROM lease WHERE TenantID ='"+tenant.getTenantID()+"'";
@@ -308,47 +313,97 @@ public class ConnectionDAO {
     public Boolean updateTenant(Tenant tenant) throws Exception {
         
         boolean flag = false;
+  
+        Residence lease = tenant.getLease();
+        Invoice invoice = lease.getInvoice();
        
+        String sql1 = "UPDATE Contact SET ContactID=?, FName=?, LName=?, Street=?, AptNum=?, City=?, State=?, Zip=?, Phone=?, Email=?, SpecialNeeds=?, DateOfBirth=? WHERE ContactID='"+tenant.getTenantID()+"'";
+        String sql2 = "UPDATE Tenant SET TenantID=?, ContactID=? WHERE TenantID='"+tenant.getTenantID()+"'";
+        String sql3 = "UPDATE Lease SET LeaseID=?, ResidenceID=?, TenantID=?, Duration=?, StartDate=?, EndDate=? WHERE LeaseID='"+lease.getResID()+"'";
+        String sql4 = "UPDATE Residence SET ResidenceID=?, LeaseID=?, TenantID=?, MMRentCost=? WHERE ResidenceID='"+lease.getResID()+"'";
+        String sql5 = "UPDATE Invoice SET InvoiceID=?, LeaseID=?, TenantID=?, ResidenceID=?, BillDueDate=? WHERE InvoiceID='"+invoice.getInvoiceID()+"'";
+        
         Connection conn = null;
-        Residence rs = tenant.getLease();
-        
-      String query = "update Tenant where TenantID='"+tenant.getTenantID()+"'SET (TenantID, FName, LName, Street, City, State, Zip, Phone, Email, SpecialNeeds, DateOfBirth) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-        
-      Connection connection = null;
-      PreparedStatement stmt = null;
 		
         try{
-            System.out.println("Connecting to the MySQL database...");
-            connection = getConnection();
+            conn = getConnection();
             System.out.println("MySQL Database Connected!");
                         
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement stmt = conn.prepareStatement(sql1);
                         
-            preparedStatement.setInt(1, tenant.getTenantID());
-            preparedStatement.setString(2, tenant.getFirstName());
-            preparedStatement.setString(3, tenant.getLastName());
-            preparedStatement.setString(4, tenant.getStreet());
-            preparedStatement.setInt(5, Integer.parseInt(tenant.getApt()));
-            preparedStatement.setString(5, tenant.getCity());
-            preparedStatement.setString(6, tenant.getState());
-            preparedStatement.setInt(7, Integer.parseInt(tenant.getZip()));
-            preparedStatement.setString(8, tenant.getPhoneNum());
-            preparedStatement.setString(9, tenant.getEmail());
-            preparedStatement.setString(10, tenant.getSpecNeeds());
-            preparedStatement.setString(11, tenant.getBirthDate());
+            stmt.setInt(1, tenant.getTenantID());
+            stmt.setString(2, tenant.getFirstName());
+            stmt.setString(3, tenant.getLastName());
+            stmt.setString(4, tenant.getStreet());
+            stmt.setString(5, tenant.getApt());
+            stmt.setString(6, tenant.getCity());
+            stmt.setString(7, tenant.getState());
+            stmt.setInt(8, Integer.parseInt(tenant.getZip()));
+            stmt.setString(9, tenant.getPhoneNum());
+            stmt.setString(10, tenant.getEmail());
+            stmt.setString(11, tenant.getSpecNeeds());
+            stmt.setString(12, tenant.getBirthDate());
                        
-            preparedStatement.executeUpdate();
+            stmt.executeUpdate();
+            stmt.close();
+            
+            
+            //Updating data to Tenant table
+            stmt = conn.prepareStatement(sql2);
+                        
+            stmt.setInt(1, tenant.getTenantID());
+            stmt.setInt(2, tenant.getTenantID());
+
+            stmt.executeUpdate();
+            stmt.close();
+            
+            // Updating data to lease Table
+            stmt = conn.prepareStatement(sql3);
+                        
+            stmt.setInt(1, tenant.getTenantID());
+            stmt.setInt(2, tenant.getTenantID());
+            stmt.setInt(3, tenant.getTenantID());
+            stmt.setString(4, lease.getDuration());
+            stmt.setString(5, lease.getStart());
+            stmt.setString(6, lease.getEnd());
+
+            stmt.executeUpdate();
+            stmt.close();
+            
+            // Updating data to Residence Table
+            stmt = conn.prepareStatement(sql4);
+                        
+            stmt.setInt(1, tenant.getTenantID());
+            stmt.setInt(2, tenant.getTenantID());
+            stmt.setInt(3, tenant.getTenantID());
+            stmt.setString(4, lease.getRentCost());
+
+            stmt.executeUpdate();
+            stmt.close();
+            
+            // Updating data to Residence Table
+            stmt = conn.prepareStatement(sql5);
+                        
+            stmt.setInt(1, tenant.getTenantID());
+            stmt.setInt(2, tenant.getTenantID());
+            stmt.setInt(3, tenant.getTenantID());
+            stmt.setInt(4, tenant.getTenantID());
+            stmt.setString(5, invoice.getBillDue());
+            
+
+            stmt.executeUpdate();
+            stmt.close();
 	
-            preparedStatement.close();
             
         }catch(SQLException e){
             System.out.println(e.toString());
+            JOptionPane.showMessageDialog(null, "Something when wrong try Updating Tenant, try again!");
 		
         }finally{
             System.out.println("Closing the connection");
-            if(connection != null){
+            if(conn != null){
                 try{
-                    connection.close();
+                    conn.close();
                     flag = true;
 				
                     }catch (SQLException ignore){}
@@ -435,7 +490,6 @@ public class ConnectionDAO {
     //  Getting all the Tenant from the database
     //  Storing in list of Tenant
     //*****************************************************
-    
     public List<Tenant> getAllTenant() throws Exception {
         
         // create list of tenants
@@ -474,6 +528,103 @@ public class ConnectionDAO {
         }
         
     } // end of getAllTenant Method
+    
+    public void sendFirstNotice(Tenant tenant) throws SQLException, Exception{
+
+        Residence lease = tenant.getLease();
+        Invoice invoice = lease.getInvoice();
+        
+        invoice.setFirstNot(getDate());
+        
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        
+        try {
+            conn = getConnection();
+        } catch (Exception ex) {
+            Logger.getLogger(ConnectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String sql = "UPDATE Invoice SET FirstNtc=? WHERE InvoiceID='"+invoice.getInvoiceID()+"'";
+        
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, invoice.getFirstNot());
+        stmt.executeUpdate();
+        
+        stmt.close();
+       
+        
+    }
+    
+    public void sendLastNotice(Tenant tenant) throws SQLException{
+
+       Residence lease = tenant.getLease();
+        Invoice invoice = lease.getInvoice();
+        
+        invoice.setLastNot(getDate());
+        
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        
+        try {
+            conn = getConnection();
+        } catch (Exception ex) {
+            Logger.getLogger(ConnectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String sql = "UPDATE Invoice SET LastNtc=? WHERE InvoiceID='"+invoice.getInvoiceID()+"'";
+        
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, invoice.getLastNot());
+        stmt.executeUpdate();
+        
+        stmt.close();
+        
+    }
+    
+    public void payRent(Tenant tenant) throws SQLException{
+
+        Residence lease = tenant.getLease();
+        Invoice invoice = lease.getInvoice();
+        
+        invoice.setBillPaid(getDate());
+        
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        
+        try {
+            conn = getConnection();
+        } catch (Exception ex) {
+            Logger.getLogger(ConnectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String sql = "UPDATE Invoice SET BillPaidDate=? WHERE InvoiceID='"+invoice.getInvoiceID()+"'";
+        
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, invoice.getBillPaid());
+        stmt.executeUpdate();
+        
+        stmt.close();
+        
+        
+    }
+    
+    private static String getDate(){
+        
+        DateFormat  ft= new SimpleDateFormat("yyyy-MM-d");
+        java.util.Date date = new Date();
+        String todayDate = ft.format(date);
+        
+        
+        return todayDate;
+    }
+    
+    public static void main(String [] arg){
+        
+        String s = getDate();
+        
+        System.out.println(s);
+    }
     
     
     //*****************************************************
