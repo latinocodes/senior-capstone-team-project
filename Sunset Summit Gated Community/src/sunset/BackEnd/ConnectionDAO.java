@@ -24,8 +24,8 @@ import sunset.domain.*;
 
 public class ConnectionDAO {
 
-  private final String usr = "root";
-  private final String password = "Lara0216";
+  private final String usr = "testing";
+  private final String password = "testing";
   private final String url = "jdbc:mysql://localhost:3306/SunsetSummit";
 
 
