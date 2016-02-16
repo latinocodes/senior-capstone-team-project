@@ -1,8 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ *  FILENAME: AdditionalData.java
+ *  DESCRIPTION: This class shows the additional data to user in a GUI window
+ * 
+ *  Date: Feb 15, 2016
+ *  
+ *  CS493 - Capstone project
+ *  @author Jose Lara
+ *  @version 1
  */
+
 package sunset.FrontEnd;
 
 import sunset.BackEnd.DBConnectionMgr;
@@ -10,22 +16,31 @@ import sunset.domain.Invoice;
 import sunset.domain.Residence;
 import sunset.domain.Tenant;
 
-/**
- *
- * @author Jose
- */
+//*************************************************************************************
+//  Class Name: AdditionalData
+//  Descrption: This class shows the additional data to user in a GUI window
+//  
+//  @author Jose Lara  
+//*************************************************************************************
 public class AdditionalData extends javax.swing.JFrame {
     
 
-    /**
-     * Creates new form AdditionalData
-     */
+    //*******************************************************
+    //  initialize GUI without parameters
+    //  it shows associate data from tables like invoices, Lease, etc from the database
+    //  
+    //*******************************************************
     public AdditionalData() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
     
+    //*******************************************************
+    //  Construct GUI with Tenant obj parameter
+    //  it shows associate data from tables like invoices, Lease, etc from the database
+    //  sets all of the textFields from the GUI 
+    //*******************************************************
     public AdditionalData(Tenant tenant) {
          
         initComponents();
@@ -50,7 +65,7 @@ public class AdditionalData extends javax.swing.JFrame {
         tfFirstNtc.setText(invoice.getFirstNot());
         tfLastNtc.setText(invoice.getLastNot());
       
-    }
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,6 +99,7 @@ public class AdditionalData extends javax.swing.JFrame {
         tfLastNtc = new javax.swing.JLabel();
         btClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        lbDollarSign = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Additional Information");
@@ -139,6 +155,8 @@ public class AdditionalData extends javax.swing.JFrame {
 
         jLabel1.setText("Year(s).");
 
+        lbDollarSign.setText("$");
+
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
@@ -179,7 +197,9 @@ public class AdditionalData extends javax.swing.JFrame {
                                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbEndDate, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lbRent, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(29, 29, 29)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbDollarSign)
+                                .addGap(3, 3, 3)
                                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfEndDate)
                                     .addComponent(tfRent))))
@@ -194,7 +214,7 @@ public class AdditionalData extends javax.swing.JFrame {
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGap(264, 264, 264)
                         .addComponent(btClose)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,7 +225,8 @@ public class AdditionalData extends javax.swing.JFrame {
                     .addComponent(tfDuration)
                     .addComponent(lbRent)
                     .addComponent(tfRent)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(lbDollarSign))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbStartDate)
@@ -257,6 +278,7 @@ public class AdditionalData extends javax.swing.JFrame {
         jLayeredPane1.setLayer(tfLastNtc, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(btClose, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbDollarSign, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -272,6 +294,11 @@ public class AdditionalData extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //*******************************************************
+    //  Event Handler for Close Button on GUI
+    //  it opens back the FindTenant window when clicked
+    //  
+    //*******************************************************
     private void btCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCloseActionPerformed
         new FindTenant().setVisible(true);
         dispose();
@@ -317,6 +344,7 @@ public class AdditionalData extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lbBillDuDate;
+    private javax.swing.JLabel lbDollarSign;
     private javax.swing.JLabel lbDuration;
     private javax.swing.JLabel lbEndDate;
     private javax.swing.JLabel lbFirstNtc;

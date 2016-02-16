@@ -1,8 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- *  Author: Jose Lara
+/*  
+ *  FILENAME: EditTenant.java
+ *  DESCRIPTION: This class creates implements the code for conn to the database and execute SQL statements
+ * 
+ *  Date: Feb 2, 2016 - 
+ *  
+ *  CS493 - Capstone project
+ *  @author Jose Lara
+ *  @version 2
  */
 package sunset.FrontEnd;
 
@@ -13,30 +17,35 @@ import javax.swing.JOptionPane;
 import sunset.BackEnd.DBConnectionMgr;
 import sunset.domain.*;
 
-/* FILENAME: EditTenant
- * DECRIPTION: EditTenant will allow for the editing of previously saved
- *             Tenant data.
- * @author Jose
- */
+//*************************************************************************************
+//  Class Name: EditTenant
+//  Descrption: EditTenant will allow for the editing of previously saved Tenant data.
+//  
+//  @author Jose Lara  
+//*************************************************************************************
 public class EditTenant extends javax.swing.JFrame {
     
     private Tenant tempTenant;
     private Invoice invoice;
     private Residence lease;
 
-    /**
-     * Creates new form Edit
-     */
+    //*******************************************************
+    //  Method initailize objc without parameters
+    //  This textFields are blank
+    //  
+    //*******************************************************
     public EditTenant() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
     
-     /**
-     * Creates new form Edit with a tenant parameter to set values in textFields
-     */
-  
+    //*******************************************************
+    //  Method initailize objc with parameter
+    //  This mehotd fields all of the data to prefill textField
+    //  from selected tenant on FindTenant list
+    //  
+    //*******************************************************
     public EditTenant(Tenant tenant) {
          
         initComponents();
@@ -67,8 +76,10 @@ public class EditTenant extends javax.swing.JFrame {
      
       
     }
-    
-    
+    //*******************************************************
+    //  This mehotd gets values from text fields to update database
+    //  
+    //*******************************************************
     private void settingFields(){
         
         this.lease = tempTenant.getLease();
@@ -553,16 +564,31 @@ public class EditTenant extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //*******************************************************
+    //  Event Handler for Home Button on GUI
+    //  it opens back the Home window when clicked
+    //  
+    //*******************************************************
     private void btHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHomeActionPerformed
         new MainWindow().setVisible(true);
         dispose();
     }//GEN-LAST:event_btHomeActionPerformed
 
+    //*******************************************************
+    //  Event Handler for Cancel Button on GUI
+    //  it opens back the FindTenant window when clicked
+    //  
+    //*******************************************************
     private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed
         new FindTenant().setVisible(true);
         dispose();
     }//GEN-LAST:event_btCancelActionPerformed
 
+    //*******************************************************
+    //  Event Handler for radio Button on GUI
+    //  it sets the address to default when clicked
+    //  Address values are coded here
+    //*******************************************************
     private void rbDefaultAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbDefaultAddressMouseClicked
         String defaultAddress = "1234 Main STREET";
         String defaultCity = "Santa Monica";
@@ -579,6 +605,11 @@ public class EditTenant extends javax.swing.JFrame {
         tfZipCode.setEditable(false);
     }//GEN-LAST:event_rbDefaultAddressMouseClicked
 
+    //*******************************************************
+    //  Event Handler for Save Button on GUI
+    //  it sends the data from tenant created to database to be updated
+    //  
+    //*******************************************************
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
         
         DBConnectionMgr conn = new DBConnectionMgr();
@@ -593,6 +624,11 @@ public class EditTenant extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btSaveActionPerformed
 
+    //*******************************************************
+    //  Event Handler for Submit Button on GUI
+    //  it sends the data to database invoice table to be updated
+    //  where rent is paid, or notices send
+    //*******************************************************
     private void tbSumitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbSumitActionPerformed
         
         DBConnectionMgr conn = new DBConnectionMgr();
@@ -628,16 +664,28 @@ public class EditTenant extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tbSumitActionPerformed
 
+    //*******************************************************
+    //  Event Handler for First notice radio Button on GUI
+    //  it make sure no other radio button is selected.  
+    //*******************************************************
     private void rbFirstNoticeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbFirstNoticeMouseClicked
             rbLastNotice.setSelected(false);
             rbRentPaid.setSelected(false);
     }//GEN-LAST:event_rbFirstNoticeMouseClicked
 
+    //*******************************************************
+    //  Event Handler for Last notice radio Button on GUI
+    //  it make sure no other radio button is selected.
+    //*******************************************************
     private void rbLastNoticeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbLastNoticeMouseClicked
             rbFirstNotice.setSelected(false);
             rbRentPaid.setSelected(false);
     }//GEN-LAST:event_rbLastNoticeMouseClicked
 
+    //*******************************************************
+    //  Event Handler for Rent Paid notice radio Button on GUI
+    //  it make sure no other radio button is selected.
+    //*******************************************************
     private void rbRentPaidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbRentPaidMouseClicked
             rbLastNotice.setSelected(false);
             rbFirstNotice.setSelected(false);

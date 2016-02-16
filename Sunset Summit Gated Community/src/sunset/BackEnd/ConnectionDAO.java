@@ -4,7 +4,7 @@
  * 
  *  Date: Jan 27, 2016 - 
  *  Updated on Feb 6, 2016
- *  CS434 - Object Oriented Programming Using Java
+ *  CS493 - Capstone project
  *  @author Jose Lara
  *  @version 2
  */
@@ -21,28 +21,35 @@ import javax.swing.JOptionPane;
 import sunset.domain.*;
 
 
-
+//*************************************************************************************
+//  Class Name: ConnectionDAO
+//  Descrption: This class handles all of the logic of MySQL database for Sunset Summit
+//  
+//  @author Jose Lara  
+//*************************************************************************************
 public class ConnectionDAO {
 
+  // Database Credentials
   private final String usr = "testing";
   private final String password = "testing";
   private final String url = "jdbc:mysql://localhost:3306/SunsetSummit";
 
 
-    /*Defines the Class.forName and conn address as well as makes
-    * the conn */
+    //***************************************************************************
+    //  Defines the Class.forName and conn address as well as makes the connection
+    //  returns a the connection to the database
+    //***************************************************************************
+  
     private Connection getConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
 	return DriverManager.getConnection(url, usr, password);
     }
 
-    /**
-     * calls for the opening of the conn and pulls the data from the 
-  domain layer while utilizing SQL commands for storing in the database
-     * @param tenant
-     * @return
-     * @throws Exception 
-     */
+    //*******************************************************
+    //  Method to get add a tenant to the databse 
+    //  it insets associate data in other tables like invoices, Lease, etc.
+    //  returns a boolean Object to perfome
+    //*******************************************************
     public boolean addTenant(Tenant tenant) throws Exception {
         
         boolean flag = false;
@@ -148,13 +155,11 @@ public class ConnectionDAO {
         
     } // end of addTenant
     
-    /**
-     * Calls getConnection to open the conn to the database in order to
- delete a tenant profile
-     * @param tenant
-     * @return
-     * @throws Exception 
-     */
+    //*******************************************************
+    //  Method to get delete a tenant from the databse 
+    //  it deletes associate data in other tables like invoices, Lease, etc.
+    //  returns a boolean Object to perfome
+    //*******************************************************
     public Boolean deleteTenant(Tenant tenant) throws Exception {
         
         boolean flag = false;
@@ -188,34 +193,14 @@ public class ConnectionDAO {
     }
      
      return flag;   
-}
-    
-    public boolean sendInvoice(Residence residenceInvoice){
-        
-        boolean flag = false;
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        String sql = "";
-
-        try{
-            conn = getConnection();
-            stmt = conn.prepareStatement(sql);
-            
-            
-        }catch(Exception e){
-            
-        }
-
-        return flag;
-        
-    } // end of sendInvoice
+     
+} // end of deleteTenant
     
     //*******************************************************
     //  Method to get getAllDataForTenant from the databse 
     //  everything like invoices, 
     //  returns a boolean Object to perfome
     //*******************************************************
-    
     public Tenant getAllDataForTenant(Tenant tenant){
         
         Residence tempResidence = new Residence();
@@ -498,7 +483,8 @@ public class ConnectionDAO {
 	Statement myStmt = null;
 	ResultSet resultSet = null;
         Connection conn = getConnection();
-        String sql = "select * from Contact";
+        
+        String sql = "select * from Contact";       // selecting everyting from Contact table
         
 		
 	try {
@@ -529,6 +515,11 @@ public class ConnectionDAO {
         
     } // end of getAllTenant Method
     
+    //*****************************************************
+    //  Setting the First notice in the database sent to tenant
+    //  Storing in Inovoice table
+    //  calls getDate() to store present date
+    //*****************************************************
     public void sendFirstNotice(Tenant tenant) throws SQLException, Exception{
 
         Residence lease = tenant.getLease();
@@ -554,8 +545,13 @@ public class ConnectionDAO {
         stmt.close();
        
         
-    }
+    } // end of sendFirstNotice
     
+    //*****************************************************
+    //  Setting the last notice in the database sent to tenant
+    //  Storing in Inovoice table
+    //  calls getDate() to store present date
+    //*****************************************************
     public void sendLastNotice(Tenant tenant) throws SQLException{
 
        Residence lease = tenant.getLease();
@@ -580,8 +576,13 @@ public class ConnectionDAO {
         
         stmt.close();
         
-    }
+    } // end of sendLastNotice
     
+     //*****************************************************
+    //  Setting the pay date in the database
+    //  Storing in Inovoice table
+    //  calls getDate() to store present date
+    //*****************************************************
     public void payRent(Tenant tenant) throws SQLException{
 
         Residence lease = tenant.getLease();
@@ -606,8 +607,12 @@ public class ConnectionDAO {
         
         stmt.close();
         
-        
-    }
+    } // end of payRent
+    
+    //*****************************************************
+    //  Get present date and sets appropiate database format
+    //  uses Date from java.util and DateFormat
+    //*****************************************************
     
     private static String getDate(){
         
@@ -615,18 +620,12 @@ public class ConnectionDAO {
         java.util.Date date = new Date();
         String todayDate = ft.format(date);
         
-        
         return todayDate;
-    }
-    
-    public static void main(String [] arg){
         
-        String s = getDate();
-        
-        System.out.println(s);
-    }
+    } // end of getDate
     
     
+ 
     //*****************************************************
     //  Method to covert the data from databse to Invoice object
     //  returns a Invoice Object
