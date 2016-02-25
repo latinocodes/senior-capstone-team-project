@@ -18,14 +18,33 @@ import sunset.domain.*;
  * @author Jose
  */
 public class CreateTenant extends javax.swing.JFrame {
+    
+    private int lastNum;
 
     /**
      * Creates new form NewTenant
      */
     public CreateTenant() {
+        
+        this.settingFields();
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.tfTenantID.setText(Integer.toString(lastNum));
+    }
+    //*********************************************
+    //  Gets the last tenantID use from the database
+    //
+    //**********************************************
+    private void settingFields(){
+        DBConnectionMgr db = new DBConnectionMgr();
+        try {
+          this.lastNum = db.getlastTenant();
+        } catch (Exception ex) {
+            Logger.getLogger(CreateTenant.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+         
     }
 
     /**
@@ -144,6 +163,8 @@ public class CreateTenant extends javax.swing.JFrame {
         tfState.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY" }));
 
         jLabel1.setText("Tenant ID");
+
+        tfTenantID.setText(Integer.toString(lastNum));
 
         jrbDefaultAddress.setText("Use Complex Address");
         jrbDefaultAddress.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -466,7 +487,7 @@ public class CreateTenant extends javax.swing.JFrame {
         this.tfZipCode.setText("");
         this.tfSpecialNeeds.setText("");
         this.tfDOB.setText("");
-        this.tfTenantID.setText("");
+        this.tfTenantID.setText(Integer.toString(lastNum));
         this.tfDueDate.setText("");
         this.tfRentCost.setText("");
         this.jrbDefaultAddress.setSelected(false);
@@ -480,19 +501,19 @@ public class CreateTenant extends javax.swing.JFrame {
      */
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
       
-        if(tfTenantID.getText().equals("") && tfApt.getText().equals("") && tfFirstName.getText().equals("")
-                    && tfLastName.getText().equals("") && tfTenantID.getText().equals("") && tfDuration.getText().equals("")
-                    && tfStartDate.getText().equals("") && tfEndDate.getText().equals("") && tfRentCost.getText().equals("")
-                    && tfDueDate.getText().equals("")){
+        this.settingFields();           // get last ID from database and increment
+
+        if(tfTenantID.getText().equals("") || tfApt.getText().equals("") || tfFirstName.getText().equals("")
+                    || tfLastName.getText().equals("") || tfTenantID.getText().equals("") || tfDuration.getText().equals("")
+                    || tfStartDate.getText().equals("") || tfEndDate.getText().equals("") || tfRentCost.getText().equals("")
+                    || tfDueDate.getText().equals("")){
             
-            JOptionPane.showMessageDialog(null, "Please enter All data for new Tenant!");
+                 JOptionPane.showMessageDialog(null, "Please enter all of the tenant information.",
+                   "Input error", JOptionPane.ERROR_MESSAGE);
 
         }
-        else if(tfApt.getText().equals("") || tfApt.getText().equals(null)){
-             JOptionPane.showMessageDialog(null, "Apartment number must be enter");
-        }
         else{
-                 
+ 
             Tenant currentTenant = new Tenant();
             Residence lease = new Residence();
             Invoice invoice = new Invoice();
@@ -507,10 +528,17 @@ public class CreateTenant extends javax.swing.JFrame {
             currentTenant.setZip(tfZipCode.getText());
             currentTenant.setEmail(tfEmail.getText());
             currentTenant.setSpecNeeds(tfSpecialNeeds.getText());
-            currentTenant.setTenantID(Integer.parseInt(tfTenantID.getText()));
+            //sets TenantID if entered Manually
+            //currentTenant.setTenantID(Integer.parseInt(tfTenantID.getText()));
+            
+            //sets TenantID from last ID in database
+            currentTenant.setTenantID(lastNum); 
+            
+
             currentTenant.setApt(tfApt.getText());
             invoice.setBillDue(tfDueDate.getText());
             lease.setInvoice(invoice);
+            lease.setResID(lastNum);
             lease.setResID(Integer.parseInt(tfTenantID.getText()));
             lease.setEnd(tfEndDate.getText());
             lease.setStart(tfStartDate.getText());

@@ -32,7 +32,8 @@ public class ConnectionDAO {
   // Database Credentials
   private final String usr = "testing";
   private final String password = "testing";
-  private final String url = "jdbc:mysql://localhost:3306/SunsetSummit";
+  //private final String url = "jdbc:mysql://71.198.36.146:3306/SunsetSummit?setSSL=true";
+  private final String url = "jdbc:mysql://localhost:3306/SunsetSummit?useSSL=true";
 
 
     //***************************************************************************
@@ -213,7 +214,7 @@ public class ConnectionDAO {
         ResultSet resultSet = null;
         
         String sql =  "SELECT * FROM Contact WHERE ContactID='"+tenant.getTenantID()+"'";
-        String sql1 = "SELECT * FROM lease WHERE TenantID ='"+tenant.getTenantID()+"'";
+        String sql1 = "SELECT * FROM Lease WHERE TenantID ='"+tenant.getTenantID()+"'";
         String sql2 = "SELECT * FROM Invoice WHERE TenantID ='"+tenant.getTenantID()+"'";
         String sql3 = "SELECT * FROM Residence WHERE TenantID='"+tenant.getTenantID()+"'";
         
@@ -514,6 +515,51 @@ public class ConnectionDAO {
         }
         
     } // end of getAllTenant Method
+    
+    //*****************************************************
+    //  Getting the last tenantID and it autoIncrement
+    //  Storing in list of Tenant
+    //*****************************************************
+    
+    public int getlastTenant() throws Exception {
+        
+        // create list of tenants
+	List<Tenant> list = new ArrayList<>();
+        int tempNum = 0;
+	Statement myStmt = null;
+	ResultSet resultSet = null;
+        Connection conn = getConnection();
+        
+        String sql = "select * from Contact";       // selecting everyting from Contact table
+        
+		
+	try {
+            myStmt = conn.createStatement();
+            resultSet = myStmt.executeQuery(sql);
+			
+            while (resultSet.next()) {
+                
+                // convert the result from the database to tenant object
+                Tenant tempTenant = convertToTenant(resultSet);
+                tempNum = tempTenant.getTenantID();
+                // adding Tenant to list
+		list.add(tempTenant);
+            }
+        
+	} catch(SQLException e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Problem getting data from database. Call administrator!");
+        }
+        
+	finally {
+            tempNum++;
+            myStmt.close();
+            resultSet.close();
+            // return entire list
+            
+        }
+        return tempNum;
+    } // end of getLastTenant Method
     
     //*****************************************************
     //  Setting the First notice in the database sent to tenant
