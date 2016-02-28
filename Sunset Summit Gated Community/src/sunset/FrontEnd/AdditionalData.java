@@ -52,6 +52,7 @@ public class AdditionalData extends javax.swing.JFrame {
         Residence lease = tempTenant.getLease();
         Invoice invoice = lease.getInvoice();
         
+        tfName.setText(tenant.getFirstName() +" "+ tenant.getLastName());
         tfLeaseID.setText(Integer.toString(lease.getResID()));
         tfResidenceID.setText(Integer.toString(lease.getResID()));
         
@@ -100,6 +101,8 @@ public class AdditionalData extends javax.swing.JFrame {
         btClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lbDollarSign = new javax.swing.JLabel();
+        lbName = new javax.swing.JLabel();
+        tfName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Additional Information");
@@ -157,13 +160,29 @@ public class AdditionalData extends javax.swing.JFrame {
 
         lbDollarSign.setText("$");
 
+        lbName.setText("Tenant Name:");
+
+        tfName.setText("Data Not Available!");
+
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbLastNtc)
+                        .addGap(41, 41, 41)
+                        .addComponent(tfLastNtc))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(264, 264, 264)
+                        .addComponent(btClose)))
+                .addContainerGap(245, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbName)
                     .addComponent(lbStartDate)
                     .addComponent(lbDuration)
                     .addComponent(lbResidenceID)
@@ -171,9 +190,6 @@ public class AdditionalData extends javax.swing.JFrame {
                     .addComponent(lbFirstNtc))
                 .addGap(39, 39, 39)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(tfFirstNtc)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfBillDueDate)
@@ -203,23 +219,21 @@ public class AdditionalData extends javax.swing.JFrame {
                                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfEndDate)
                                     .addComponent(tfRent))))
-                        .addContainerGap(12, Short.MAX_VALUE))))
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap(12, Short.MAX_VALUE))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbLastNtc)
-                        .addGap(41, 41, 41)
-                        .addComponent(tfLastNtc))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(btClose)))
-                .addContainerGap(245, Short.MAX_VALUE))
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfFirstNtc)
+                            .addComponent(tfName))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbName)
+                    .addComponent(tfName))
+                .addGap(14, 14, 14)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbDuration)
                     .addComponent(tfDuration)
@@ -279,6 +293,8 @@ public class AdditionalData extends javax.swing.JFrame {
         jLayeredPane1.setLayer(btClose, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lbDollarSign, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfName, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,7 +304,7 @@ public class AdditionalData extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -300,7 +316,7 @@ public class AdditionalData extends javax.swing.JFrame {
     //  
     //*******************************************************
     private void btCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCloseActionPerformed
-        new FindTenant().setVisible(true);
+        
         dispose();
     }//GEN-LAST:event_btCloseActionPerformed
 
@@ -351,6 +367,7 @@ public class AdditionalData extends javax.swing.JFrame {
     private javax.swing.JLabel lbLastNtc;
     private javax.swing.JLabel lbLastPaid;
     private javax.swing.JLabel lbLeaseID;
+    private javax.swing.JLabel lbName;
     private javax.swing.JLabel lbRent;
     private javax.swing.JLabel lbResidenceID;
     private javax.swing.JLabel lbStartDate;
@@ -361,6 +378,7 @@ public class AdditionalData extends javax.swing.JFrame {
     private javax.swing.JLabel tfLastNtc;
     private javax.swing.JLabel tfLastPaid;
     private javax.swing.JLabel tfLeaseID;
+    private javax.swing.JLabel tfName;
     private javax.swing.JLabel tfRent;
     private javax.swing.JLabel tfResidenceID;
     private javax.swing.JLabel tfStartDate;

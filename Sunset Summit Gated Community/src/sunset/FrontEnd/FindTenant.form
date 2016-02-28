@@ -35,7 +35,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="lbFindTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,8 +59,6 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btHome" min="-2" pref="134" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tbGetMoreInfo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btEdit" min="-2" pref="134" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -77,25 +75,27 @@
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="tfFirstName" max="32767" attributes="0"/>
-                              <Component id="tfTenantID" pref="300" max="32767" attributes="0"/>
+                              <Component id="tfTenantID" pref="230" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="lbLastName" min="-2" pref="74" max="-2" attributes="0"/>
                               <Component id="lbApt" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="tfApt" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="rbAllTenant" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="tfLastName" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="tfLastName" pref="215" max="32767" attributes="0"/>
+                              <Component id="tfApt" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="rbAllTenant" min="-2" max="-2" attributes="0"/>
+                              <Component id="tbGetMoreInfo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Component id="jScrollPane1" max="32767" attributes="0"/>
           </Group>
@@ -108,21 +108,22 @@
                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                           <Component id="tfTenantID" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbTenantID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                           <Component id="lbApt" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfApt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rbAllTenant" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="rbAllTenant" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="tbGetMoreInfo" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="387" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -130,7 +131,6 @@
                       <Component id="btEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btRemove" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btFind" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tbGetMoreInfo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -174,7 +174,7 @@
             <Component class="javax.swing.JTable" name="jtTenant">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="12" rowCount="0">
+                  <Table columnCount="13" rowCount="0">
                     <Column editable="false" title="TenantID" type="java.lang.Object"/>
                     <Column editable="false" title="First" type="java.lang.Object"/>
                     <Column editable="false" title="Last" type="java.lang.Object"/>
@@ -187,10 +187,16 @@
                     <Column editable="false" title="Phone" type="java.lang.Object"/>
                     <Column editable="false" title="Email" type="java.lang.Object"/>
                     <Column editable="false" title="Special Needs" type="java.lang.Object"/>
+                    <Column editable="false" title="More Information" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>

@@ -32,9 +32,7 @@ public class ConnectionDAO {
   // Database Credentials
   private final String usr = "testing";
   private final String password = "testing";
-  //private final String url = "jdbc:mysql://71.198.36.146:3306/SunsetSummit?setSSL=true";
-  private final String url = "jdbc:mysql://localhost:3306/SunsetSummit?useSSL=true";
-
+  private final String url = "jdbc:mysql://71.198.36.146:3306/SunsetSummit?setSSL=true";
 
     //***************************************************************************
     //  Defines the Class.forName and conn address as well as makes the connection

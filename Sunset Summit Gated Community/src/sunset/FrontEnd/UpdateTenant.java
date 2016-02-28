@@ -1,5 +1,5 @@
 /*  
- *  FILENAME: EditTenant.java
+ *  FILENAME: UpdateTenant.java
  *  DESCRIPTION: This class creates implements the code for conn to the database and execute SQL statements
  * 
  *  Date: Feb 2, 2016 - 
@@ -11,30 +11,33 @@
 package sunset.FrontEnd;
 
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import sunset.BackEnd.DBConnectionMgr;
+import sunset.BackEnd.*;
 import sunset.domain.*;
 
 //*************************************************************************************
-//  Class Name: EditTenant
-//  Descrption: EditTenant will allow for the editing of previously saved Tenant data.
+//  Class Name: UpdateTenant
+//  Descrption: UpdateTenant will allow for the editing of previously saved Tenant data.
 //  
 //  @author Jose Lara  
 //*************************************************************************************
-public class EditTenant extends javax.swing.JFrame {
+public class UpdateTenant extends javax.swing.JFrame {
     
     private Tenant tempTenant;
     private Invoice invoice;
     private Residence lease;
-
+    
+    
     //*******************************************************
     //  Method initailize objc without parameters
     //  This textFields are blank
     //  
     //*******************************************************
-    public EditTenant() {
+    public UpdateTenant() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -46,7 +49,7 @@ public class EditTenant extends javax.swing.JFrame {
     //  from selected tenant on FindTenant list
     //  
     //*******************************************************
-    public EditTenant(Tenant tenant) {
+    public UpdateTenant(Tenant tenant) {
          
         initComponents();
         this.setLocationRelativeTo(null);
@@ -617,7 +620,7 @@ public class EditTenant extends javax.swing.JFrame {
         try {
             conn.updateTenant(tempTenant);
         } catch (Exception ex) {
-            Logger.getLogger(EditTenant.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateTenant.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         new FindTenant().setVisible(true);
@@ -630,38 +633,82 @@ public class EditTenant extends javax.swing.JFrame {
     //  where rent is paid, or notices send
     //*******************************************************
     private void tbSumitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbSumitActionPerformed
+   
+        //variable declarations 
+        String Signature = "\n\nSunset Summit Gated Community\nManagement.";
+        String subjectRentDue = "Reminder: Rent Coming Due.";
+        String firstNotice = "First Notice. Rent is due within 30 Days. \n\n Thank You.";
         
+        String subjectRentPaid = "Payment Received.";
+        String rentPay ="You Rent was received.\n\n Thank You.";
+        
+       
+        String subjectLastNot = "Last Reminder: Rent Coming Due";
+        String saludo = "Dear "+tempTenant.getFirstName()+ " " +tempTenant.getLastName()+": \n\n";
+        String contenido ="Your Rent is coming due. Please beware this is your last notice.";
+        
+        String eBodyFirstNotice = saludo + firstNotice + Signature;
+        String eBodyLastNotice = saludo + contenido + Signature;
+        String eBodyRentPay = saludo + rentPay + Signature;
+    
         DBConnectionMgr conn = new DBConnectionMgr();
-        if(rbFirstNotice.isSelected()){
+        Email em = new Email();
 
+        String to = tempTenant.getEmail(); // calls the email of the user selected and a notice is then sent to them.
+        String pattern = "yyyy-MM-dd";
+        
+        // Converts today's time 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date1 = simpleDateFormat.format(new Date()); // This takes the local time and date
+                
+        // Gets bill due date time
+        SimpleDateFormat billDue = new SimpleDateFormat("yyyy-MM-dd");
+        String date2 = invoice.getBillDue(); // Calls bill due date of the user selected for a notice to be sent to them.
+                
+        // if else conditional to set rbFirstNotice to compare with rbFirstNotice.isSelected()		
+      	if((rbFirstNotice.isSelected())){
             try {
+                //creates new email object called em
+                em.sendEmail(to, subjectRentDue, eBodyFirstNotice);
+                
                 conn.sendFirstNotice(tempTenant);
                 JOptionPane.showMessageDialog(null, "First Notice Sent!");
             } catch (Exception ex) {
-                Logger.getLogger(EditTenant.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UpdateTenant.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else if(rbLastNotice.isSelected()){
-            
+                rbFirstNotice.setSelected(false); // resets button to be selected
+        
+        }else if(rbLastNotice.isSelected()){
             try {
-                conn.sendLastNotice(tempTenant);
-                JOptionPane.showMessageDialog(null, "Last Notice Sent!");
+                //creates new email object called em
+                
+            em.sendEmail(to, subjectLastNot, eBodyLastNotice); 
+                    
+            conn.sendFirstNotice(tempTenant);  //"Last Notice Sent!"
+            JOptionPane.showMessageDialog(null, "Last Notice Sent!");
+                     
             } catch (Exception ex) {
-                Logger.getLogger(EditTenant.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else if (rbRentPaid.isSelected()){
+                Logger.getLogger(UpdateTenant.class.getName()).log(Level.SEVERE, null, ex);
+            }	
+            rbLastNotice.setSelected(false); // sets the first notice radio button to off
+            
+        }else if (rbRentPaid.isSelected()){
            
             try {
+                em.sendEmail(to, subjectRentPaid, eBodyRentPay); 
+                
                 conn.payRent(tempTenant);
                 JOptionPane.showMessageDialog(null, "Rent Paid!");
             } catch (Exception ex) {
-                Logger.getLogger(EditTenant.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UpdateTenant.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Please make Selection!");
-        }
+              JOptionPane.showMessageDialog(null,"Please make the proper selection.", "Selection Error!", JOptionPane.ERROR_MESSAGE);            
+        } 
+        
+        
+                   
     }//GEN-LAST:event_tbSumitActionPerformed
 
     //*******************************************************
@@ -708,13 +755,13 @@ public class EditTenant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -722,7 +769,7 @@ public class EditTenant extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditTenant().setVisible(true);
+                new UpdateTenant().setVisible(true);
             }
         });
     }
@@ -773,4 +820,7 @@ public class EditTenant extends javax.swing.JFrame {
     private javax.swing.JTextField tfStreetAddress;
     private javax.swing.JTextField tfZipCode;
     // End of variables declaration//GEN-END:variables
+
 }
+
+

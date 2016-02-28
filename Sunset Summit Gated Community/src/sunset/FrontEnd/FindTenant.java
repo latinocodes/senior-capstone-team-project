@@ -9,6 +9,7 @@ package sunset.FrontEnd;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -82,11 +83,11 @@ public class FindTenant extends javax.swing.JFrame {
 
             },
             new String [] {
-                "TenantID", "First", "Last", "Dob", "Address", "Apt #", "City", "State", "Zip", "Phone", "Email", "Special Needs"
+                "TenantID", "First", "Last", "Dob", "Address", "Apt #", "City", "State", "Zip", "Phone", "Email", "Special Needs", "More Information"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -152,8 +153,6 @@ public class FindTenant extends javax.swing.JFrame {
                 .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(lbFindTitleLayout.createSequentialGroup()
                         .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tbGetMoreInfo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -168,19 +167,21 @@ public class FindTenant extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfFirstName)
-                            .addComponent(tfTenantID, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                        .addGap(35, 35, 35)
+                            .addComponent(tfTenantID, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
                         .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbApt))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(lbFindTitleLayout.createSequentialGroup()
-                                .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rbAllTenant))
-                            .addComponent(tfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(307, 307, 307)))
-                .addContainerGap())
+                            .addComponent(tfLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(tfApt))
+                        .addGap(51, 51, 51)
+                        .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbAllTenant)
+                            .addComponent(tbGetMoreInfo))
+                        .addGap(232, 232, 232)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         lbFindTitleLayout.setVerticalGroup(
@@ -190,26 +191,26 @@ public class FindTenant extends javax.swing.JFrame {
                 .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfTenantID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbTenantID))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbTenantID)
                         .addComponent(lbApt)
-                        .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(rbAllTenant)))
+                        .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rbAllTenant, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbFirstName)
-                    .addComponent(tfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbLastName)
-                    .addComponent(tfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbFirstName)
+                        .addComponent(tfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbLastName)
+                        .addComponent(tfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tbGetMoreInfo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lbFindTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btHome)
                     .addComponent(btEdit)
                     .addComponent(btRemove)
-                    .addComponent(btFind)
-                    .addComponent(tbGetMoreInfo)))
+                    .addComponent(btFind)))
         );
         lbFindTitle.setLayer(tfTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbFindTitle.setLayer(lbTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -240,7 +241,7 @@ public class FindTenant extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lbFindTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -283,7 +284,7 @@ public class FindTenant extends javax.swing.JFrame {
                                         state, zip, birthday, specialNeeds);
             
             
-            EditTenant editTenant =  new EditTenant(tenant);
+            UpdateTenant editTenant =  new UpdateTenant(tenant);
             
             editTenant.setVisible(true);
             dispose();
@@ -444,7 +445,7 @@ public class FindTenant extends javax.swing.JFrame {
             AdditionalData addInfo =  new AdditionalData(tenant);
             
             addInfo.setVisible(true);
-            dispose();
+            
         }
     }//GEN-LAST:event_tbGetMoreInfoActionPerformed
 
@@ -488,16 +489,23 @@ public class FindTenant extends javax.swing.JFrame {
     */
     private void DisplayTable(List<Tenant> tenantList){
         
+        String s = "More Information";
+        
         DefaultTableModel model=(DefaultTableModel)jtTenant.getModel();
+        JButton moreInfo = new JButton("Click for more");
         model.setRowCount(0);
-         
-        for (Tenant temp : tenantList) {
+        
+
+        for(Tenant temp: tenantList) {
             model.addRow(new Object[]{temp.getTenantID(), temp.getFirstName(), temp.getLastName(), temp.getBirthDate(), temp.getStreet(), temp.getApt(), temp.getCity(), temp.getState(),
-                temp.getZip(), temp.getPhoneNum(),temp.getEmail(), temp.getSpecNeeds()});
+                temp.getZip(), temp.getPhoneNum(),temp.getEmail(), temp.getSpecNeeds()}); 
+            
             
         }
         
+     
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEdit;
