@@ -83,11 +83,11 @@ public class FindTenant extends javax.swing.JFrame {
 
             },
             new String [] {
-                "TenantID", "First", "Last", "Dob", "Address", "Apt #", "City", "State", "Zip", "Phone", "Email", "Special Needs", "More Information"
+                "TenantID", "First", "Last", "Dob", "Address", "Apt #", "City", "State", "Zip", "Phone", "Email", "Special Needs"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -488,23 +488,17 @@ public class FindTenant extends javax.swing.JFrame {
      * Method is use to layout the data from database into the GUI table
     */
     private void DisplayTable(List<Tenant> tenantList){
-        
-        String s = "More Information";
-        
+
         DefaultTableModel model=(DefaultTableModel)jtTenant.getModel();
-        JButton moreInfo = new JButton("Click for more");
         model.setRowCount(0);
         
-
         for(Tenant temp: tenantList) {
             model.addRow(new Object[]{temp.getTenantID(), temp.getFirstName(), temp.getLastName(), temp.getBirthDate(), temp.getStreet(), temp.getApt(), temp.getCity(), temp.getState(),
                 temp.getZip(), temp.getPhoneNum(),temp.getEmail(), temp.getSpecNeeds()}); 
-            
-            
+
         }
-        
-     
-    }
+
+    } // end of DisplayTable
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
