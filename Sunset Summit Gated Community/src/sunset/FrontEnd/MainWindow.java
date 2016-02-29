@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sunset.FrontEnd;
 
 /* FILENAME: MainWindow
  * DESCRIPTION: This is the starting file for the software application.  All
  *              functions that want to be performed will ultimately be called 
  *              indirectly from this file.  This file includes the main method
- * @author Jose Lara
  */
 public class MainWindow extends javax.swing.JFrame {
 

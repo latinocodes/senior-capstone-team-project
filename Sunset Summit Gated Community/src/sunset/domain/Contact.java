@@ -1,261 +1,256 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package sunset.domain;
 
+//~--- JDK imports ------------------------------------------------------------
+
 import java.io.Serializable;
+
 import java.util.*;
 
-/* FILENAME:    Contact
- * DESCRIPTION: This contact file will initiate the attributes as well as 
- *              implement the setters/getters.  This file will also utilize
- *              the overriding methods.
- * @author      Chip
- * VERSION:     CapstoneProjV1
+/*FILENAME:    Contact
+* DESCRIPTION: This contact file will initiate the attributes as well as
+*              implement the setters/getters.  This file will also utilize
+*              the overriding methods.
  */
-public class Contact implements Serializable{
-   
+public class Contact implements Serializable {
+
     /* Declaring the variables */
-    private String 
-                   lastName,
-                   firstName,
-                   dateOfBirth,
-                   phoneNum,
-                   email,
-                   street,
-                   apt,
-                   city,
-                   state,
-                   zipCode,
-                   specialNeeds;
-    
-    int contactID;
-    
-    
+    private String lastName, firstName, dateOfBirth, phoneNum, email, street, apt, city, state, zipCode, specialNeeds;
+    int            contactID;
+
     /* default constructor */
-    public Contact(){
-    }
-    
+    public Contact() {}
+
     /* Constructor */
-    public Contact(int contactID, String lastName, String firstName, 
-            String phoneNum, String email, String street, String apt, String city,
-            String state, String zipCode, String dateOfBirth, String specialNeeds){
-      
-        this.contactID = contactID;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.dateOfBirth = dateOfBirth;
-        this.phoneNum = phoneNum;
-        this.email = email;
-        this.street = street;
-        this.apt = apt;
-        this.city = city;
-        this.state = state;
-        this.zipCode = zipCode;
+    public Contact(int contactID, String lastName, String firstName, String phoneNum, String email, String street,
+                   String apt, String city, String state, String zipCode, String dateOfBirth, String specialNeeds) {
+        this.contactID    = contactID;
+        this.lastName     = lastName;
+        this.firstName    = firstName;
+        this.dateOfBirth  = dateOfBirth;
+        this.phoneNum     = phoneNum;
+        this.email        = email;
+        this.street       = street;
+        this.apt          = apt;
+        this.city         = city;
+        this.state        = state;
+        this.zipCode      = zipCode;
         this.specialNeeds = specialNeeds;
     }
-    
+
     // set apartment
-    public void setApt(String apt){
-        this.apt=apt;
+    public void setApt(String apt) {
+        this.apt = apt;
     }
-    
-    // get apartment 
-    public String getApt(){
+
+    // get apartment
+    public String getApt() {
         return apt;
     }
-    
-    
+
     /* getter for contactID */
-    public int getContactID(){
+    public int getContactID() {
         return contactID;
     }
-    
+
     /* setter for contactID */
-    public void setContactID(int contactID){
+    public void setContactID(int contactID) {
         this.contactID = contactID;
     }
-    
+
     /* getter for lastName */
-    public String getLastName(){
+    public String getLastName() {
         return lastName;
     }
-    
+
     /* setter for lastName */
-    public void setLastName(String lastName){
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
+
     /* getter for firstName */
-    public String getFirstName(){
+    public String getFirstName() {
         return firstName;
     }
-    
+
     /* setter for firstName */
-    public void setFirstName(String firstName){
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    
+
     /* getter for dateOfBirth */
-    public String getBirthDate(){
+    public String getBirthDate() {
         return dateOfBirth;
     }
-    
+
     /* setter for dateOfBirth */
-    public void setBirthDate(String dateOfBirth){
+    public void setBirthDate(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    
+
     /* getter for phoneNum */
-    public String getPhoneNum(){
+    public String getPhoneNum() {
         return phoneNum;
     }
-    
+
     /* setter for phoneNum */
-    public void setPhoneNum(String phoneNum){
+    public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
-    
+
     /* getter for email */
-    public String getEmail()
-    {
+    public String getEmail() {
         return email;
-    }  
-    
+    }
+
     /* setter for email */
-    public void setEmail(String email){
+    public void setEmail(String email) {
         this.email = email;
     }
-    
+
     /* getter for street */
-    public String getStreet(){
+    public String getStreet() {
         return street;
     }
-    
+
     /* setter for street */
-    public void setStreet(String street){
+    public void setStreet(String street) {
         this.street = street;
     }
-    
+
     /* getter for city */
-    public String getCity(){
+    public String getCity() {
         return city;
     }
-    
+
     /* setter for city */
-    public void setCity(String city){
+    public void setCity(String city) {
         this.city = city;
     }
-    
+
     /* getter for state */
-    public String getState(){
+    public String getState() {
         return state;
     }
-    
+
     /* setter for state */
-    public void setState(String state){
+    public void setState(String state) {
         this.state = state;
     }
-    
+
     /* getter for zipCode */
-    public String getZip(){
+    public String getZip() {
         return zipCode;
     }
-    
+
     /* setter for zipCode */
-    public void setZip(String zipCode){
+    public void setZip(String zipCode) {
         this.zipCode = zipCode;
     }
-    
+
     /* getter for specialNeeds */
-    public String getSpecNeeds(){
+    public String getSpecNeeds() {
         return specialNeeds;
     }
-    
+
     /* setter for specialNeeds */
-    public void setSpecNeeds(String specialNeeds){
+    public void setSpecNeeds(String specialNeeds) {
         this.specialNeeds = specialNeeds;
     }
 
     /**
-     * 
+     *
      * @param obj
-     * @return 
+     * @return
      */
-    
     @Override
-    public boolean equals(Object obj){
-        if(obj == null){
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        if(getClass() != obj.getClass()){
+
+        if (getClass() != obj.getClass()) {
             return false;
         }
+
         final Contact other = (Contact) obj;
-        if(!Objects.equals((this.contactID), other.contactID)){
+
+        if (!Objects.equals((this.contactID), other.contactID)) {
             return false;
         }
-        if(!Objects.equals((this.lastName), other.lastName)){
+
+        if (!Objects.equals((this.lastName), other.lastName)) {
             return false;
         }
-        if(!Objects.equals(this.firstName, other.firstName)){
+
+        if (!Objects.equals(this.firstName, other.firstName)) {
             return false;
         }
-        if(!Objects.equals(this.phoneNum, other.phoneNum)){
+
+        if (!Objects.equals(this.phoneNum, other.phoneNum)) {
             return false;
         }
-        if(!Objects.equals(this.email, other.email)){
+
+        if (!Objects.equals(this.email, other.email)) {
             return false;
         }
-        if(!Objects.equals(this.street, other.street)){
+
+        if (!Objects.equals(this.street, other.street)) {
             return false;
         }
-        if(!Objects.equals(this.city, other.city)){
+
+        if (!Objects.equals(this.city, other.city)) {
             return false;
         }
-        if(!Objects.equals(this.zipCode, other.zipCode)){
+
+        if (!Objects.equals(this.zipCode, other.zipCode)) {
             return false;
         }
-        if(!Objects.equals(this.dateOfBirth, other.dateOfBirth)){
+
+        if (!Objects.equals(this.dateOfBirth, other.dateOfBirth)) {
             return false;
         }
-        if(!Objects.equals(this.state, other.state)){
+
+        if (!Objects.equals(this.state, other.state)) {
             return false;
         }
-        if(!Objects.equals(this.specialNeeds, other.specialNeeds)){
+
+        if (!Objects.equals(this.specialNeeds, other.specialNeeds)) {
             return false;
         }
-        
+
         return true;
     }
-      
+
     /* Overriding Validate */
-    public boolean validate(){
-        if(lastName == null){
+    public boolean validate() {
+        if (lastName == null) {
             return false;
         }
-        if(firstName == null){
+
+        if (firstName == null) {
             return false;
         }
-        if(street == null){
+
+        if (street == null) {
             return false;
         }
-        if(city == null){
+
+        if (city == null) {
             return false;
         }
-        if(state == null){
+
+        if (state == null) {
             return false;
         }
-        if(zipCode == null){
+
+        if (zipCode == null) {
             return false;
         }
-        if(phoneNum == null){
+
+        if (phoneNum == null) {
             return false;
         }
-        
-        return true;  
-    }   
+
+        return true;
+    }
 }

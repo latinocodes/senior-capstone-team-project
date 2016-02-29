@@ -1,12 +1,6 @@
 /*  
  *  FILENAME: ConnectionDAO.java
  *  DESCRIPTION: This class creates implements the code for conn to the database and execute SQL statements
- * 
- *  Date: Jan 27, 2016 - 
- *  Updated on Feb 6, 2016
- *  CS493 - Capstone project
- *  @author Jose Lara
- *  @version 2
  */
 package sunset.BackEnd;
 
@@ -24,8 +18,6 @@ import sunset.domain.*;
 //*************************************************************************************
 //  Class Name: ConnectionDAO
 //  Descrption: This class handles all of the logic of MySQL database for Sunset Summit
-//  
-//  @author Jose Lara  
 //*************************************************************************************
 public class ConnectionDAO {
 
@@ -667,8 +659,7 @@ public class ConnectionDAO {
         return todayDate;
         
     } // end of getDate
-    
-    
+
  
     //*****************************************************
     //  Method to covert the data from databse to Invoice object
@@ -720,7 +711,6 @@ public class ConnectionDAO {
         return temp;
     } // end of convertToLease
     
-    
     //*****************************************************
     //  Method to covert the data from databse to Tenant object
     //  returns a Tenant Object
@@ -734,7 +724,6 @@ public class ConnectionDAO {
         String state = resultSet.getString("State"); String zip = resultSet.getString("Zip");
         String phone = resultSet.getString("Phone");String email = resultSet.getString("Email");
         String specialNeeds = resultSet.getString("SpecialNeeds"); String apt =resultSet.getString("AptNum");
-	
         
 	Tenant tempTenant = new Tenant(id, id, lastName, name, phone, email, street,apt, city, state,
                                         zip, dateOfBirth, specialNeeds);
@@ -742,7 +731,6 @@ public class ConnectionDAO {
 	return tempTenant;
         
 	} // end of convertToTenant
-    
-
+   
 } // end of ConnectionDAO class
 

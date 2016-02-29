@@ -1,31 +1,49 @@
 package sunset.FrontEnd;
 
-import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import sunset.BackEnd.*;
+import sunset.BackEnd.DBConnectionMgr;
 import sunset.domain.*;
 
-/* FILENAME: CreateTenant
- * DESCRIPTION: This class will be called from MainWindow in order to accomplish
- *              the task of creating a new tenant within the database.  
+/**
+ *
+ * @author Jose
  */
-public class CreateTenant extends javax.swing.JFrame {
+public class AdditionalTenant extends javax.swing.JFrame {
     
+    Tenant currentTenant = new Tenant();
     private int lastNum;
 
     /**
-     * Creates new form NewTenant
+     * Creates new form AdditionalTenant
      */
-    public CreateTenant() {
-        
-        this.settingFields();
+    public AdditionalTenant() {
         initComponents();
+    }
+
+    public AdditionalTenant(Tenant tenant) {
+        initComponents();
+        this.settingFields();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        currentTenant.setApt(tenant.getApt());
+        
         this.tfTenantID.setText(Integer.toString(lastNum));
+        tfApt.setText(tenant.getApt());
+        tfApt.setEditable(false);
+        tfStreetAddress.setText(tenant.getStreet());
+        tfStreetAddress.setEditable(false);
+        tfCity.setText(tenant.getCity());
+        tfCity.setEditable(false);
+        tfState.setSelectedItem(tenant.getState());
+        tfState.setEditable(false);
+        tfZipCode.setText(tenant.getZip());
+        tfZipCode.setEditable(false);
+    
     }
+    
+    
     //*********************************************
     //  Gets the last tenantID use from the database
     //
@@ -48,9 +66,6 @@ public class CreateTenant extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btHome = new javax.swing.JButton();
-        btSave = new javax.swing.JButton();
-        btClear = new javax.swing.JButton();
         jlpTenantInfo = new javax.swing.JLayeredPane();
         tfFirstName = new javax.swing.JTextField();
         lbLastName = new javax.swing.JLabel();
@@ -77,50 +92,13 @@ public class CreateTenant extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tfTenantID = new javax.swing.JTextField();
         jrbDefaultAddress = new javax.swing.JRadioButton();
-        jlpLeaseInfo = new javax.swing.JLayeredPane();
-        lbDuration = new javax.swing.JLabel();
-        tfDuration = new javax.swing.JTextField();
-        lbStartDate = new javax.swing.JLabel();
-        lbEndDate = new javax.swing.JLabel();
-        tfStartDate = new javax.swing.JFormattedTextField();
-        tfEndDate = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        lbRentCost = new javax.swing.JLabel();
-        tfRentCost = new javax.swing.JFormattedTextField();
-        lbDueDate = new javax.swing.JLabel();
-        tfDueDate = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
+        btSave = new javax.swing.JButton();
+        btClear = new javax.swing.JButton();
+        btHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Create Tenant");
 
-        btHome.setText("Home");
-        btHome.setPreferredSize(new java.awt.Dimension(87, 65));
-        btHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btHomeActionPerformed(evt);
-            }
-        });
-
-        btSave.setText("Save");
-        btSave.setPreferredSize(new java.awt.Dimension(87, 65));
-        btSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSaveActionPerformed(evt);
-            }
-        });
-
-        btClear.setText("Clear");
-        btClear.setPreferredSize(new java.awt.Dimension(87, 65));
-        btClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btClearActionPerformed(evt);
-            }
-        });
-
-        jlpTenantInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tenant Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
+        jlpTenantInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sub Tenant Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
 
         lbLastName.setText("Last:");
 
@@ -303,232 +281,99 @@ public class CreateTenant extends javax.swing.JFrame {
         jlpTenantInfo.setLayer(tfTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jlpTenantInfo.setLayer(jrbDefaultAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jlpLeaseInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lease Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
+        btSave.setText("Save");
+        btSave.setPreferredSize(new java.awt.Dimension(87, 65));
+        btSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSaveActionPerformed(evt);
+            }
+        });
 
-        lbDuration.setText("Duration:");
+        btClear.setText("Clear");
+        btClear.setPreferredSize(new java.awt.Dimension(87, 65));
+        btClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearActionPerformed(evt);
+            }
+        });
 
-        lbStartDate.setText("Start Date:");
-
-        lbEndDate.setText("End Date:");
-
-        tfStartDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
-
-        tfEndDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
-
-        jLabel2.setText("Enter date as YYYY-MM-DD");
-
-        jLabel4.setText("Number of Months");
-
-        javax.swing.GroupLayout jlpLeaseInfoLayout = new javax.swing.GroupLayout(jlpLeaseInfo);
-        jlpLeaseInfo.setLayout(jlpLeaseInfoLayout);
-        jlpLeaseInfoLayout.setHorizontalGroup(
-            jlpLeaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jlpLeaseInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jlpLeaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addGroup(jlpLeaseInfoLayout.createSequentialGroup()
-                        .addGroup(jlpLeaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbStartDate)
-                            .addComponent(lbEndDate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jlpLeaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(tfEndDate)))
-                    .addGroup(jlpLeaseInfoLayout.createSequentialGroup()
-                        .addComponent(lbDuration)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jlpLeaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jlpLeaseInfoLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(21, 21, 21)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jlpLeaseInfoLayout.setVerticalGroup(
-            jlpLeaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jlpLeaseInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jlpLeaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbDuration)
-                    .addComponent(tfDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jlpLeaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbStartDate)
-                    .addComponent(tfStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jlpLeaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbEndDate)
-                    .addComponent(tfEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2))
-        );
-        jlpLeaseInfo.setLayer(lbDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(tfDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(lbStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(lbEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(tfStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(tfEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rent Info", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
-
-        lbRentCost.setText("Rent Cost:");
-
-        tfRentCost.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
-
-        lbDueDate.setText("Due Date:");
-
-        tfDueDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
-
-        jLabel3.setText("Enter date as YYYY-MM-DD");
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbDueDate)
-                            .addComponent(lbRentCost))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfDueDate, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(tfRentCost)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3)))
-                .addContainerGap())
-        );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbRentCost)
-                    .addComponent(tfRentCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbDueDate)
-                    .addComponent(tfDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3))
-        );
-        jLayeredPane1.setLayer(lbRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        btHome.setText("Home");
+        btHome.setPreferredSize(new java.awt.Dimension(87, 65));
+        btHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btHomeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlpTenantInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLayeredPane1)
-                            .addComponent(jlpLeaseInfo))
-                        .addGap(6, 6, 6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jlpTenantInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlpLeaseInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jlpTenantInfo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(266, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(5, 5, 5)
+                    .addComponent(jlpTenantInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(42, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * btHomeActionPerformed will send the GUI back to the home 
-     * GUI menu
-     * @param evt 
-     */
-    private void btHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHomeActionPerformed
-        new MainWindow().setVisible(true);
-        dispose();
-        
-    }//GEN-LAST:event_btHomeActionPerformed
 
-    /**
-     * btClearActionPerformed will clear all data fields 
-     * @param evt 
-     */
-    private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
-        
-        this.tfApt.setText("");
-        this.tfCity.setText("");
-        this.tfDuration.setText("");
-        this.tfEmail.setText("");
-        this.tfEndDate.setText("");
-        this.tfFirstName.setText("");
-        this.tfLastName.setText("");
-        this.tfStartDate.setText("");
-        this.tfStreetAddress.setText("");
-        this.tfPhone.setText("");
-        this.tfZipCode.setText("");
-        this.tfSpecialNeeds.setText("");
-        this.tfDOB.setText("");
-        this.tfTenantID.setText(Integer.toString(lastNum));
-        this.tfDueDate.setText("");
-        this.tfRentCost.setText("");
-        this.jrbDefaultAddress.setSelected(false);
-        
-    }//GEN-LAST:event_btClearActionPerformed
+    private void jrbDefaultAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbDefaultAddressMouseClicked
+        String defaultAddress = "1234 Main STREET";
+        String defaultCity = "Santa Monica";
+        String defaultState = "CA";
+        String defaultZip = "90403";
 
-    /**
-     * btSaveActionPerformed will save all of the data sending it to
-     * the backend for processing into the database
-     * @param evt 
-     */
+        tfStreetAddress.setText(defaultAddress);
+        tfStreetAddress.setEditable(false);
+        tfCity.setText(defaultCity);
+        tfCity.setEditable(false);
+        tfState.setSelectedItem(defaultState);
+        tfState.setEditable(false);
+        tfZipCode.setText(defaultZip);
+        tfZipCode.setEditable(false);
+    }//GEN-LAST:event_jrbDefaultAddressMouseClicked
+
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
-      
-        this.settingFields();           // get last ID from database and increment
+
+        this.settingFields(); 
 
         if(tfTenantID.getText().equals("") || tfApt.getText().equals("") || tfFirstName.getText().equals("")
-                    || tfLastName.getText().equals("") || tfTenantID.getText().equals("") || tfDuration.getText().equals("")
-                    || tfStartDate.getText().equals("") || tfEndDate.getText().equals("") || tfRentCost.getText().equals("")
-                    || tfDueDate.getText().equals("")){
-            
-                 JOptionPane.showMessageDialog(null, "Please enter all of the tenant information.",
-                   "Input error", JOptionPane.ERROR_MESSAGE);
+            || tfLastName.getText().equals("") || tfTenantID.getText().equals("")){
+
+            JOptionPane.showMessageDialog(null, "Please enter all of the tenant information.",
+                "Input error", JOptionPane.ERROR_MESSAGE);
+
         }
-
         else{
-
-            Tenant currentTenant = new Tenant();
+           
             Residence lease = new Residence();
             Invoice invoice = new Invoice();
-        
+            
             currentTenant.setBirthDate(tfDOB.getText());
             currentTenant.setFirstName(tfFirstName.getText());
             currentTenant.setLastName(tfLastName.getText());
@@ -539,46 +384,40 @@ public class CreateTenant extends javax.swing.JFrame {
             currentTenant.setZip(tfZipCode.getText());
             currentTenant.setEmail(tfEmail.getText());
             currentTenant.setSpecNeeds(tfSpecialNeeds.getText());
-            
+
             //sets TenantID from last ID in database
-            currentTenant.setTenantID(lastNum); 
+            currentTenant.setTenantID(lastNum);
 
             currentTenant.setApt(tfApt.getText());
-            invoice.setBillDue(tfDueDate.getText());
             lease.setInvoice(invoice);
             lease.setResID(lastNum);
             lease.setResID(Integer.parseInt(tfTenantID.getText()));
-            lease.setEnd(tfEndDate.getText());
-            lease.setStart(tfStartDate.getText());
-            lease.setDuration(tfDuration.getText());
-            lease.setRentCost(tfRentCost.getText());
+
 
             currentTenant.setLease(lease);
-        
+
             DBConnectionMgr connect = new DBConnectionMgr();
             boolean flag = false;
             try {
                 flag = connect.addTenant(currentTenant);
-          
+
             } catch (Exception ex) {
                 Logger.getLogger(CreateTenant.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
+
             try {
                 if(flag){
                     JOptionPane.showMessageDialog(null, "Tenant Added");
-            }
-            else
-                 JOptionPane.showMessageDialog(null, "Unable to add Tenant!");
-                    
+                }
+                else
+                JOptionPane.showMessageDialog(null, "Unable to add Tenant!");
+
             } catch (Exception ex) {
                 Logger.getLogger(CreateTenant.class.getName()).log(Level.SEVERE,
-                       null, ex);
+                    null, ex);
             }
-            
-            int result = JOptionPane.showConfirmDialog(null,"Do you want to add another Tenant to this address?");
-            
-            
+            int result = JOptionPane.showConfirmDialog(null, "Do you want to add another Tenant?");
+
             if(result == JOptionPane.YES_OPTION){
                new AdditionalTenant(currentTenant).setVisible(true);
                dispose();
@@ -588,25 +427,32 @@ public class CreateTenant extends javax.swing.JFrame {
                 dispose();
             }
             dispose();
-           
+
         }
     }//GEN-LAST:event_btSaveActionPerformed
 
-    private void jrbDefaultAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbDefaultAddressMouseClicked
-        String defaultAddress = "1234 Main STREET";
-        String defaultCity = "Santa Monica";
-        String defaultState = "CA";
-        String defaultZip = "90403";
-        
-        tfStreetAddress.setText(defaultAddress);
-        tfStreetAddress.setEditable(false);
-        tfCity.setText(defaultCity);
-        tfCity.setEditable(false);
-        tfState.setSelectedItem(defaultState);
-        tfState.setEditable(false);
-        tfZipCode.setText(defaultZip);
-        tfZipCode.setEditable(false);
-    }//GEN-LAST:event_jrbDefaultAddressMouseClicked
+    private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
+
+        this.tfApt.setText("");
+        this.tfCity.setText("");
+        this.tfEmail.setText("");
+        this.tfFirstName.setText("");
+        this.tfLastName.setText("");
+        this.tfStreetAddress.setText("");
+        this.tfPhone.setText("");
+        this.tfZipCode.setText("");
+        this.tfSpecialNeeds.setText("");
+        this.tfDOB.setText("");
+        this.tfTenantID.setText(Integer.toString(lastNum));
+        this.jrbDefaultAddress.setSelected(false);
+
+    }//GEN-LAST:event_btClearActionPerformed
+
+    private void btHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHomeActionPerformed
+        new MainWindow().setVisible(true);
+        dispose();
+
+    }//GEN-LAST:event_btHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -618,25 +464,27 @@ public class CreateTenant extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : 
-                    javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException |
-                IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateTenant.class.getName()).
-                    log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AdditionalTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AdditionalTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AdditionalTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AdditionalTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateTenant().setVisible(true);
+                new AdditionalTenant().setVisible(true);
             }
         });
     }
@@ -646,25 +494,15 @@ public class CreateTenant extends javax.swing.JFrame {
     private javax.swing.JButton btHome;
     private javax.swing.JButton btSave;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JLayeredPane jlpLeaseInfo;
     private javax.swing.JLayeredPane jlpTenantInfo;
     private javax.swing.JRadioButton jrbDefaultAddress;
     private javax.swing.JLabel lbAptNum;
     private javax.swing.JLabel lbCity;
     private javax.swing.JLabel lbDOB;
-    private javax.swing.JLabel lbDueDate;
-    private javax.swing.JLabel lbDuration;
     private javax.swing.JLabel lbEmail;
-    private javax.swing.JLabel lbEndDate;
     private javax.swing.JLabel lbFirstName;
     private javax.swing.JLabel lbLastName;
-    private javax.swing.JLabel lbRentCost;
     private javax.swing.JLabel lbSpecialNeeds;
-    private javax.swing.JLabel lbStartDate;
     private javax.swing.JLabel lbState;
     private javax.swing.JLabel lbStreetAddress;
     private javax.swing.JLabel lbTelephone;
@@ -672,16 +510,11 @@ public class CreateTenant extends javax.swing.JFrame {
     private javax.swing.JTextField tfApt;
     private javax.swing.JTextField tfCity;
     private javax.swing.JFormattedTextField tfDOB;
-    private javax.swing.JFormattedTextField tfDueDate;
-    private javax.swing.JTextField tfDuration;
     private javax.swing.JTextField tfEmail;
-    private javax.swing.JFormattedTextField tfEndDate;
     private javax.swing.JTextField tfFirstName;
     private javax.swing.JTextField tfLastName;
     private javax.swing.JFormattedTextField tfPhone;
-    private javax.swing.JFormattedTextField tfRentCost;
     private javax.swing.JTextField tfSpecialNeeds;
-    private javax.swing.JFormattedTextField tfStartDate;
     private javax.swing.JComboBox tfState;
     private javax.swing.JTextField tfStreetAddress;
     private javax.swing.JTextField tfTenantID;

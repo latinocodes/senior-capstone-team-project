@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- *  Author: Jose Lara
- */
 package sunset.FrontEnd;
 
 import java.awt.event.KeyEvent;
@@ -20,7 +14,6 @@ import sunset.domain.*;
 /* FILENAME: FindTenant
  * DESCRIPTION: FindTenant will parse through the database looking for the 
  *              specific tenant information keyed by TenantID
- * @author Jose
  */
 public class FindTenant extends javax.swing.JFrame {
 

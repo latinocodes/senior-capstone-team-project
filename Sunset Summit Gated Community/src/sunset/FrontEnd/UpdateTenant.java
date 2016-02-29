@@ -1,13 +1,3 @@
-/*  
- *  FILENAME: UpdateTenant.java
- *  DESCRIPTION: This class creates implements the code for conn to the database and execute SQL statements
- * 
- *  Date: Feb 2, 2016 - 
- *  
- *  CS493 - Capstone project
- *  @author Jose Lara
- *  @version 2
- */
 package sunset.FrontEnd;
 
 import java.awt.event.KeyEvent;
@@ -22,8 +12,6 @@ import sunset.domain.*;
 //*************************************************************************************
 //  Class Name: UpdateTenant
 //  Descrption: UpdateTenant will allow for the editing of previously saved Tenant data.
-//  
-//  @author Jose Lara  
 //*************************************************************************************
 public class UpdateTenant extends javax.swing.JFrame {
     
@@ -35,7 +23,6 @@ public class UpdateTenant extends javax.swing.JFrame {
     //*******************************************************
     //  Method initailize objc without parameters
     //  This textFields are blank
-    //  
     //*******************************************************
     public UpdateTenant() {
         initComponents();
@@ -47,7 +34,6 @@ public class UpdateTenant extends javax.swing.JFrame {
     //  Method initailize objc with parameter
     //  This mehotd fields all of the data to prefill textField
     //  from selected tenant on FindTenant list
-    //  
     //*******************************************************
     public UpdateTenant(Tenant tenant) {
          
@@ -76,12 +62,10 @@ public class UpdateTenant extends javax.swing.JFrame {
         tfDuration.setText(lease.getDuration());
         tfRentCost.setText(lease.getRentCost());
         tfDueDate.setText(invoice.getBillDue());
-     
-      
+        
     }
     //*******************************************************
     //  This mehotd gets values from text fields to update database
-    //  
     //*******************************************************
     private void settingFields(){
         
@@ -106,10 +90,8 @@ public class UpdateTenant extends javax.swing.JFrame {
         
         this.lease.setInvoice(invoice);
         this.tempTenant.setLease(lease);
-        
-        
-    }
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,6 +133,7 @@ public class UpdateTenant extends javax.swing.JFrame {
         lbEndDate = new javax.swing.JLabel();
         tfEndDate = new javax.swing.JTextField();
         tfLeaseID = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         btSave = new javax.swing.JButton();
         btCancel = new javax.swing.JButton();
         lbRentInfoTitle = new javax.swing.JLayeredPane();
@@ -158,6 +141,7 @@ public class UpdateTenant extends javax.swing.JFrame {
         tfRentCost = new javax.swing.JTextField();
         lbDueDate = new javax.swing.JLabel();
         tfDueDate = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         lbOtherInfoTitle = new javax.swing.JLayeredPane();
         rbFirstNotice = new javax.swing.JRadioButton();
         rbLastNotice = new javax.swing.JRadioButton();
@@ -346,6 +330,8 @@ public class UpdateTenant extends javax.swing.JFrame {
 
         tfLeaseID.setText("No data found!");
 
+        jLabel2.setText("Number of Months");
+
         javax.swing.GroupLayout lbLeaseInfoTitleLayout = new javax.swing.GroupLayout(lbLeaseInfoTitle);
         lbLeaseInfoTitle.setLayout(lbLeaseInfoTitleLayout);
         lbLeaseInfoTitleLayout.setHorizontalGroup(
@@ -370,7 +356,11 @@ public class UpdateTenant extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbDuration)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbLeaseInfoTitleLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(41, 41, 41)))
                 .addContainerGap())
         );
         lbLeaseInfoTitleLayout.setVerticalGroup(
@@ -392,7 +382,8 @@ public class UpdateTenant extends javax.swing.JFrame {
                 .addGroup(lbLeaseInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbDuration))
-                .addGap(29, 29, 29))
+                .addGap(13, 13, 13)
+                .addComponent(jLabel2))
         );
         lbLeaseInfoTitle.setLayer(lbLeaseID, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbLeaseInfoTitle.setLayer(lbDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -402,6 +393,7 @@ public class UpdateTenant extends javax.swing.JFrame {
         lbLeaseInfoTitle.setLayer(lbEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbLeaseInfoTitle.setLayer(tfEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbLeaseInfoTitle.setLayer(tfLeaseID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbLeaseInfoTitle.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         btSave.setText("Save");
         btSave.addActionListener(new java.awt.event.ActionListener() {
@@ -423,6 +415,8 @@ public class UpdateTenant extends javax.swing.JFrame {
 
         lbDueDate.setText("Due Date:");
 
+        jLabel1.setText("Enter date as YYYY-MM-DD");
+
         javax.swing.GroupLayout lbRentInfoTitleLayout = new javax.swing.GroupLayout(lbRentInfoTitle);
         lbRentInfoTitle.setLayout(lbRentInfoTitleLayout);
         lbRentInfoTitleLayout.setHorizontalGroup(
@@ -437,6 +431,10 @@ public class UpdateTenant extends javax.swing.JFrame {
                     .addComponent(tfRentCost, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                     .addComponent(tfDueDate))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbRentInfoTitleLayout.createSequentialGroup()
+                .addContainerGap(94, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         lbRentInfoTitleLayout.setVerticalGroup(
             lbRentInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,12 +447,15 @@ public class UpdateTenant extends javax.swing.JFrame {
                 .addGroup(lbRentInfoTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbDueDate)
                     .addComponent(tfDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         lbRentInfoTitle.setLayer(lbRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbRentInfoTitle.setLayer(tfRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbRentInfoTitle.setLayer(lbDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lbRentInfoTitle.setLayer(tfDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lbRentInfoTitle.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         lbOtherInfoTitle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Other Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
 
@@ -512,7 +513,7 @@ public class UpdateTenant extends javax.swing.JFrame {
                 .addComponent(rbLastNotice)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbRentPaid)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(tbSumit)
                 .addContainerGap())
         );
@@ -570,7 +571,6 @@ public class UpdateTenant extends javax.swing.JFrame {
     //*******************************************************
     //  Event Handler for Home Button on GUI
     //  it opens back the Home window when clicked
-    //  
     //*******************************************************
     private void btHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHomeActionPerformed
         new MainWindow().setVisible(true);
@@ -611,7 +611,6 @@ public class UpdateTenant extends javax.swing.JFrame {
     //*******************************************************
     //  Event Handler for Save Button on GUI
     //  it sends the data from tenant created to database to be updated
-    //  
     //*******************************************************
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
         
@@ -705,10 +704,7 @@ public class UpdateTenant extends javax.swing.JFrame {
         }
         else{
               JOptionPane.showMessageDialog(null,"Please make the proper selection.", "Selection Error!", JOptionPane.ERROR_MESSAGE);            
-        } 
-        
-        
-                   
+        }             
     }//GEN-LAST:event_tbSumitActionPerformed
 
     //*******************************************************
@@ -778,6 +774,8 @@ public class UpdateTenant extends javax.swing.JFrame {
     private javax.swing.JButton btCancel;
     private javax.swing.JButton btHome;
     private javax.swing.JButton btSave;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbApt;
     private javax.swing.JLabel lbCity;
     private javax.swing.JLabel lbDateOfBirth;

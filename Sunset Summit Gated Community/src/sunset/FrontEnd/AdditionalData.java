@@ -1,14 +1,3 @@
-/*  
- *  FILENAME: AdditionalData.java
- *  DESCRIPTION: This class shows the additional data to user in a GUI window
- * 
- *  Date: Feb 15, 2016
- *  
- *  CS493 - Capstone project
- *  @author Jose Lara
- *  @version 1
- */
-
 package sunset.FrontEnd;
 
 import sunset.BackEnd.DBConnectionMgr;
@@ -19,16 +8,12 @@ import sunset.domain.Tenant;
 //*************************************************************************************
 //  Class Name: AdditionalData
 //  Descrption: This class shows the additional data to user in a GUI window
-//  
-//  @author Jose Lara  
 //*************************************************************************************
 public class AdditionalData extends javax.swing.JFrame {
-    
 
     //*******************************************************
     //  initialize GUI without parameters
     //  it shows associate data from tables like invoices, Lease, etc from the database
-    //  
     //*******************************************************
     public AdditionalData() {
         initComponents();
@@ -156,7 +141,7 @@ public class AdditionalData extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Year(s).");
+        jLabel1.setText("Month(s).");
 
         lbDollarSign.setText("$");
 
