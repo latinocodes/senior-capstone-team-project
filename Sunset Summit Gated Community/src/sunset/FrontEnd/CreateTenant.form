@@ -109,7 +109,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Tenant Information">
+            <TitledBorder title="Create Tenant Information">
               <Font PropertyName="font" name="Lucida Grande" size="13" style="1"/>
             </TitledBorder>
           </Border>

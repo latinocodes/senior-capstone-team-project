@@ -69,7 +69,6 @@ public class Tenant extends Contact {
     }
 
     /**
-     *
      * @param obj
      * @return
      */

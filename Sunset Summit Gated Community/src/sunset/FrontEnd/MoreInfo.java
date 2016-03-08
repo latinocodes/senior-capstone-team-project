@@ -6,16 +6,16 @@ import sunset.domain.Residence;
 import sunset.domain.Tenant;
 
 //*************************************************************************************
-//  Class Name: AdditionalData
+//  Class Name: MoreInfo
 //  Descrption: This class shows the additional data to user in a GUI window
 //*************************************************************************************
-public class AdditionalData extends javax.swing.JFrame {
+public class MoreInfo extends javax.swing.JFrame {
 
     //*******************************************************
     //  initialize GUI without parameters
     //  it shows associate data from tables like invoices, Lease, etc from the database
     //*******************************************************
-    public AdditionalData() {
+    public MoreInfo() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -26,7 +26,7 @@ public class AdditionalData extends javax.swing.JFrame {
     //  it shows associate data from tables like invoices, Lease, etc from the database
     //  sets all of the textFields from the GUI 
     //*******************************************************
-    public AdditionalData(Tenant tenant) {
+    public MoreInfo(Tenant tenant) {
          
         initComponents();
         this.setLocationRelativeTo(null);
@@ -90,9 +90,9 @@ public class AdditionalData extends javax.swing.JFrame {
         tfName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Additional Information");
+        setTitle("More Information");
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Additional Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "More Information", 0, 0, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
 
         lbDuration.setText("Lease Duration:");
 
@@ -149,6 +149,32 @@ public class AdditionalData extends javax.swing.JFrame {
 
         tfName.setText("Data Not Available!");
 
+        jLayeredPane1.setLayer(lbDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbRent, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfRent, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbResidenceID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfResidenceID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbBillDuDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfBillDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbLeaseID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfLeaseID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbLastPaid, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfLastPaid, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbFirstNtc, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfFirstNtc, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbLastNtc, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfLastNtc, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(btClose, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbDollarSign, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
@@ -184,7 +210,7 @@ public class AdditionalData extends javax.swing.JFrame {
                                 .addComponent(jLabel1))
                             .addComponent(tfStartDate)
                             .addComponent(tfResidenceID))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -204,7 +230,7 @@ public class AdditionalData extends javax.swing.JFrame {
                                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfEndDate)
                                     .addComponent(tfRent))))
-                        .addContainerGap(12, Short.MAX_VALUE))
+                        .addContainerGap(57, Short.MAX_VALUE))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfFirstNtc)
@@ -255,31 +281,6 @@ public class AdditionalData extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(btClose))
         );
-        jLayeredPane1.setLayer(lbDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbRent, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfRent, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbResidenceID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfResidenceID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbBillDuDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfBillDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbLeaseID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfLeaseID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbLastPaid, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfLastPaid, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbFirstNtc, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfFirstNtc, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbLastNtc, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfLastNtc, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btClose, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbDollarSign, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfName, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -291,6 +292,8 @@ public class AdditionalData extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        jLayeredPane1.getAccessibleContext().setAccessibleName("More Information");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -322,20 +325,20 @@ public class AdditionalData extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdditionalData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MoreInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdditionalData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MoreInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdditionalData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MoreInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdditionalData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MoreInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdditionalData().setVisible(true);
+                new MoreInfo().setVisible(true);
             }
         });
     }

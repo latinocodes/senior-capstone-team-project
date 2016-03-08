@@ -18,8 +18,7 @@ public class UpdateTenant extends javax.swing.JFrame {
     private Tenant tempTenant;
     private Invoice invoice;
     private Residence lease;
-    
-    
+       
     //*******************************************************
     //  Method initailize objc without parameters
     //  This textFields are blank
@@ -640,8 +639,7 @@ public class UpdateTenant extends javax.swing.JFrame {
         
         String subjectRentPaid = "Payment Received.";
         String rentPay ="You Rent was received.\n\n Thank You.";
-        
-       
+               
         String subjectLastNot = "Last Reminder: Rent Coming Due";
         String saludo = "Dear "+tempTenant.getFirstName()+ " " +tempTenant.getLastName()+": \n\n";
         String contenido ="Your Rent is coming due. Please beware this is your last notice.";

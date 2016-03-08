@@ -78,7 +78,6 @@ public class ConnectionDAO {
             preparedStatement.executeUpdate();
             preparedStatement.close();
             
-            
             //adding data to Tenant table
             preparedStatement = connection.prepareStatement(sql2);
                         
@@ -121,10 +120,8 @@ public class ConnectionDAO {
             preparedStatement.setInt(4, tenant.getTenantID());
             preparedStatement.setString(5, invoice.getBillDue());
             
-
             preparedStatement.executeUpdate();
             preparedStatement.close();
-	
             
         }catch(SQLException e){
             System.out.println(e.toString());
@@ -171,7 +168,6 @@ public class ConnectionDAO {
         stmt.executeUpdate(sql3);
         stmt.executeUpdate(sql4);
 
-        
         stmt.close();
         conn.close();
         
@@ -276,8 +272,7 @@ public class ConnectionDAO {
         tempResidence.setEnd(tempLease.getEnd());
         tempResidence.setInvoice(tempInvoice);
         tempTenant.setLease(tempResidence);
-        
-        
+               
         return tempTenant;
         
     } // end of getAllDataForTenant
@@ -322,8 +317,7 @@ public class ConnectionDAO {
                        
             stmt.executeUpdate();
             stmt.close();
-            
-            
+                       
             //Updating data to Tenant table
             stmt = conn.prepareStatement(sql2);
                         
@@ -366,10 +360,8 @@ public class ConnectionDAO {
             stmt.setInt(4, tenant.getTenantID());
             stmt.setString(5, invoice.getBillDue());
             
-
             stmt.executeUpdate();
             stmt.close();
-	
             
         }catch(SQLException e){
             System.out.println(e.toString());
@@ -412,8 +404,7 @@ public class ConnectionDAO {
           String sql2 = "select * from Contact where FName='"+tenant.getFirstName()+"'";
           String sql3 = "select * from Contact where AptNum='"+tenant.getApt()+"'";
           String sql4 = "select * from Contact where ContactID='"+tenant.getTenantID()+"'";
-          
-          
+                   
           // search for first
           if(!(tenant.getFirstName().equals(null) || tenant.getFirstName().equals("")) && !(tenant.getLastName().equals("") || tenant.getLastName().equals(null))){
               
@@ -443,17 +434,14 @@ public class ConnectionDAO {
               resultSet = stmt.executeQuery(sql4);
           }
 
-
           while(resultSet.next()){
               Tenant temp = convertToTenant(resultSet);
               tenantList.add(temp);
           }
-              
           
           resultSet.close();
           stmt.close();
           
-         
       }catch(SQLException e){
           
       }
@@ -476,7 +464,6 @@ public class ConnectionDAO {
         Connection conn = getConnection();
         
         String sql = "select * from Contact";       // selecting everyting from Contact table
-        
 		
 	try {
             myStmt = conn.createStatement();
@@ -580,7 +567,6 @@ public class ConnectionDAO {
         
         stmt.close();
        
-        
     } // end of sendFirstNotice
     
     //*****************************************************
@@ -659,7 +645,6 @@ public class ConnectionDAO {
         return todayDate;
         
     } // end of getDate
-
  
     //*****************************************************
     //  Method to covert the data from databse to Invoice object
@@ -690,7 +675,6 @@ public class ConnectionDAO {
         
         
         Residence temp = new Residence(residenceID, MMRentCost);
-        
         
         return temp;
     } // end of  convertToResidence

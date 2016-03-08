@@ -120,7 +120,7 @@ public class CreateTenant extends javax.swing.JFrame {
             }
         });
 
-        jlpTenantInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tenant Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
+        jlpTenantInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Create Tenant Information", 0, 0, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
 
         lbLastName.setText("Last:");
 
@@ -166,6 +166,32 @@ public class CreateTenant extends javax.swing.JFrame {
                 jrbDefaultAddressMouseClicked(evt);
             }
         });
+
+        jlpTenantInfo.setLayer(tfFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbStreetAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfStreetAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbCity, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfCity, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbState, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbZipCode, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfZipCode, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbTelephone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbAptNum, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfApt, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbSpecialNeeds, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfSpecialNeeds, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(lbDOB, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfDOB, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfPhone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfState, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(tfTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpTenantInfo.setLayer(jrbDefaultAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jlpTenantInfoLayout = new javax.swing.GroupLayout(jlpTenantInfo);
         jlpTenantInfo.setLayout(jlpTenantInfoLayout);
@@ -277,33 +303,8 @@ public class CreateTenant extends javax.swing.JFrame {
                 .addComponent(jrbDefaultAddress)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jlpTenantInfo.setLayer(tfFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbStreetAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfStreetAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbCity, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfCity, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbState, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbZipCode, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfZipCode, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbTelephone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbAptNum, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfApt, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbSpecialNeeds, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfSpecialNeeds, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(lbDOB, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfDOB, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfPhone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfState, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(tfTenantID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpTenantInfo.setLayer(jrbDefaultAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jlpLeaseInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lease Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
+        jlpLeaseInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lease Information", 0, 0, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
 
         lbDuration.setText("Duration:");
 
@@ -318,6 +319,15 @@ public class CreateTenant extends javax.swing.JFrame {
         jLabel2.setText("Enter date as YYYY-MM-DD");
 
         jLabel4.setText("Number of Months");
+
+        jlpLeaseInfo.setLayer(lbDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpLeaseInfo.setLayer(tfDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpLeaseInfo.setLayer(lbStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpLeaseInfo.setLayer(lbEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpLeaseInfo.setLayer(tfStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpLeaseInfo.setLayer(tfEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpLeaseInfo.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlpLeaseInfo.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jlpLeaseInfoLayout = new javax.swing.GroupLayout(jlpLeaseInfo);
         jlpLeaseInfo.setLayout(jlpLeaseInfoLayout);
@@ -365,16 +375,8 @@ public class CreateTenant extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2))
         );
-        jlpLeaseInfo.setLayer(lbDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(tfDuration, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(lbStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(lbEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(tfStartDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(tfEndDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jlpLeaseInfo.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rent Info", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rent Info", 0, 0, new java.awt.Font("Lucida Grande", 3, 13))); // NOI18N
 
         lbRentCost.setText("Rent Cost:");
 
@@ -385,6 +387,12 @@ public class CreateTenant extends javax.swing.JFrame {
         tfDueDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
         jLabel3.setText("Enter date as YYYY-MM-DD");
+
+        jLayeredPane1.setLayer(lbRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lbDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tfDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -420,11 +428,6 @@ public class CreateTenant extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3))
         );
-        jLayeredPane1.setLayer(lbRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfRentCost, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lbDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(tfDueDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -577,10 +580,9 @@ public class CreateTenant extends javax.swing.JFrame {
             }
             
             int result = JOptionPane.showConfirmDialog(null,"Do you want to add another Tenant to this address?");
-            
-            
+                    
             if(result == JOptionPane.YES_OPTION){
-               new AdditionalTenant(currentTenant).setVisible(true);
+               new AddTenant(currentTenant).setVisible(true);
                dispose();
             }
             if(result == JOptionPane.NO_OPTION){

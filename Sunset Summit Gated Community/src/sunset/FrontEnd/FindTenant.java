@@ -272,10 +272,8 @@ public class FindTenant extends javax.swing.JFrame {
             email = model.getValueAt(index, 10).toString();
             specialNeeds = model.getValueAt(index, 11).toString();
             
-            
             Tenant tenant = new Tenant(Integer.parseInt(id),Integer.parseInt(id), last, name, phone, email, address, apt, city,
                                         state, zip, birthday, specialNeeds);
-            
             
             UpdateTenant editTenant =  new UpdateTenant(tenant);
             
@@ -320,14 +318,12 @@ public class FindTenant extends javax.swing.JFrame {
             ConnectionDAO dao = new ConnectionDAO();
             List<Tenant> tenantList = new ArrayList<>();
             
-
             tenant.setFirstName(tfFirstName.getText());
             tenant.setLastName(tfLastName.getText());
             tenant.setApt(tfApt.getText());
             
             if(!tfTenantID.getText().equals("") )
-                tenant.setTenantID(Integer.parseInt(tfTenantID.getText()));
-            
+                tenant.setTenantID(Integer.parseInt(tfTenantID.getText()));            
         
             try {
                 // search for all tenant 
@@ -390,7 +386,6 @@ public class FindTenant extends javax.swing.JFrame {
             tenantList = dao.getAllTenant();
             DisplayTable(tenantList);
                  
-
        }catch(Exception e){
            JOptionPane.showMessageDialog(null, "Something when wrong, Item not deleted!");
        }
@@ -429,13 +424,11 @@ public class FindTenant extends javax.swing.JFrame {
             phone = model.getValueAt(index, 9).toString();
             email = model.getValueAt(index, 10).toString();
             specialNeeds = model.getValueAt(index, 11).toString();
-            
-            
+                        
             Tenant tenant = new Tenant(Integer.parseInt(id),Integer.parseInt(id), last, name, phone, email, address, apt, city,
                                         state, zip, birthday, specialNeeds);
-            
-            
-            AdditionalData addInfo =  new AdditionalData(tenant);
+                        
+            MoreInfo addInfo =  new MoreInfo(tenant);
             
             addInfo.setVisible(true);
             

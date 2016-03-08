@@ -69,7 +69,6 @@ public class Residence extends Lease {
     }
 
     /**
-     *
      * @param obj
      * @return
      */

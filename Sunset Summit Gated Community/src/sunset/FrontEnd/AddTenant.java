@@ -6,23 +6,19 @@ import javax.swing.JOptionPane;
 import sunset.BackEnd.DBConnectionMgr;
 import sunset.domain.*;
 
-/**
- *
- * @author Jose
- */
-public class AdditionalTenant extends javax.swing.JFrame {
+public class AddTenant extends javax.swing.JFrame {
     
     Tenant currentTenant = new Tenant();
     private int lastNum;
 
     /**
-     * Creates new form AdditionalTenant
+     * Creates new form AddTenant
      */
-    public AdditionalTenant() {
+    public AddTenant() {
         initComponents();
     }
 
-    public AdditionalTenant(Tenant tenant) {
+    public AddTenant(Tenant tenant) {
         initComponents();
         this.settingFields();
         this.setResizable(false);
@@ -42,7 +38,6 @@ public class AdditionalTenant extends javax.swing.JFrame {
         tfZipCode.setEditable(false);
     
     }
-    
     
     //*********************************************
     //  Gets the last tenantID use from the database
@@ -97,8 +92,9 @@ public class AdditionalTenant extends javax.swing.JFrame {
         btHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Add Tenant");
 
-        jlpTenantInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sub Tenant Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
+        jlpTenantInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Tenant Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
 
         lbLastName.setText("Last:");
 
@@ -162,45 +158,42 @@ public class AdditionalTenant extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jlpTenantInfoLayout.createSequentialGroup()
-                                .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jlpTenantInfoLayout.createSequentialGroup()
-                                        .addComponent(tfStreetAddress)
-                                        .addGap(55, 55, 55))
+                                .addComponent(tfPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbEmail)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jlpTenantInfoLayout.createSequentialGroup()
+                                .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jlpTenantInfoLayout.createSequentialGroup()
                                         .addComponent(tfCity)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lbState)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(tfState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbAptNum))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfApt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jlpTenantInfoLayout.createSequentialGroup()
-                                .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jlpTenantInfoLayout.createSequentialGroup()
-                                        .addComponent(tfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jlpTenantInfoLayout.createSequentialGroup()
-                                        .addComponent(tfDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel1)))
+                                        .addComponent(lbZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(jlpTenantInfoLayout.createSequentialGroup()
+                                        .addComponent(tfStreetAddress)
+                                        .addGap(46, 46, 46)
+                                        .addComponent(lbAptNum)
+                                        .addGap(37, 37, 37)))
+                                .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfApt)
+                                    .addComponent(tfZipCode)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jlpTenantInfoLayout.createSequentialGroup()
+                                .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tfDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                                    .addComponent(tfFirstName))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jlpTenantInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfTenantID)
-                                    .addComponent(tfLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jlpTenantInfoLayout.createSequentialGroup()
-                                .addComponent(tfPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(tfLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                                    .addComponent(tfTenantID)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jlpTenantInfoLayout.createSequentialGroup()
                         .addComponent(lbSpecialNeeds)
                         .addGap(18, 18, 18)
@@ -290,7 +283,9 @@ public class AdditionalTenant extends javax.swing.JFrame {
         });
 
         btClear.setText("Clear");
-        btClear.setPreferredSize(new java.awt.Dimension(87, 65));
+        btClear.setMaximumSize(new java.awt.Dimension(75, 29));
+        btClear.setMinimumSize(new java.awt.Dimension(75, 29));
+        btClear.setPreferredSize(new java.awt.Dimension(87, 29));
         btClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btClearActionPerformed(evt);
@@ -312,7 +307,7 @@ public class AdditionalTenant extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
                 .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,18 +320,18 @@ public class AdditionalTenant extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btHome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(5, 5, 5)
                     .addComponent(jlpTenantInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(42, Short.MAX_VALUE)))
+                    .addContainerGap(39, Short.MAX_VALUE)))
         );
 
         pack();
@@ -393,7 +388,6 @@ public class AdditionalTenant extends javax.swing.JFrame {
             lease.setResID(lastNum);
             lease.setResID(Integer.parseInt(tfTenantID.getText()));
 
-
             currentTenant.setLease(lease);
 
             DBConnectionMgr connect = new DBConnectionMgr();
@@ -419,7 +413,7 @@ public class AdditionalTenant extends javax.swing.JFrame {
             int result = JOptionPane.showConfirmDialog(null, "Do you want to add another Tenant?");
 
             if(result == JOptionPane.YES_OPTION){
-               new AdditionalTenant(currentTenant).setVisible(true);
+               new AddTenant(currentTenant).setVisible(true);
                dispose();
             }
             if(result == JOptionPane.NO_OPTION){
@@ -471,20 +465,20 @@ public class AdditionalTenant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdditionalTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdditionalTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdditionalTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdditionalTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTenant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdditionalTenant().setVisible(true);
+                new AddTenant().setVisible(true);
             }
         });
     }

@@ -158,7 +158,6 @@ public class Contact implements Serializable {
     }
 
     /**
-     *
      * @param obj
      * @return
      */
